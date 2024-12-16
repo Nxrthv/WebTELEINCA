@@ -15,7 +15,7 @@ nav{
     justify-content: space-between;
 }
 #logo{
-    width: 80px;
+    width: 3.5em;
     padding: .5em;
 }
 #inicio{
@@ -47,7 +47,24 @@ li > a{
 
 /* Promociones */
 #promociones{
-    padding-top: 6.7em;
+    padding-top: 5.8em;
+}
+#cont-promociones{
+    margin: 2em auto;
+    text-align: center;
+    justify-content: space-evenly;
+    padding-inline: 7.5%;
+    display: flex;
+}
+#card-promociones{
+    border-radius: 1em;
+    width: 22%;
+    background: #396CA4;
+    padding: 2em;
+    color: white;
+}
+#card-promociones > img{
+    width: 150px;
 }
 
 /* Beneficios */

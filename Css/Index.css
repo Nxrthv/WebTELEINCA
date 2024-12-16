@@ -1,9 +1,23 @@
+body{
+    margin: 0;
+}
+
+#logo{
+    width: 80px;
+    padding: .5em;
+}
+
+#inicio{
+    text-decoration: none;
+    color: white;
+}
+
 nav > ul{
     align-items: center;
     list-style: none;
     display: flex;
     justify-content: space-evenly;
-    width: 30%;
+    width: 40%;
 }
 
 nav > ul > li:hover{
@@ -21,12 +35,21 @@ nav > div{
     align-items: center;
     font-size: 1.2em;
     text-align: center;
+    font-weight: bold;
 }
 
 nav{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: white;
-    background: rgb(40, 40, 245);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(255, 255, 255);
+    background: #2828f5;
     display: flex;
     justify-content: space-between;
+}
+
+footer{
+    background: #2828f5;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 10em;
+    padding: 2em;
 }

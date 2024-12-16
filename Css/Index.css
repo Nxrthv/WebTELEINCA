@@ -1,26 +1,32 @@
 nav > ul{
     align-items: center;
+    list-style: none;
     display: flex;
     justify-content: space-evenly;
     width: 30%;
 }
 
-li>a{
+nav > ul > li:hover{
+    transition: ease-in-out .5s;
+    transform: scale(1.5em);
+}
+
+li > a{
     text-decoration: none;
     color: white;
 }
 
-nav > span{
+nav > div{
+    display: flex;
+    align-items: center;
     font-size: 1.2em;
     text-align: center;
-    margin: 2em;
 }
 
 nav{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: white;
     background: rgb(40, 40, 245);
-    text-align: center;
     display: flex;
     justify-content: space-between;
 }

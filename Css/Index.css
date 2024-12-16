@@ -53,18 +53,56 @@ li > a{
     margin: 2em auto;
     text-align: center;
     justify-content: space-evenly;
-    padding-inline: 7.5%;
+    padding-inline: 2%;
     display: flex;
 }
 #card-promociones{
     border-radius: 1em;
-    width: 22%;
+    width: 15%;
     background: #396CA4;
-    padding: 2em;
+    padding: 1.5em;
     color: white;
 }
-#card-promociones > img{
-    width: 150px;
+#info-internet{
+    padding: 5px;
+    background-color: white;
+    border-radius: .3em;
+    color: #396CA4;
+}
+#info-cable{
+    margin-top: 1em;
+    padding: 5px;
+    background-color: white;
+    border-radius: .3em;
+    color: #396CA4;
+}
+
+#precio{
+    font-size: 2em;
+}
+#periodo{
+    background: white;
+    color: #396CA4;
+    font-size: 12px;
+    border-radius: .5em;
+    padding: 5px;
+    width: 60px;
+    margin: auto;
+}
+
+#card-promociones > button{
+    width: 140px;
+    padding: .8em 1em;
+    border-radius: 2em;
+    background: white;
+    border: none;
+    color: #396CA4;
+    cursor: pointer;
+    transition: ease .3s;
+}
+#card-promociones > button:hover{
+    transition: ease .3s;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.301);
 }
 
 /* Beneficios */

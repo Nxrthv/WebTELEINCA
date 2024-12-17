@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Css/Index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>TELEINCA S.A.C.</title>
 </head>
 <body>
 <nav>
     <div>
-        <img id="logo" src="Resources/Images/log.jpg">
-        <a id="inicio" href="#">TELEINCA S.A.C.</a>
+        <a href="#"><img id="logo" href="#" src="/Resources/Images/logo.png"></a>
     </div>
     <ul>
-        <li><a href="Views/Cable.html">Cable</a></li>
-        <li><a href="Views/Internet.html">Internet</a></li>
+        <li><a href="/Views/Cable.html">Cable</a></li>
+        <li><a href="/Views/Internet.html">Internet</a></li>
         <li><a href="#contact">Registrarse</a></li>
     </ul>
 </nav>
@@ -22,8 +22,44 @@
     <img src="https://portalcable.net/images/main-slider/banner00001.jpeg" style="width: 100%;">
     <div>
         <h1 style="text-align: center;">Nuestras Promociones</h1>
-        <div id="cont-promociones">
-            <div id="card-promociones">
+        <div id="cont-promociones" class="row">
+            <div id="card-promociones" class="col-12 col-md-6 col-lg-3">
+                <p id="paquete">Internet + Cable</p>
+                <div id="info-internet">
+                    <p style="font-size: 2em; margin-top: 5px;"><strong>80</strong><small style="font-size: 20px;">Mbps</small></p>
+                    <p style="font-size: 12px; margin-top: -2em;">de velocidad de estables</p>
+                </div>
+                <div id="info-cable">
+                    <p style="font-size: 15px;">Cable HD (70 canales)</p>
+                </div>
+                <p id="precio"><small style="font-size: 15px;">S/.</small><strong>90.00</strong><br><small style="font-size: 15px;">Precio Regular</small></p>
+                <button><strong>Lo quiero</strong></button>
+            </div>
+            <div id="card-promociones" class="col-12 col-md-6 col-lg-3">
+                <p id="paquete">Internet + Cable</p>
+                <div id="info-internet">
+                    <p style="font-size: 2em; margin-top: 5px;"><strong>80</strong><small style="font-size: 20px;">Mbps</small></p>
+                    <p style="font-size: 12px; margin-top: -2em;">de velocidad de estables</p>
+                </div>
+                <div id="info-cable">
+                    <p style="font-size: 15px;">Cable HD (70 canales)</p>
+                </div>
+                <p id="precio"><small style="font-size: 15px;">S/.</small><strong>90.00</strong><br><small style="font-size: 15px;">Precio Regular</small></p>
+                <button><strong>Lo quiero</strong></button>
+            </div>
+            <div id="card-promociones" class="col-12 col-md-6 col-lg-3">
+                <p id="paquete">Internet + Cable</p>
+                <div id="info-internet">
+                    <p style="font-size: 2em; margin-top: 5px;"><strong>80</strong><small style="font-size: 20px;">Mbps</small></p>
+                    <p style="font-size: 12px; margin-top: -2em;">de velocidad de estables</p>
+                </div>
+                <div id="info-cable">
+                    <p style="font-size: 15px;">Cable HD (70 canales)</p>
+                </div>
+                <p id="precio"><small style="font-size: 15px;">S/.</small><strong>90.00</strong><br><small style="font-size: 15px;">Precio Regular</small></p>
+                <button><strong>Lo quiero</strong></button>
+            </div>
+            <div id="card-promociones" class="col-12 col-md-6 col-lg-3">
                 <p id="paquete">Internet + Cable</p>
                 <div id="info-internet">
                     <p style="font-size: 2em; margin-top: 5px;"><strong>80</strong><small style="font-size: 20px;">Mbps</small></p>
@@ -39,18 +75,18 @@
     </div>
 </div>
 <h1 style="text-align: center;">Beneficios de Nuestros Servicios</h1>
-<div id="cont-beneficios">
-    <div id="card-beneficios">
+<div id="cont-beneficios" class="row">
+    <div id="card-beneficios" class="col-12 col-mg-6 col-lg-3">
         <img src="https://cdn-icons-png.flaticon.com/512/1285/1285744.png">
         <h3>Internet Estable</h3>
         <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ex placeat corrupti dignissimos incidunt omnis debitis molestias veniam! Culpa, laboriosam?</h4>
     </div>
-    <div id="card-beneficios">
+    <div id="card-beneficios" class="col-12 col-mg-6 col-lg-3">
         <img src="https://cdn-icons-png.flaticon.com/512/1285/1285744.png">
         <h3>Internet Estable</h3>
         <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ex placeat corrupti dignissimos incidunt omnis debitis molestias veniam! Culpa, laboriosam?</h4>
     </div>
-    <div id="card-beneficios">
+    <div id="card-beneficios" class="col-12 col-mg-6 col-lg-3">
         <img src="https://cdn-icons-png.flaticon.com/512/1285/1285744.png">
         <h3>Internet Estable</h3>
         <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ex placeat corrupti dignissimos incidunt omnis debitis molestias veniam! Culpa, laboriosam?</h4>
@@ -62,26 +98,26 @@
     <img src="https://www.bancodealimentos.org.ar/wp-content/uploads/2022/10/LOGO-BBVA-coreblue_RGB_DDB.png" alt="">
     <img src="https://marketing-peru.beglobal.biz/wp-content/uploads/2024/10/bcp-logo.png" alt="">
 </div>
-<footer>
-    <div style="width: 30%;">
+<footer class="row">
+    <div class="col w-25">
         <h1>TELEINCA S.A.C.</h1>
         <img id="logo-foot" src="Resources/Images/log.jpg">
     </div>
-    <div id="terminos">
-        <div id="columnas">
+    <div id="terminos" class="row col-12 w-75   ">
+        <div id="columnas" class="col-12 col-md-6 col-lg-3">
             <h3>Contactos</h3>
             <p>Lorem ipsum dolor sit amet.</p>
             <p>Lorem ipsum dolor sit amet.</p>
             <p>Lorem ipsum dolor sit amet.</p>
             <p>Lorem ipsum dolor sit amet.</p>
         </div>
-        <div id="columnas">
+        <div id="columnas" class="col-12 col-md-6 col-lg-3">
             <h3>Atencion al Cliente</h3>
             <p>Lorem ipsum dolor sit amet.</p>
             <p>Lorem ipsum dolor sit amet.</p>
             <p>Lorem ipsum dolor sit amet.</p>
         </div>
-        <div id="columnas">
+        <div id="columnas" class="col-12 col-md-6 col-lg-3">
             <h3>Regulacion y Legales</h3>
             <p>Lorem ipsum dolor sit amet.</p>
             <p>Lorem ipsum dolor sit amet.</p>

@@ -1,93 +1,67 @@
+:root{
+    --color-primario: #198754;
+    --color-blanco: white;
+}
+
 body{
     margin: 0;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-/* NavBar */
-nav{
+/* Navegacion */
+#nav{
     width: 100%;
-    max-width: 100%;
     position: fixed;
-    z-index: 1;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    color: rgb(255, 255, 255);
-    background: #396CA4;
-    display: flex;
-    justify-content: space-between;
+}
+.navbar-toggler-icon {
+    filter: invert(100%);
+    filter: brightness(10);
 }
 #logo{
-    height: 4em;
-    padding: .5em;
-}
-#inicio{
-    text-decoration: none;
-    color: white;
-}
-nav > div{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    font-size: 1.2em;
-    text-align: center;
-    font-weight: bold;
-}
-nav > ul{
-    align-items: center;
-    list-style: none;
-    display: flex;
-    justify-content: space-evenly;
-    width: 40%;
-}
-nav > ul > li:hover{
-    transition: ease-in-out .5s;
-    transform: scale(1.5em);
-}
-li > a{
-    text-decoration: none;
-    color: white;
+    width: 150px;
 }
 
 /* Promociones */
-#promociones{
-    padding-top: 5.8em;
-}
 #cont-promociones{
+    width: 90% ;
     display: flex;
     flex-wrap: wrap;
-    margin: 2em;
+    margin: 2em auto;
     text-align: center;
     justify-content: space-evenly;
-    padding-inline: 2em;
+    padding-inline: 1em;
 }
-#card-promociones{
+#promo1,
+#promo2,
+#promo3,
+#promo4,
+#promo5{
     margin: 1em;
     border-radius: 1em;
     width: 15em;
-    background: #396CA4;
+    background: var(--color-primario);
     padding: 1.5em;
-    color: white;
+    color: var(--color-blanco);
 }
 #info-internet{
-    padding: 5px;
-    background-color: white;
+    background-color: var(--color-blanco);
     border-radius: .3em;
-    color: #396CA4;
+    color: var(--color-primario);
 }
 #info-cable{
     margin-top: 1em;
     padding: 5px;
-    background-color: white;
+    background-color: var(--color-blanco);
     border-radius: .3em;
-    color: #396CA4;
+    color: var(--color-primario);
 }
 
 #precio{
     font-size: 2em;
 }
 #periodo{
-    background: white;
-    color: #396CA4;
+    background: var(--color-blanco);
+    color: var(--color-primario);
     font-size: 12px;
     border-radius: .5em;
     padding: 5px;
@@ -95,70 +69,106 @@ li > a{
     margin: auto;
 }
 
-#card-promociones > button{
+#promo1 > button,
+#promo2 > button,
+#promo3 > button,
+#promo4 > button,
+#promo5 > button{
     width: 140px;
     padding: .8em 1em;
     border-radius: 2em;
-    background: white;
+    background: var(--color-blanco);
     border: none;
-    color: #396CA4;
+    color: var(--color-primario);
     cursor: pointer;
     transition: ease .3s;
 }
-#card-promociones > button:hover{
+#promo1 > button:hover,
+#promo2 > button:hover,
+#promo3 > button:hover,
+#promo4 > button:hover,
+#promo5 > button:hover{
     transition: ease .3s;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.301);
 }
 
 /* Beneficios */
-#cont-beneficios{
-    margin: 2em auto;
-    text-align: center;
-    justify-content: space-evenly;
-    padding-inline: 7.5%;
-    display: flex;
-    flex-wrap: wrap;
+.card{
+    z-index: -1;
 }
-#card-beneficios{
-    border-radius: 1em;
-    width: 20em;
-    background: #396CA4;
+.card > img{
+    width: 15em;
     padding: 2em;
-    margin: 1em;
-    color: white;
-}
-#card-beneficios > img{
-    width: 150px;
+    margin: auto;
+    padding-bottom: .5em;
 }
 
 /* Metodos de Pago */
 #pagos{
-    display: flex;
-    width: 75%;
-    margin: 2em auto;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 1em;
-    border-radius: 2em;
-    background: #6d6d6d23;
+    width: 100%;
+    margin: auto;
+    justify-content: center;
 }
-#pagos > img{
+#plataformas{
     width: 100px;
+    transition: ease-in-out .3s;
+    cursor: pointer;
+}
+#plataformas:hover{
+    transform: scale(110%);
+    transition: ease-in-out .3s;
 }
 
-/* Pie de Pagina */
-footer{
-    background: #396CA4;
+/* Botones Emergentes */
+.btn-emergente{
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    bottom: 2%;
+    right: 2%;
+    justify-content: end;
+}
+
+.whatsapp-btn {
+    display: flex;
+    width: 12em;
+    height: auto;
+    background-color: #25D366;
+    border-radius: 1em;
+    padding: .3em;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: ease-in-out .3s;
+}
+.whatsapp-btn i {
     color: white;
-    padding: 2em 9em;
+    font-size: 24px;
+    margin: .5em;
 }
-#logo-foot{
-    width: 120px;
+.whatsapp-btn:hover {
+    transition: ease-in-out .3s;
+    background-color: #18b365;
 }
-#columnas{
-    padding-inline: 1.5em;
-    border-left: 1px solid white;
+
+.llamar-btn {
+    display: flex;
+    width: 12em;
+    height: auto;
+    background-color: #d3c125;
+    border-radius: 1em;
+    padding: .3em;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: ease-in-out .3s;
 }
-#columnas > h3, #columnas > p{
-    font-weight: 100;
+.llamar-btn i {
+    color: white;
+    font-size: 24px;
+    margin: .5em;
+}
+.llamar-btn:hover {
+    transition: ease-in-out .3s;
+    background-color: #d39625;
 }

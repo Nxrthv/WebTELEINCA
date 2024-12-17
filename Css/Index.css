@@ -22,6 +22,7 @@ body{
 
 /* Promociones */
 #cont-promociones{
+    width: 90% ;
     display: flex;
     flex-wrap: wrap;
     margin: 2em auto;
@@ -29,7 +30,11 @@ body{
     justify-content: space-evenly;
     padding-inline: 1em;
 }
-#card-promociones{
+#promo1,
+#promo2,
+#promo3,
+#promo4,
+#promo5{
     margin: 1em;
     border-radius: 1em;
     width: 15em;
@@ -38,7 +43,6 @@ body{
     color: var(--color-blanco);
 }
 #info-internet{
-    padding: 5px;
     background-color: var(--color-blanco);
     border-radius: .3em;
     color: var(--color-primario);
@@ -64,7 +68,11 @@ body{
     margin: auto;
 }
 
-#card-promociones > button{
+#promo1 > button,
+#promo2 > button,
+#promo3 > button,
+#promo4 > button,
+#promo5 > button{
     width: 140px;
     padding: .8em 1em;
     border-radius: 2em;
@@ -74,46 +82,34 @@ body{
     cursor: pointer;
     transition: ease .3s;
 }
-#card-promociones > button:hover{
+#promo1 > button:hover,
+#promo2 > button:hover,
+#promo3 > button:hover,
+#promo4 > button:hover,
+#promo5 > button:hover{
     transition: ease .3s;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.301);
 }
 
 /* Beneficios */
-#cont-beneficios{
-    margin: 2em auto;
-    text-align: center;
-    justify-content: space-evenly;
-    padding-inline: 7.5%;
-    display: flex;
-    flex-wrap: wrap;
+.card{
+    z-index: -1;
 }
-#card-beneficios{
-    border-radius: 1em;
-    width: 20em;
-    background: var(--color-primario);
+.card>img{
+    width: 15em;
     padding: 2em;
-    margin: 1em;
-    color: var(--color-blanco);
-}
-#card-beneficios > img{
-    width: 150px;
+    margin: auto;
+    padding-bottom: .5em;
 }
 
 /* Metodos de Pago */
-#pagos{
-    display: flex;
-    flex-wrap: wrap;
-    width: 75%;
-    margin: 2em auto;
-    align-items: center;
-    justify-content: space-around;
-    padding: 1.5em;
-    border-radius: 1.5em;
-    background: #6d6d6d23;
-}
-#pagos > img{
+#plataformas{
     max-width: 100px;
+    transition: ease-in-out .3s;
+}
+#plataformas:hover{
+    transform: scale(110%);
+    transition: ease-in-out .3s;
 }
 
 /* Boton Flotante */

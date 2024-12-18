@@ -10,9 +10,9 @@ body{
 
 /* Navegacion */
 #nav{
+    z-index: 1000;
     width: 100%;
     position: fixed;
-    z-index: 1000;
 }
 .navbar-toggler-icon {
     filter: invert(100%);
@@ -23,89 +23,37 @@ body{
 }
 
 /* Promociones */
-#cont-promociones{
-    width: 90% ;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 2em auto;
-    text-align: center;
-    justify-content: space-evenly;
-    padding-inline: 1em;
+.d-item{
+    max-height: 600px;
 }
-#promo1,
-#promo2,
-#promo3,
-#promo4,
-#promo5{
-    margin: 1em;
+.d-img{
+    height: 100%;
+}
+#cont-promociones{
+    width: 95%;
+    margin: auto;
+    justify-content: space-around;
+}
+#cont-promociones > .card{
+    z-index: 1;
     border-radius: 1em;
-    width: 15em;
+    width: 13em;
     background: var(--color-primario);
     padding: 1.5em;
     color: var(--color-blanco);
 }
-#info-internet{
-    background-color: var(--color-blanco);
-    border-radius: .3em;
-    color: var(--color-primario);
-}
-#info-cable{
-    margin-top: 1em;
-    padding: 5px;
-    background-color: var(--color-blanco);
-    border-radius: .3em;
-    color: var(--color-primario);
-}
-
-#precio{
-    font-size: 2em;
-}
-#periodo{
-    background: var(--color-blanco);
-    color: var(--color-primario);
-    font-size: 12px;
-    border-radius: .5em;
-    padding: 5px;
-    width: 60px;
-    margin: auto;
-}
-
-#promo1 > button,
-#promo2 > button,
-#promo3 > button,
-#promo4 > button,
-#promo5 > button{
-    width: 140px;
-    padding: .8em 1em;
-    border-radius: 2em;
-    background: var(--color-blanco);
-    border: none;
-    color: var(--color-primario);
-    cursor: pointer;
+.card > button{
     transition: ease .3s;
 }
-#promo1 > button:hover,
-#promo2 > button:hover,
-#promo3 > button:hover,
-#promo4 > button:hover,
-#promo5 > button:hover{
+.card > button:hover{
+    transform: scale(102%);
     transition: ease .3s;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.301);
 }
 
-/* Beneficios */
-.card{
-    z-index: -1;
-}
-.card > img{
-    width: 15em;
-    padding: 2em;
-    margin: auto;
-    padding-bottom: .5em;
-}
-
 /* Metodos de Pago */
 #pagos{
+    z-index: 0;
     width: 100%;
     margin: auto;
     justify-content: center;
@@ -122,6 +70,7 @@ body{
 
 /* Botones Emergentes */
 .btn-emergente{
+    z-index: 1000;
     position: fixed;
     display: flex;
     flex-wrap: wrap;

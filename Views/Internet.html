@@ -3,105 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Css/Index.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Css/Index.css"> <!--Estilos de index-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> <!--Bootstrap-->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> <!--Google Fonts Monserrat-->
     <title>Internet</title>
-
-    <style>
-        .contenedor-cuadros {
-            display: flex;
-            justify-content: center;
-            gap: 1.5em;
-            margin: 2em auto;
-            max-width: 1200px;
-            padding: 0 1.5em;
-        }
-    
-        .cuadro {
-            flex: 1;
-            background: #ffffff;
-            padding: 1.5em;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 2em;
-        }
-    
-        .cuadro h2 {
-            margin-top: 0;
-            color: #2828f5;
-            margin-bottom: 0.8em;
-        }
-    
-        .cuadro p {
-            margin-bottom: 0.8em;
-            line-height: 1.6;
-        }
-    </style>
-
-    <style>
-        .contenedor-cuadros {
-            display: flex;
-            justify-content: center;
-            gap: 2em;
-            margin: 4em auto;
-            max-width: 1200px;
-            padding: 0 2em;
-        }
-    
-        .cuadro {
-            flex: 1;
-            background: #ffffff;
-            padding: 2em;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-    
-        .cuadro h2 {
-            margin-top: 0;
-            color: #2828f5;
-            margin-bottom: 1em;
-        }
-    
-        .cuadro p {
-            margin-bottom: 1em;
-            line-height: 1.6;
-        }
-    </style>
-    
-    <style>
-        .contenedor-central {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 2em; 
-        }
-
-        .cuadros {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin-bottom: 2em;
-        }
-
-        .cuadro {
-            background-color: #f5f5f5;
-            border-radius: 10px;
-            padding: 20px;
-            width: 300px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .cuadro h2 {
-            color: #333;
-            margin-bottom: 15px;
-        }
-    </style>
-
 </head>
-
 <body>
     <nav id="nav" class="navbar navbar-expand-lg bg-success">
         <div class="container-fluid">
@@ -112,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link link-light" href="#" href="#" onclick="internet()"><span>Internet</span></a>
+                        <a class="nav-link link-light" href="/Views/Internet.html" href="#" onclick="internet()"><span>Internet</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link-light" href="/Views/Cable.html"><span>Cable</span></a>
@@ -124,426 +32,182 @@
             </div>
         </div>
     </nav>
-    <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 2em;">
-    <div class="contenedor-central"></div>
-        <div class="cuadros" style="margin-top: 6.5em;">
-            <div class="cuadro">
-                <h2>Internet via Antena</h2>
-                <p>Velocidad: 10 Mbps</p>
-                <p> 
-                    Internet por antena es ideal para áreas rurales, remotas o de difícil acceso, donde no hay infraestructura de red tradicional como fibra óptica o cable coaxial. Ofrece una solución confiable incluso en lugares alejados.
-                    <br>A través de antenas, es posible alcanzar velocidades decentes de navegación especialmente en lugares donde no hay acceso a servicios tradicionales de Internet.
-                    <br>En comparación con algunas infraestructuras más complejas, las antenas suelen requerir menos mantenimiento, lo que reduce costos operativos y tiempos de inactividad.
-                </p>
-                <button 
-                    style="background-color: #2828f5; 
-                    color: white; 
-                    border: none; 
-                    padding: 10px 20px; 
-                    border-radius: 5px; 
-                    font-size: 16px; 
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                    margin-top: 2em;">¡Me interesa! 😊
-                </button>
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Obten internet de alta velocidad desde S/. 50.00</h1>
+            <p>Mas de 100 canales a tu alcance</p>
+            <p>¡La mejor conexión al mejor precio! Aprovecha este cable por solo 50 soles</p>
+            <button id="btnInteresa" onclick="mostrarFormulario()">Me interesa 😊+</button>
+        </div>
+    </div>
+
+    <div class="container services-container">
+        <div class="row justify-content-center align-items-stretch g-4">
+            <!-- Internet FttH -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-card h-100">
+                    <div class="card-body">
+                        <h3 class="service-title">Internet FttH</h3>
+                        <p class="service-text">
+                            La tecnología FttH (Fiber to the Home) ofrece conexión a Internet mediante fibra óptica directamente hasta tu hogar. 
+                            Disfruta de velocidades simétricas ultrarrápidas, baja latencia y máxima estabilidad en tu conexión. 
+                            Ideal para streaming, gaming y trabajo remoto.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="cuadro">
-                <h2>TECNOLOGIA EOC</h2>
-                <p>Velocidad: 10/20/40 Mbps</p>
-                <p>
-                    EOC permite velocidades media/alta, lo que facilita una transferencia rápida de datos para aplicaciones como streaming en alta definición, videoconferencias, juegos en línea y transferencia de archivos grandes.
-                    <br>Utiliza cable coaxial ya instalado, lo que reduce costos al aprovechar la infraestructura existente en edificios o residencias, evitando necesidad de cableado adicional.
-                    <br>EOC es compatible con estándares de red comunes, lo que facilita la integración en entornos de red ya establecidos..
-                </p>
-                <button 
-                    style="background-color: #2828f5; 
-                    color: white; 
-                    border: none; 
-                    padding: 10px 20px; 
-                    border-radius: 5px; 
-                    font-size: 16px; 
-                    cursor: pointer; 
-                    transition: all 0.3s ease;
-                    margin-top: 2em;">¡Me interesa! 😊
-                </button>
+
+            <!-- Internet EOC -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-card h-100">
+                    <div class="card-body">
+                        <h3 class="service-title">Internet EOC</h3>
+                        <p class="service-text">
+                            EOC (Ethernet Over Coax) aprovecha la infraestructura de cable coaxial existente para brindar Internet de alta velocidad.
+                            Ofrece una conexión estable y confiable, perfecta para hogares y pequeños negocios.
+                            Combina la facilidad de instalación con un rendimiento consistente.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="cuadro">
-                <h2>TECNOLOGIA FttH</h2>
-                <p>Velocidad: 80/100/150/200/250 Mbps</p>
-                <p>
-                    FTTH proporciona velocidades de descarga y carga extremadamente altas, capaces de soportar aplicaciones avanzadas como streaming 4K, videojuegos en línea, videoconferencias, y transferencias de archivos grandes sin interrupciones.
-                    <br>Al usar fibra óptica hasta la casa, la señal es más estable y menos propensa a interferencias externas, lo que resulta en una menor latencia y mejor calidad en la navegación web y otras actividades en línea.
-                    <br>FTTH es ideal para hogares inteligentes, permitiendo una conexión estable para múltiples dispositivos, como cámaras de seguridad, termostatos inteligentes, luces controladas, entre otros.
-                </p>
-                <button 
-                    style="background-color: #2828f5; 
-                    color: white; 
-                    border: none; 
-                    padding: 10px 20px; 
-                    border-radius: 5px; 
-                    font-size: 16px; 
-                    cursor: pointer; 
-                    transition: all 0.3s ease;
-                    margin-top: 2em;">¡Me interesa! 😊
-                </button>
+
+            <!-- Internet por Antena -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-card h-100">
+                    <div class="card-body">
+                        <h3 class="service-title">Internet por Antena</h3>
+                        <p class="service-text">
+                            El Internet por antena es la solución perfecta para áreas donde otras tecnologías no están disponibles.
+                            Mediante transmisión inalámbrica, llevamos conectividad a zonas rurales y suburbanas.
+                            Servicio confiable sin necesidad de infraestructura terrestre extensa.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-
-
-
-
-
-<script>
-    // Ocultar todos los formularios al inicio
-    document.addEventListener('DOMContentLoaded', function() {
-        const forms = document.querySelectorAll('.formulario-contacto');
-        forms.forEach(form => form.style.display = 'none');
-    });
-
-    // Agregar evento click a todos los botones
-    document.querySelectorAll('button').forEach((button, index) => {
-        button.addEventListener('click', function() {
-            const forms = document.querySelectorAll('.formulario-contacto');
-            // Ocultar todos los formularios
-            forms.forEach(form => form.style.display = 'none');
-            // Mostrar solo el formulario correspondiente al botón
-            forms[index].style.display = 'block';
-        });
-    });
-
-</script>
-
 <style>
-    .formulario-contacto {
-        background: #f5f5f5;
-        padding: 20px;
-        margin: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .formulario-contacto select {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 16px;
-    }
-</style>
-<div class="formulario-contacto">
-    <h3>Seleccione su zona de cobertura:</h3>
-    <select>
-        <option value="">Seleccione una zona</option>
-        <option value="chuquis">Chuquis</option>
-        <option value="rondos">Rondos</option>
-        <option value="pachas">Pachas</option>
-        <option value="quivilla">Quivilla</option>
-        <option value="marias">Marías</option>
-        <option value="monzon">Monzón</option>
-        <option value="punos">Puños</option>
-        <option value="punchao">Punchao</option>
-        <option value="chaglla">Chaglla</option>
-        <option value="molino">Molino</option>
-        <option value="umari">Umari</option>
-        <option value="maranon">Marañón</option>
-        <option value="pumahuasi">Pumahuasi</option>
-        <option value="jesus">Jesús</option>
-        <option value="banos">Baños</option>
-        <option value="san_miguel_cauri">San Miguel de Cauri</option>
-        <option value="chavinilla">Chavinilla</option>
-    </select>
-</div>
-<div class="formulario-contacto">
-    <h3>Seleccione su zona de cobertura:</h3>
-    <select>
-        <option value="">Seleccione una zona</option>
-        <option value="huanuco">Huánuco</option>
-        <option value="amarilis">Amarilis</option>
-        <option value="pillco_marca">Pillco Marca</option>
-        <option value="santa_maria_valle">Santa María del Valle</option>
-        <option value="churubamba">Churubamba</option>
-    </select>
-</div>
-
-<div class="formulario-contacto">
-    <h3>Seleccione su zona de cobertura:</h3>
-    <select>
-        <option value="">Seleccione una zona</option>
-        <option value="fonavi_2">Fonavi 2</option>
-        <option value="fonavi_3">Fonavi 3</option>
-        <option value="los_portales">Los Portales</option>
-        <option value="jancao">Jancao</option>
-        <option value="llicua_alta">Llicua Alta</option>
-        <option value="la_esperanza">La Esperanza</option>
-        <option value="huayopampa">Huayopampa</option>
-    </select>
-</div>
-
-<style>
-    .formulario-datos {
+    .service-card {
+        border-radius: 20px;
+        border: 2px solid #198754;
+        transition: transform 0.3s ease;
+        margin: 0 auto;
         max-width: 400px;
-        margin: 20px auto;
-        padding: 20px;
-        border-radius: 8px;
-        background-color: #f9f9f9;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    .formulario-datos form div {
-        margin-bottom: 15px;
+    .service-card:hover {
+        transform: translateY(-5px);
     }
 
-    .formulario-datos label {
-        display: inline-block;
-        width: 100px;
-        margin-right: 10px;
-        text-align: right;
+    .service-title {
+        color: #198754;
+        font-weight: 600;
+        font-size: 1.5rem;
+        text-align: center;
     }
 
-    .formulario-datos input,
-    .formulario-datos select {
-        width: 250px;
-        padding: 8px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 14px;
+    .service-text {
+        color: #333;
+        font-size: 1rem;
+        line-height: 1.5;
+        text-align: justify;
+        padding: 0 1rem;
     }
 
-    .formulario-datos button {
-        display: block;
-        width: 200px;
-        margin: 20px auto 0;
-        padding: 12px;
-        background-color: #2C3E50;
+    .services-container {
+        padding-bottom: 5rem;
+        min-height: calc(100vh - 76px);
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-section {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/Resources/Images/internet_fondo.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding-top: 76px;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        font-weight: bold;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    #btnInteresa {
+        background-color: var(--color-primario);
         color: white;
         border: none;
-        border-radius: 25px;
-        font-size: 16px;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        border-radius: 2rem;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
 
-    .formulario-datos button:hover {
-        background-color: #34495E;
-        transform: scale(1.05);
+    #btnInteresa:hover {
+        background-color: #146c43;
+    }
+
+    @media (max-width: 768px) {
+        .service-card {
+            margin-bottom: 1.5rem;
+        }
+        
+        .services-container {
+            padding-top: 60px; /* Altura del navbar en móvil */
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+        }
+
+        .service-text {
+            font-size: 0.9rem;
+        }
+
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+        
+        .hero-content p {
+            font-size: 1rem;
+        }
+        
+        #btnInteresa {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+        }
     }
 </style>
 
-<div id="formulario-datos-1" style="display:none" class="formulario-datos">
-    <h3>Complete sus datos:</h3>
-    <form>
-        <div>
-            <label for="nombre1">Nombres:</label>
-            <input type="text" id="nombre1" name="nombre" required>
-        </div>
-        <div>
-            <label for="apellidos1">Apellidos:</label>
-            <input type="text" id="apellidos1" name="apellidos" required>
-        </div>
-        <div>
-            <label for="telefono1">Teléfono:</label>
-            <input type="tel" id="telefono1" name="telefono" required>
-        </div>
-        <button type="submit">Solicitar</button>
-    </form>
-</div>
 
-<div id="formulario-datos-2" style="display:none" class="formulario-datos">
-    <h3>Seleccione la velocidad deseada:</h3>
-    <form>
-        <div>
-            <label for="velocidad">Velocidad:</label>
-            <select id="velocidad" name="velocidad" required>
-                <option value="">Seleccione la velocidad</option>
-                <option value="10">10 Mbps</option>
-                <option value="20">20 Mbps</option>
-                <option value="40">40 Mbps</option>
-            </select>
-        </div>
-        <div>
-            <label for="nombre2">Nombres:</label>
-            <input type="text" id="nombre2" name="nombre" required>
-        </div>
-        <div>
-            <label for="apellidos2">Apellidos:</label>
-            <input type="text" id="apellidos2" name="apellidos" required>
-        </div>
-        <div>
-            <label for="telefono2">Teléfono:</label>
-            <input type="tel" id="telefono2" name="telefono" required>
-        </div>
-        <button type="submit">Solicitar</button>
-    </form>
-</div>
 
-<div id="formulario-datos-3" style="display:none" class="formulario-datos">
-    <h3>Seleccione la velocidad deseada:</h3>
-    <form>
-        <div>
-            <label for="velocidad-alta">Velocidad:</label>
-            <select id="velocidad-alta" name="velocidad" required>
-                <option value="">Seleccione la velocidad</option>
-                <option value="80">80 Mbps</option>
-                <option value="100">100 Mbps</option>
-                <option value="150">150 Mbps</option>
-                <option value="200">200 Mbps</option>
-                <option value="250">250 Mbps</option>
-            </select>
-        </div>
-        <div>
-            <label for="nombre3">Nombres:</label>
-            <input type="text" id="nombre3" name="nombre" required>
-        </div>
-        <div>
-            <label for="apellidos3">Apellidos:</label>
-            <input type="text" id="apellidos3" name="apellidos" required>
-        </div>
-        <div>
-            <label for="telefono3">Teléfono:</label>
-            <input type="tel" id="telefono3" name="telefono" required>
-        </div>
-        <button type="submit">Solicitar</button>
-    </form>
-</div>
+
+
+
+
 <div id="contFoot"></div>
-<script>
-    // Obtener todas las listas desplegables
-    const selects = document.querySelectorAll('.formulario-contacto select');
-    
-    // Primera lista - Formulario de datos personales
-    selects[0].addEventListener('change', function() {
-        document.getElementById('formulario-datos-1').style.display = this.value ? 'block' : 'none';
-        document.getElementById('formulario-datos-2').style.display = 'none';
-        document.getElementById('formulario-datos-3').style.display = 'none';
-    });
 
-    // Segunda lista - Formulario de velocidades básicas
-    selects[1].addEventListener('change', function() {
-        document.getElementById('formulario-datos-2').style.display = this.value ? 'block' : 'none';
-        document.getElementById('formulario-datos-1').style.display = 'none';
-        document.getElementById('formulario-datos-3').style.display = 'none';
-    });
-
-    // Tercera lista - Formulario de velocidades altas
-    selects[2].addEventListener('change', function() {
-        document.getElementById('formulario-datos-3').style.display = this.value ? 'block' : 'none';
-        document.getElementById('formulario-datos-1').style.display = 'none';
-        document.getElementById('formulario-datos-2').style.display = 'none';
-    });
-</script>
-
-<script>
-    document.querySelector('.formulario-contacto select').addEventListener('change', function() {
-        if (this.value) {
-            document.getElementById('formulario-datos').style.display = 'block';
-        } else {
-            document.getElementById('formulario-datos').style.display = 'none';
-        }
-    });
-</script>
-
-<!---->
-<script>
-    // Agregar evento click a todos los botones "¡Me interesa!"
-    document.querySelectorAll('button').forEach(button => {
-        if (button.textContent.includes('¡Me interesa!')) {
-            button.addEventListener('click', function() {
-                // Ocultar el formulario de datos
-                document.getElementById('formulario-datos-1').style.display = 'none';
-                document.getElementById('formulario-datos-2').style.display = 'none';
-                document.getElementById('formulario-datos-3').style.display = 'none';
-                // Resetear la selección del dropdown
-                document.querySelector('.formulario-contacto select').value = '';
-            });
-        }
-    });
-</script>
-
-<script>
-    // Agregar evento click a los botones "Solicitar" de los tres formularios
-    document.querySelectorAll('form').forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Recopilar datos del formulario
-            const formData = new FormData(form);
-            let datosMostrar = '';
-            
-            // Convertir los datos a texto para mostrar
-            for (let [key, value] of formData.entries()) {
-                datosMostrar += `${key}: ${value}\n`;
-            }
-
-            // Crear el modal de alerta
-            const modalDiv = document.createElement('div');
-            modalDiv.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: white;
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0 0 10px rgba(0,0,0,0.5);
-                z-index: 1000;
-                text-align: center;
-                min-width: 300px;
-            `;
-
-            // Crear el contenido del modal con el ícono de check
-            modalDiv.innerHTML = `
-                <div style="
-                    width: 60px;
-                    height: 60px;
-                    margin: 0 auto 20px;
-                    background: #4CAF50;
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                ">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                </div>
-                <h3>¡Su solicitud fue registrada exitosamente!</h3>
-                <p style="white-space: pre-line; text-align: left; margin: 20px 0;">
-                    Datos de contacto:
-                    ${datosMostrar}
-                </p>
-                <h3>En las proximas horas un personal capacitado se contactara con usted para poder realizar la coordinacion de la instalacion de su servicio</h3>
-                <h3>Gracias por su preferencia</h3>
-                <button onclick="location.reload()" style="
-                    padding: 10px 20px;
-                    background-color: #007bff;
-                    color: white;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                ">Aceptar</button>
-            `;
-
-            // Crear el fondo oscuro
-            const overlayDiv = document.createElement('div');
-            overlayDiv.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.5);
-                z-index: 999;
-            `;
-
-            // Agregar elementos al DOM
-            document.body.appendChild(overlayDiv);
-            document.body.appendChild(modalDiv);
-        });
-    });
-</script>
 <script src="/Resources/Js/Sections.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>

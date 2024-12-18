@@ -1,0 +1,282 @@
+
+    .beneficios-section {
+        padding: 4rem 2rem;
+        background-color: #aaeccd;
+    }
+
+    .beneficios-section h2 {
+        color: #333;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        margin-bottom: 2rem;
+    }
+
+    .beneficio-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        height: 100%;
+        transition: transform 0.3s ease;
+        text-align: center;
+    }
+
+    .beneficio-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .beneficio-imagen {
+        margin-bottom: 1.5rem;
+    }
+
+    .beneficio-imagen img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+    }
+
+    .beneficio-card h3 {
+        color: #28a745;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+    }
+
+    .beneficio-card p {
+        color: #666;
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    /* Estilos base */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .hero-section {
+        background-image: url('/Resources/Images/cable_fondo.jpeg');
+        background-size: cover;
+        background-position: center;
+        min-height: 700px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        margin-top: 80px;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .hero-content {
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 2em;
+        border-radius: 30px;
+        width: 100%;
+        max-width: 800px;
+    }
+
+    .hero-content h1 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        font-weight: bold;
+        margin-bottom: 0.5em;
+    }
+
+    .hero-content p {
+        font-family: 'Montserrat', sans-serif;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        margin-bottom: 1.5em;
+    }
+
+    .canales-section {
+        padding: 40px 20px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .canales-section h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: #198754;
+        margin-bottom: 30px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .categorias-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .categoria {
+        background-color: #198754;
+        color: white;
+        padding: clamp(15px, 3vw, 20px) clamp(20px, 4vw, 40px);
+        border-radius: 25px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: clamp(2rem, 2vw, 1.5rem);
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 90%;
+        max-width: 800px;
+    }
+
+    .canales-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        width: 100%;
+        background-color: #aaeccd   ;
+        border-radius: 15px;
+    }
+
+    .canal-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .canal-item:hover {
+        transform: scale(1.05);
+    }
+
+    .canal-item img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 100px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+    /* Estilos para dispositivos móviles */
+    @media screen and (max-width: 480px) {
+        .canal-item img {
+            max-width: 70px;
+        }
+    }
+
+    @media screen and (max-width: 320px) {
+        .canal-item img {
+            max-width: 50px;
+        }
+    }
+
+    .canal-item p {
+        font-family: 'Montserrat', sans-serif;
+        font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+        font-weight: bold;
+    }
+
+    #btnInteresa {
+        padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 30px);
+        background-color: #198754;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    #btnInteresa:hover {
+        background-color: #198754;
+        transform: scale(1.05);
+    }
+
+    .formulario-datos {
+        width: 90%;
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #aaeccd;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .formulario-datos form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .formulario-datos form div {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .formulario-datos label {
+        
+        text-align: left;
+        width: 100%;
+    }
+
+    .formulario-datos input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .formulario-datos button {
+        padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 30px);
+        background-color: #198754;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 60%;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .formulario-datos button:hover {
+        background-color: #198754;
+        transform: scale(1.05);
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+        .hero-section {
+            min-height: 400px;
+        }
+
+        .formulario-datos {
+            padding: 15px;
+        }
+
+        .categoria {
+            width: 95%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero-section {
+            min-height: 300px;
+        }
+
+        .canales-grid {
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .formulario-datos form div {
+            margin-bottom: 10px;
+        }
+    }

@@ -15,13 +15,20 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon toglger-icon-light"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link link-light" href="Views/Internet.html" href="#" onclick="internet()"><span>Internet</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-light" href="Views/Cable.html"><span>Cable</span></a>
+            <div class="collapse navbar-collapse row" id="navbarNav">
+                <ul class="navbar-nav px-3" style="justify-content: end;">
+                    <li class="nav-item"><a class="nav-link border-end" style="font-size: 13px; color: #ffffff;" href="#">Informacion abonados y usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link border-end" style="font-size: 13px; color: #ffffff;" href="#">¿Ya eres cliente?</a></li>
+                    <li class="nav-item"><a class="nav-link" style="font-size: 13px; color: #ffffff;" href="#">¿Necesitas ayuda?</a></li>
+                </ul>
+                <ul class="navbar-nav ms-auto px-3" style="justify-content: end;">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Servicios</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown"      >
+                          <li><a class="dropdown-item" href="/Views/Internet.html">Internet</a></li>
+                          <li><a class="dropdown-item" href="/Views/Cable.html">Cable</a></li>
+                          <li><a class="dropdown-item" href="/Index.html">Duos</a></li>
+                        </ul>
                     </li>
                     <li id="login" class="nav-item">
                         <a id="registrarse" class="nav-link link-light" href="#">Registrarse</a>
@@ -58,8 +65,16 @@
         <span class="visually-hidden">Next</span>
         </button>
     </div>
+    <div class="cont-user">
+        <div class="buttons">
+            <a href="/Views/Internet.html"><button class="btn"><span></span><p data-start="good luck!" data-text="Contratar" data-title="Solo Internet"></p></button></a>
+        </div>
+        <div class="buttons">
+            <a href="/Views/Cable.html"><button class="btn"><span></span><p data-start="good luck!" data-text="Contratar" data-title="Solo Cable"></p></button></a>
+        </div>
+    </div>
     <div id="promociones">
-        <h1 class="my-5 text-center display-6">Nuestras Promociones</h1>
+        <h1 class="mb-5 text-center display-6">Nuestras Promociones</h1>
         <div id="cont-promociones" class="row text-center">
             <div id="promo0" class="col-sm-6 mb-3 mb-sm-0 card justify-content-center">
                 <p id="paquete" class="card-text">Internet + Cable</p>
@@ -203,7 +218,7 @@
                         <li><a style="text-decoration: none; color: green; background: white; padding: .3em 1em; border-radius: 1em;" href="#"><i class="bi bi-telephone"></i> Ventas: 062-514798</a></li>
                     </ul>
                 </div>
-                <div class="col-12 col-sm-6 col-md-3 mb-4">
+                <div class="col-12 col-sm-6 col-md-3 mb-4" style="padding-left: 1em;border-left: 1px solid white;">
                     <h5>Condiciones de uso</h5>
                     <ul class="list-unstyled">
                         <li style="margin-bottom: -.5em;"><a href="#" class="text-white text-decoration-none">Informacion a Abonados y Usuarios</a></li><br>
@@ -214,7 +229,7 @@
                         <li class="me-3 fw-light">Atencion al Cliente:<br> +51 962 624 690</li>
                     </ul>
                 </div>
-                <div class="col-12 col-sm-6 col-md-3 mb-4">
+                <div class="col-12 col-sm-6 col-md-3 mb-4" style="padding-left: 1em;border-left: 1px solid white;">
                     <h6>Direccion</h6>
                     <ul class="list-unstyled">
                         <li class="me-3 fw-light">Centro de Experiencia Huanuco: Jr. Abtao N° 1719 Urb. Paucarbambabilla Huanuco-Huanuco-Huanuco</li><br>

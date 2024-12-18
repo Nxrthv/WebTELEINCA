@@ -17,3 +17,19 @@ function sendMessage(cardId) {
 function internet() {
     window.location.href = "/Views/Internet.html";
 }
+
+window.onscroll = function() {
+    stickyNav();
+  };
+  
+  var navbar = document.getElementById("navbar");
+  var sticky = navbar.offsetTop;
+  
+  function stickyNav() {
+    if (window.pageYOffset > sticky) {
+      navbar.classList.add("fixed");
+    } else {
+      navbar.classList.remove("fixed");
+    }
+  }
+  

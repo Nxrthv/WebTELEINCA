@@ -36,9 +36,67 @@ body{
     filter: brightness(10);
 }
 .dropdown-item:focus, .dropdown-item:hover {
-    background-color:#198754 !important; /* Fondo verde */
-    color: white !important; /* Texto blanco */
+    background-color:#198754 !important;
+    color: white !important;
   }
+
+#login > a > button {
+  --hover-color: var(--color-primario);
+  --arrow-width: 10px;
+  --arrow-stroke: 2px;
+  box-sizing: border-box;
+  border: 1px solid white;
+  border-radius: 20px;
+  color: white;
+  padding: .5em 1.8em;
+  background: var(--primary-color);
+  display: flex;
+  gap: 0.6em;
+  transition: 0.2s ease;
+  align-items: center;
+  font-weight: bold;
+}
+
+#login > a > button .arrow-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login > a > button .arrow {
+  margin-top: 1px;
+  width: var(--arrow-width);
+  background: var(--primary-color);
+  height: var(--arrow-stroke);
+  position: relative;
+  transition: 0.2s;
+}
+
+#login > a > button .arrow::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  border: solid white;
+  border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+  display: inline-block;
+  top: -3px;
+  right: 3px;
+  transition: 0.2s;
+  padding: 3px;
+  transform: rotate(-45deg);
+}
+
+#login > a > button:hover {
+  background-color: var(--hover-color);
+}
+
+#login > a > button:hover .arrow {
+  background: white;
+}
+
+#login > a > button:hover .arrow:before {
+  right: 0;
+}
 #logo{
     width: 150px;
 }
@@ -239,7 +297,7 @@ body{
 #cont-promociones > .card{
     z-index: 1;
     border-radius: 1em;
-    width: 13em;
+    width: 14em;
     background: var(--color-primario);
     padding: 1.5em;
     color: var(--color-blanco);

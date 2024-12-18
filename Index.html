@@ -16,13 +16,15 @@
                 <span class="navbar-toggler-icon toglger-icon-light"></span>
             </button>
             <div class="collapse navbar-collapse row" id="navbarNav">
-                <ul class="navbar-nav px-3" style="justify-content: end;">
-                    <li class="nav-item"><a class="nav-link border-end" style="font-size: 13px; color: #ffffff;" href="#">Informacion abonados y usuarios</a></li>
-                    <li class="nav-item"><a class="nav-link border-end" style="font-size: 13px; color: #ffffff;" href="#">¿Ya eres cliente?</a></li>
-                    <li class="nav-item"><a class="nav-link" style="font-size: 13px; color: #ffffff;" href="#">¿Necesitas ayuda?</a></li>
+                <ul class="navbar-nav px-3 pb-2" style="justify-content: end;">
+                    <li class="nav-item"><a class="nav-link border-end px-1 py-md-0 px-md-4" style="font-size: 13px; color: #ffffff; padding-inline: 2em;" href="#">Centros de Experiencia</a></li>
+                    <li class="nav-item"><a class="nav-link border-end px-1 py-md-0 px-md-4" style="font-size: 13px; color: #ffffff; padding-inline: 2em;" href="#">Conocenos</a></li>
+                    <li class="nav-item"><a class="nav-link border-end px-1 py-md-0 px-md-4" style="font-size: 13px; color: #ffffff; padding-inline: 2em;" href="#">Informacion abonados y usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link border-end px-1 py-md-0 px-md-4" style="font-size: 13px; color: #ffffff; padding-inline: 2em;" href="#">¿Ya eres cliente?</a></li>
+                    <li class="nav-item"><a class="nav-link px-1 py-md-0 px-md-4" style="font-size: 13px; color: #ffffff; padding-inline: 2em;" href="#">¿Necesitas ayuda? <i class="bi bi-whatsapp"></i></a></li>
                 </ul>
                 <ul class="navbar-nav ms-auto px-3" style="justify-content: end;">
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown" style="align-content: center;">
                         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Servicios</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown"      >
                           <li><a class="dropdown-item" href="/Views/Internet.html">Internet</a></li>
@@ -30,8 +32,14 @@
                           <li><a class="dropdown-item" href="/Index.html">Duos</a></li>
                         </ul>
                     </li>
-                    <li id="login" class="nav-item">
-                        <a id="registrarse" class="nav-link link-light" href="#">Registrarse</a>
+                    <li id="login" class="nav-item p-2">
+                        <a class="text-decoration-none" href="/Views/Register.html">
+                            <button>Registrarse
+                                <div class="arrow-wrapper">
+                                    <div class="arrow"></div>   
+                                </div>
+                            </button>
+                        </a>
                     </li>
                 </ul>
             </div>

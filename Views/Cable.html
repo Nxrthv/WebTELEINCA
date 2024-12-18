@@ -43,18 +43,39 @@
 </div>
 
 <div id="formulario-contacto" style="display:none" class="formulario-datos">
-    <h3 style="text-align: center;">Complete sus datos:</h3>
-    <form>
-        <div>
-            <label for="nombre">Nombres:</label>
-            <input type="text" id="nombre" name="nombre" required>
+    <div class="container">
+        <h3 class="text-center mb-4">Seleccione su zona de cobertura</h3>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="cobertura-options">
+                    <button class="cobertura-btn" onclick="seleccionarCobertura('Huanuco')">
+                        <div>
+                            <i class="bi bi-geo-alt-fill"></i><br>
+                            Huanuco
+                        </div>
+                    </button>
+                    <button class="cobertura-btn" onclick="seleccionarCobertura('Amarilis')">
+                        <div>
+                            <i class="bi bi-geo-alt-fill"></i><br>
+                            Amarilis                
+                        </div>
+                    </button>
+                    <button class="cobertura-btn" onclick="seleccionarCobertura('Pillco Marca')">
+                        <div>
+                            <i class="bi bi-geo-alt-fill"></i><br>
+                            Pillco Marca
+                        </div>
+                    </button>
+                    <button class="cobertura-btn" onclick="seleccionarOtraZona()">
+                        <div>
+                            <i class="bi bi-geo-alt-fill"></i><br>
+                            Otra zona
+                        </div>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div>
-            <label for="telefono">Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" required>
-        </div>
-        <button type="submit">Aceptar</button>
-    </form>
+    </div>
 </div>
 
 <div class="canales-section">
@@ -631,37 +652,42 @@
         document.getElementById('formulario-contacto').style.display = 'block';
     }
 
-    document.querySelector('.formulario-datos form').addEventListener('submit', function(e) {
-        e.preventDefault();
+    function seleccionarCobertura(zona) {
+        // Construir el mensaje y el enlace de WhatsApp
+        const mensaje = encodeURIComponent(`Hola! Estoy interesado en cable para la zona: ${zona}`);
+        const numeroWhatsApp = '+51903075166';
+        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
         
-        // Obtener los valores
-        const nombre = document.getElementById('nombre').value;
-        const telefono = document.getElementById('telefono').value;
-
-        // Crear el contenido del modal
-        const modalHtml = `
-            <div id="modal-exito" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-                background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.3); 
-                text-align: center; z-index: 1000;">
-                <div style="color: #4CAF50; font-size: 50px; margin-bottom: 20px;">✓</div>
-                <h3 style="color: #333; margin-bottom: 15px;">Su solicitud fue procesada</h3>
-                <div style="font-size: 14px; color: #666; margin-bottom: 15px;">
-                    <p>Nombre: ${nombre}</p>
-                    <p>Teléfono: ${telefono}</p>
-                </div>
-                <p style="font-size: 12px; color: #666; margin-bottom: 20px;">
-                    En las próximas horas un colaborador nuestro se contactará con usted, gracias por su preferencia
-                </p>
-                <button onclick="cerrarModal()" style="padding: 8px 20px; background: #2C3E50; color: white; 
-                    border: none; border-radius: 5px; cursor: pointer;">Aceptar</button>
-            </div>
-            <div id="modal-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
-                background: rgba(0,0,0,0.5); z-index: 999;"></div>
-        `;
-
-        // Insertar el modal en el documento
-        document.body.insertAdjacentHTML('beforeend', modalHtml);
-    });
+        // Redirigir a WhatsApp
+        window.location.href = urlWhatsApp;
+    }
+    function seleccionarOtraZona() {
+        // Obtener ubicación actual
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                const googleMapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
+                
+                const mensaje = encodeURIComponent(`Hola! Estoy interesado en cable. Mi ubicación es: ${googleMapsUrl}`);
+                const numeroWhatsApp = '+51903075166';
+                const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+                window.location.href = urlWhatsApp;
+            }, function(error) {
+                // Si hay error al obtener ubicación, enviar mensaje sin ubicación
+                const mensaje = encodeURIComponent('Hola! Estoy interesado en cable pero no pude compartir mi ubicación.');
+                const numeroWhatsApp = '+51903075166';
+                const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+                window.location.href = urlWhatsApp;
+            });
+        } else {
+            // Si el navegador no soporta geolocalización
+            const mensaje = encodeURIComponent('Hola! Estoy interesado en cable pero no pude compartir mi ubicación.');
+            const numeroWhatsApp = '+51903075166';
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+            window.location.href = urlWhatsApp;
+        }
+    }
 
     function cerrarModal() {
         document.getElementById('modal-exito').remove();

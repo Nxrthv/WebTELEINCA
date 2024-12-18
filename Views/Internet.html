@@ -213,6 +213,7 @@ function mostrarCoberturas(velocidad, precio, tecnologia) {
     velocidadText.textContent = `${velocidad} Mbps - S/. ${precio}`;
 }
 
+
 function volverAVelocidades(tecnologia) {
     document.getElementById(`coberturas-${tecnologia}`).style.display = 'none';
     document.getElementById(`velocidades-${tecnologia}`).style.display = 'block';
@@ -220,7 +221,10 @@ function volverAVelocidades(tecnologia) {
 
 function seleccionarZona(zona) {
     // Aquí puedes implementar la lógica cuando seleccionan una zona
-    alert(`Has seleccionado el plan de ${velocidadSeleccionada} Mbps a S/. ${precioSeleccionado} en la zona de ${zona} con tecnología ${tecnologiaActual}`);
+    const mensaje = encodeURIComponent(`Hola! Deseo el plan de ${velocidadSeleccionada} Mbps a S/. ${precioSeleccionado} en la zona de ${zona} con tecnología ${tecnologiaActual}`);
+    const numeroWhatsApp = '+51903075166';
+    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+    window.location.href = urlWhatsApp;
 }
 
 function mostrarVelocidades(tecnologia) {

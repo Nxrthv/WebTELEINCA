@@ -280,3 +280,44 @@
             margin-bottom: 10px;
         }
     }
+
+    .cobertura-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .cobertura-btn {
+        background: #fff;
+        border: 2px solid #2C3E50;
+        border-radius: 10px;
+        padding: 15px 25px;
+        font-size: 16px;
+        color: #2C3E50;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .cobertura-btn:hover {
+        background: #2C3E50;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .cobertura-btn i {
+        font-size: 20px;
+    }
+
+    .formulario-datos {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        margin: 20px auto;
+        max-width: 800px;
+    }

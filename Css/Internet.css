@@ -1,0 +1,242 @@
+
+    .service-card {
+        border-radius: 35px;
+        border: 5px solid #198754;
+        transition: transform 0.3s ease;
+        margin: 0 auto;
+        max-width: 400px;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .service-title {
+        color: #198754;
+        font-weight: 600;
+        font-size: 1.5rem;
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+    }
+
+    .service-text {
+        color: #333;
+        font-size: 1rem;
+        font-family: 'Montserrat', sans-serif;
+        line-height: 1.5;
+        text-align: justify;
+        padding: 0 1rem;
+    }
+
+    .services-container {
+        padding-top: 5rem; /* Añadido padding superior */
+        padding-bottom: 5rem;
+        min-height: calc(100vh - 76px);
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-section {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/Resources/Images/internet_fondo.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding-top: 76px;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        font-weight: bold;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    #btnInteresa {
+        background-color: var(--color-primario);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        border-radius: 2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #btnInteresa:hover {
+        background-color: #146c43;
+    }
+
+    .card-body-imagen {
+        margin-bottom: 1.5rem;
+        margin-top: 1.5rem;
+        text-align: center;
+    }
+
+    .card-body-imagen img {
+        width: 200px;
+        height: 200px;
+        object-fit: contain;
+        border: 2px solid black;
+    }
+
+    .btn-velocidad {
+        background-color: #198754;
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        border-radius: 2rem;
+        cursor: pointer;
+        margin: 0.5rem;
+        margin-bottom: 1rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        transition: all 0.3s ease;
+        }
+
+    .btn-velocidad:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        background-color: #146c43;
+    }
+
+    @media (max-width: 768px) {
+        .service-card {
+            margin-bottom: 1.5rem;
+        }
+        
+        .services-container {
+            padding-top: 60px; /* Altura del navbar en móvil */
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+        }
+
+        .service-text {
+            font-size: 0.9rem;
+        }
+
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+        
+        .hero-content p {
+            font-size: 1rem;
+        }
+        
+        #btnInteresa {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
+
+    .coberturas-container {
+        padding: 1rem;
+    }
+
+    .header-cobertura {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .btn-back {
+        background: none;
+        border: none;
+        color: #198754;
+        font-size: 1.1rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .btn-back:hover {
+        color: #146c43;
+    }
+
+    .velocidad-seleccionada {
+        margin: 0 auto;
+        color: #198754;
+        font-weight: 600;
+    }
+
+    .zonas-cobertura {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .btn-cobertura {
+        background-color: #ffffff;
+        color: #198754;
+        border: 2px solid #198754;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        border-radius: 2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-cobertura:hover {
+        background-color: #198754;
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .interest-container {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .btn-interest {
+        background-color: #198754;
+        color: white;
+        border: none;
+        padding: 1rem 2.5rem;
+        font-size: 1.3rem;
+        border-radius: 2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 1rem 0;
+    }
+
+    .btn-interest:hover {
+        background-color: #146c43;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .header-section {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding: 0 1rem;
+    }
+
+    .velocidades-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 0 1rem;
+    }

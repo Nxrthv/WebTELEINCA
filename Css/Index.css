@@ -41,8 +41,7 @@ body{
 
 /* Promociones */
 .d-item{
-    height: 600px;
-    background-size: cover;
+    max-height: 600px;
 }
 .d-img{
     height: 100%;
@@ -89,7 +88,7 @@ body{
 /* Botones Emergentes */
 .btn-emergente{
     max-width: 100%;
-    z-index: 1000;
+    z-index: 10;
     position: fixed;
     display: flex;
     flex-wrap: wrap;

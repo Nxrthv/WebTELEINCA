@@ -18,16 +18,31 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon toglger-icon-light"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link link-light" href="/Views/Internet.html" href="#" onclick="internet()"><span>Internet</span></a>
+            <div class="collapse navbar-collapse row" id="navbarNav">
+                <ul class="navbar-nav px-3 pb-2" style="justify-content: end;">
+                    <li class="nav-item"><a class="nav-link border-end px-1 py-md-0 px-md-4" style="font-size: 13px; color: #ffffff; padding-inline: 2em;" href="#">Centros de Experiencia</a></li>
+                    <li class="nav-item"><a class="nav-link border-end px-1 py-md-0 px-md-4" style="font-size: 13px; color: #ffffff; padding-inline: 2em;" href="#">Conocenos</a></li>
+                    <li class="nav-item"><a class="nav-link border-end px-1 py-md-0 px-md-4" style="font-size: 13px; color: #ffffff; padding-inline: 2em;" href="#">Informacion abonados y usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link border-end px-1 py-md-0 px-md-4" style="font-size: 13px; color: #ffffff; padding-inline: 2em;" href="#">¿Ya eres cliente?</a></li>
+                    <li class="nav-item"><a class="nav-link px-1 py-md-0 px-md-4" style="font-size: 13px; color: #ffffff; padding-inline: 2em;" href="#">¿Necesitas ayuda? <i class="bi bi-whatsapp"></i></a></li>
+                </ul>
+                <ul class="navbar-nav ms-auto px-3" style="justify-content: end;">
+                    <li class="nav-item dropdown" style="align-content: center;">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Servicios</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown"      >
+                          <li><a class="dropdown-item" href="/Views/Internet.html">Internet</a></li>
+                          <li><a class="dropdown-item" href="/Views/Cable.html">Cable</a></li>
+                          <li><a class="dropdown-item" href="/Index.html">Duos</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-light" href="/Views/Cable.html"><span>Cable</span></a>
-                    </li>
-                    <li id="login" class="nav-item">
-                        <a id="registrarse" class="nav-link link-light" href="#">Registrarse</a>
+                    <li id="login" class="nav-item p-2">
+                        <a class="text-decoration-none" href="/Views/Register.html">
+                            <button>Iniciar sesion
+                                <div class="arrow-wrapper">
+                                    <div class="arrow"></div>   
+                                </div>
+                            </button>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -218,7 +233,45 @@
         </div>
     </div>
 
-<div id="contFoot"></div>
+    <footer class="text-white py-4 bg-success"> 
+        <div class="container">
+            <div class="row align-items-center text-left">
+                <div class="col-12 col-sm-6 col-md-3 mb-4">
+                    <img src="/Resources/Images/logo.png" alt="Logo de la Empresa" class="img-fluid" style="align-items: start;">
+                    <p style="margin-top: 5em; font-size: 14px;" class="fw-light">TELEINCA S.A.C. <br> RUC xxxxxxxxxx</p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 mb-4">
+                    <h5>Legales</h5>
+                    <ul class="list-unstyled">
+                        <li style="margin-bottom: -.5em;"><a href="#" class="text-white text-decoration-none">Terminos y Condiciones</a></li><br>
+                        <li style="margin-bottom: -.5em;"><a href="#" class="text-white text-decoration-none">Reclamos y Solicitudes en Linea</a></li><br>
+                        <li style="margin-bottom: -.5em;"><a href="#" class="text-white text-decoration-none">Libro de Reclamaciones</a></li><br>
+                        <li class="me-3 fw-light"><span class="fw-bold">Contacto:</span><br><p>contacto@teleinca.pe</p></li>
+                        <li><a style="text-decoration: none; color: green; background: white; padding: .3em 1em; border-radius: 1em;" href="#"><i class="bi bi-telephone"></i> Ventas: 062-514798</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 mb-4" style="padding-left: 1em;border-left: 1px solid white;">
+                    <h5>Condiciones de uso</h5>
+                    <ul class="list-unstyled">
+                        <li style="margin-bottom: -.5em;"><a href="#" class="text-white text-decoration-none">Informacion a Abonados y Usuarios</a></li><br>
+                        <li style="margin-bottom: -.5em;"><a href="#" class="text-white text-decoration-none">Preguntas Frecuentes</a></li><br>
+                        <li style="margin-bottom: -.5em;"><a href="#" class="text-white text-decoration-none">Privacidad de Datos</a></li><br>
+                        <li style="margin-bottom: -.5em;"><a href="#" class="text-white text-decoration-none">Promociones</a></li>
+                        <li class="me-3 fw-bold pt-3">Telefono:</li>
+                        <li class="me-3 fw-light">Atencion al Cliente:<br> +51 962 624 690</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3 mb-4" style="padding-left: 1em;border-left: 1px solid white;">
+                    <h6>Direccion</h6>
+                    <ul class="list-unstyled">
+                        <li class="me-3 fw-light">Centro de Experiencia Huanuco: Jr. Abtao N° 1719 Urb. Paucarbambabilla Huanuco-Huanuco-Huanuco</li><br>
+                        <li class="me-3 fw-light">Horario: De lunes a sábado de 8:30 a. m. a 6:30 p. m.</li>
+                        <br><br>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 <script src="/Resources/Js/Sections.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
@@ -257,7 +310,7 @@ function seleccionarZona(zona) {
     const mensaje = encodeURIComponent(`Hola! Deseo el plan de ${velocidadSeleccionada} Mbps a S/. ${precioSeleccionado} en la zona de ${zona} con tecnología ${tecnologiaActual}`);
     const numeroWhatsApp = '+51903075166';
     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
-    window.location.href = urlWhatsApp;
+    window.open(urlWhatsApp, '_blank');
 }
 
 function mostrarVelocidades(tecnologia) {
@@ -281,7 +334,7 @@ function proximoAbonado_Antena() {
     const numeroWhatsApp = "51903075166";
     const mensajeCodificado = encodeURIComponent(mensaje);
     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
-    window.location.href = urlWhatsApp;
+    window.open(urlWhatsApp, '_blank');
 }
 </script>
 </body>

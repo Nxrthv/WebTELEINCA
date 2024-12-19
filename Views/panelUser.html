@@ -30,23 +30,94 @@
             <div id="pendientes">
                 <div class="recibo">
                     <div>
-                        <h3>Recibo #001</h3>
-                        <p>Vencimiento: 31/03/2024</p>
-                        <p>Monto: S/. 150.00</p>
-                    </div>
-                    <span class="estado pendiente">Pendiente</span>
-                    <button class="buttonPagar">Pagar ahora</button>
+                <div class="tabla-container">
+                    <table class="tabla-recibos">
+                        <thead>
+                            <tr>
+                                <th>ID Recibo</th>
+                                <th>Concepto</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-body">
+                        </tbody>
+                    </table>
                 </div>
-                
-                <div class="recibo">
-                    <div>
-                        <h3>Recibo #002</h3>
-                        <p>Vencimiento: 15/04/2024</p>
-                        <p>Monto: S/. 200.00</p>
-                    </div>
-                    <span class="estado pendiente">Pendiente</span>
-                    <button class="buttonPagar">Pagar ahora</button>
-                </div>
+
+                <script>
+                    async function cargarRecibos() {
+                        try {
+                            const response = await fetch('http://localhost:3000/api/recibos');
+                            const recibos = await response.json();
+                            
+                            const tablaBody = document.getElementById('tabla-body');
+                            tablaBody.innerHTML = '';
+                            
+                            if (recibos.length === 0) {
+                                tablaBody.innerHTML = '<tr><td colspan="3">No hay recibos disponibles</td></tr>';
+                                return;
+                            }
+                            
+                            recibos.forEach(recibo => {
+                                const tr = document.createElement('tr');
+                                tr.innerHTML = `
+                                    <td>${recibo.id_recibo || 'N/A'}</td>
+                                    <td>${recibo.concepto_recibo || 'N/A'}</td>
+                                    <td>S/. ${recibo.precio_recibo || '0.00'}</td>
+                                `;
+                                tablaBody.appendChild(tr);
+                            });
+                        } catch (error) {
+                            const tablaBody = document.getElementById('tabla-body');
+                            tablaBody.innerHTML = `
+                                <tr>
+                                    <td colspan="3">
+                                        <div style="text-align: center; padding: 20px;">
+                                            <p style="color: red;">No se pudieron cargar los recibos</p>
+                                            <p>Asegúrate de que el servidor esté en funcionamiento</p>
+                                            <button onclick="cargarRecibos()" style="padding: 10px; margin-top: 10px;">
+                                                Reintentar
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `;
+                        }
+                    }
+
+                    window.addEventListener('load', cargarRecibos);
+                </script>
+
+                <style>
+                    .tabla-container {
+                        margin: 20px 0;
+                        overflow-x: auto;
+                    }
+
+                    .tabla-recibos {
+                        width: 100%;
+                        border-collapse: collapse;
+                        background: white;
+                        box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+                    }
+                        
+                    .tabla-recibos th,
+                    .tabla-recibos td {
+                        padding: 12px 15px;
+                        text-align: left;
+                        border-bottom: 1px solid #ddd;
+                    }
+
+                    .tabla-recibos th {
+                        background-color: #198754;
+                        color: white;
+                        font-weight: bold;
+                    }
+
+                    .tabla-recibos tr:hover {
+                        background-color: #f5f5f5;
+                    }
+                </style>
             </div>
         </div>
     </div>

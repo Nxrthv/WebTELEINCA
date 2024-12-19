@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com"> <!--Google Fonts-->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!--Google Fonts-->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> <!--Google Fonts Monserrat-->
   <title>Document</title>
 </head>
 <style> 
@@ -43,6 +46,7 @@
     font-size: 0.725rem;
     max-width: 80%;
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.1rem;
     color: #8B8E98
   }
@@ -125,10 +129,15 @@
       </svg>
       <input placeholder="Contraseña" title="Inpit title" name="input-name" type="password" class="input_field" id="password_field">
     </div>
-    <button title="Sign In" type="submit" class="sign-in_btn">
+    <button title="Sign In" type="button" class="sign-in_btn" onclick="ingresarPanel()">
       <span>Ingresar</span>
     </button>
     <p class="note">Terminos de uso &amp; Condiciones</p>
   </form>
+  <script>
+    function ingresarPanel() {
+      window.location.href = '/Views/panelUser.html';
+    }
+  </script>
 </body>
 </html>

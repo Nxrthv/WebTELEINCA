@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/Css/Index.css"> <!--Estilos de index-->
+    <link rel="stylesheet" href="/frontend/Css/Cable.css"> <!--Estilos de cable-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> <!--Bootstrap-->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> <!--Google Fonts Monserrat-->
+    <title>Cable</title>
+</head>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<body>
+    <nav id="nav" class="navbar navbar-expand-lg bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/frontend/Index.html"><img id="logo" src="/frontend/Resources/Images/logo.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon toglger-icon-light"></span>
+            </button>
+            <div class="collapse navbar-collapse row" id="navbarNav">
+                <ul class="navbar-nav px-3 pb-2" style="justify-content: end;">
+                    <li class="nav-item"><a class="nav-link border-end px-1 py-md-0 px-md-4" style="font-size: 13px; color: #ffffff; padding-inline: 2em;" href="#">Centros de Experiencia</a></li>
+                    <li class="nav-item"><a class="nav-link border-end px-1 py-md-0 px-md-4" style="font-size: 13px; color: #ffffff; padding-inline: 2em;" href="#">Conocenos</a></li>
+                    <li class="nav-item"><a class="nav-link border-end px-1 py-md-0 px-md-4" style="font-size: 13px; color: #ffffff; padding-inline: 2em;" href="#">Informacion abonados y usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link border-end px-1 py-md-0 px-md-4" style="font-size: 13px; color: #ffffff; padding-inline: 2em;" href="#">¿Ya eres cliente?</a></li>
+                    <li class="nav-item"><a class="nav-link px-1 py-md-0 px-md-4" style="font-size: 13px; color: #ffffff; padding-inline: 2em;" href="#">¿Necesitas ayuda? <i class="bi bi-whatsapp"></i></a></li>
+                </ul>
+                <ul class="navbar-nav ms-auto px-3" style="justify-content: end;">
+                    <li class="nav-item dropdown" style="align-content: center;">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Servicios</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown"      >
+                          <li><a class="dropdown-item" href="/frontend/Views/Internet.html">Internet</a></li>
+                          <li><a class="dropdown-item" href="/frontend/Views/Cable.html">Cable</a></li>
+                          <li><a class="dropdown-item" href="/frontend/Index.html">Duos</a></li>
+                        </ul>
+                    </li>
+                    <li id="login" class="nav-item p-2">
+                        <a class="text-decoration-none" href="/frontend/Views/Register.html">
+                            <button>Iniciar sesion
+                                <div class="arrow-wrapper">
+                                    <div class="arrow"></div>   
+                                </div>
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>Obten cable HD desde S/. 50.00</h1>
+        <p>Mas de 100 canales a tu alcance</p>
+        <p>¡La mejor conexión al mejor precio! Aprovecha este cable por solo 50 soles</p>
+        <button id="btnInteresa" onclick="mostrarFormulario()">Me interesa 😊+</button>
+    </div>
+</div>
+
+<div id="formulario-contacto" style="display:none" class="formulario-datos">
+    <div class="container">
+        <h3 class="text-center mb-4">Seleccione su zona de cobertura</h3>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="cobertura-options">
+                    <button class="cobertura-btn" onclick="seleccionarCobertura('Huanuco')">
+                        <div>
+                            <i class="bi bi-geo-alt-fill"></i><br>
+                            Huanuco
+                        </div>
+                    </button>
+                    <button class="cobertura-btn" onclick="seleccionarCobertura('Amarilis')">
+                        <div>
+                            <i class="bi bi-geo-alt-fill"></i><br>
+                            Amarilis                
+                        </div>
+                    </button>
+                    <button class="cobertura-btn" onclick="seleccionarCobertura('Pillco Marca')">
+                        <div>
+                            <i class="bi bi-geo-alt-fill"></i><br>
+                            Pillco Marca
+                        </div>
+                    </button>
+                    <button class="cobertura-btn" onclick="seleccionarOtraZona()">
+                        <div>
+                            <i class="bi bi-geo-alt-fill"></i><br>
+                            Otra zona
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="canales-section">
+    <h2>Descubre los canales que tenemos para ti</h2>
+    <div class="categorias-container">
+        <div class="categoria">Nacionales</div>
+        <div class="canales-grid">
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_03.png" alt="TV PERU">
+                <p>TV PERU</p>
+                <p>Canal 03</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_04.png" alt="BOLIVISION">
+                <p>BOLIVISION</p>
+                <p>Canal 04</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_06.png" alt="LATINA">
+                <p>LATINA</p>
+                <p>Canal 06</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_07.png" alt="EXITOSA">
+                <p>EXITOSA</p>
+                <p>Canal 07</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_09.png" alt="ATV">
+                <p>ATV</p>
+                <p>Canal 09</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_13.png" alt="Global TV">
+                <p>Global TV</p>
+                <p>Canal 13</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_14.png" alt="Inka TV">
+                <p>Inka TV</p>
+                <p>Canal 14</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_15.png" alt="America TV">
+                <p>America TV</p>
+                <p>Canal 15</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_16.png" alt="Panamericana">
+                <p>Panamericana</p>
+                <p>Canal 16</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_17.png" alt="RPP">
+                <p>RPP</p>
+                <p>Canal 17</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_108.png" alt="ANTENA 1">
+                <p>ANTENA 1</p>
+                <p>Canal 108</p>
+            </div>
+        </div>
+        <div class="categoria">Entretenimiento</div>
+        <div class="canales-grid">
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_18.jpg" alt="AZ MUNDO">
+                <p>AZ MUNDO</p>
+                <p>Canal 18</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_19.jpg" alt="CORAL 39">
+                <p>CORAL 39</p>
+                <p>Canal 19</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_20.png" alt="E! ENTERTAINMENT">
+                <p>E! ENTERTAINMENT</p>
+                <p>Canal 20</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_22.jpg" alt="SUN CHANNEL ">
+                <p>SUN CHANNEL</p>
+                <p>Canal 22</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_23.png" alt="LIFETIME">
+                <p>LIFETIME</p>
+                <p>Canal 23</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_24.png" alt="EL GOURMET">
+                <p>EL GOURMET</p>
+                <p>Canal 24</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_25.jpg" alt="VENUS (CANAL CODIFICADO)">
+                <p>VENUS (CANAL CODIFICADO)</p>
+                <p>Canal 25</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_26.jpg" alt="MAGAZINE TV">
+                <p>MAGAZINE TV</p>
+                <p>Canal 26</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_27.png" alt="AZ click">
+                <p>AZ CLICK</p>
+                <p>Canal 27</p>
+            </div>
+        </div>
+        <div class="categoria">Películas y series</div>
+        <div class="canales-grid">
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_85.png" alt="UNIVERSAL CINEMA">
+                <p>UNIVERSAL CINEMA</p>
+                <p>Canal 85</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_86.png" alt="CINECANAL">
+                <p>CINECANAL</p>
+                <p>Canal 86</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_87.png" alt="TELESISTEMAS">
+                <p>TELESISTEMAS</p>
+                <p>Canal 87</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_88.jpg" alt="UNIVERSAL PREMIER">
+                <p>UNIVERSAL PREMIER</p>
+                <p>Canal 88</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_89.png" alt="STAR CHANNEL">
+                <p>STAR CHANNEL</p>
+                <p>Canal 89</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_90.jpg" alt="PANICO">
+                <p>PANICO</p>
+                <p>Canal 90</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_91.png" alt="fixed">
+                <p>FX</p>
+                <p>Canal 91</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_92.png" alt="AXN">
+                <p>AXN</p>
+                <p>Canal 92</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_93.png" alt="SONY CHANNEL">
+                <p>SONY CHANNEL</p>
+                <p>Canal 93</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_94.jpg" alt="CINE PLATINO">
+                <p>CINE PLATINO</p>
+                <p>Canal 94</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_98.png" alt="A&E">
+                <p>A&E</p>
+                <p>Canal 98</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_99.jpg" alt="CINE MEXICANO">
+                <p>CINE MEXICANO</p>
+                <p>Canal 99</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_100.png" alt="CINE FAMILIAR">
+                <p>CINE FAMILIAR</p>
+                <p>Canal 100</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_101.jpg" alt="OROMAR TV">
+                <p>OROMAR TV</p>
+                <p>Canal 101</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_103.png" alt="EUROCHANNEL">
+                <p>EUROCHANNEL</p>
+                <p>Canal 103</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_104.png" alt="DHE">
+                <p>DHE</p>
+                <p>Canal 104</p>
+            </div>
+        </div> 
+        <div class="categoria">Infantiles y animacion</div>
+        <div class="canales-grid">
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_39.png" alt="PLIM PLIM TV">
+                    <p>PLIM PLIM TV</p>
+                <p>Canal 39</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_40.png" alt="DYSNEY CHANNEL">
+                <p>DYSNEY CHANNEL</p>
+                <p>Canal 40</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_41.png" alt="DYSNEY JUNIOR">
+                <p>DYSNEY JUNIOR</p>
+                <p>Canal 41</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_42.jpg" alt="FUN BOX">
+                <p>FUN BOX</p>
+                <p>Canal 42</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_43.jpg" alt="CANAL INFANTIL">
+                <p>CANAL INFANTIL</p>
+                <p>Canal 43</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_45.jpg" alt="ZOO MOO">
+                <p>ZOO MOO</p>
+                <p>Canal 45</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_46.png" alt="ANIMOTION">
+                <p>ANIMOTION</p>
+                <p>Canal 46</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_47.jpg" alt="LOVE NATURE">
+                <p>LOVE NATURE</p>
+                <p>Canal 47</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_54.png" alt="CLAN TV">
+                <p>CLAN TV</p>
+                <p>Canal 54</p>
+            </div>
+        </div>
+        <div class="categoria">Deportes</div>
+        <div class="canales-grid">
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_75.png" alt="ESPN">
+                <p>ESPN</p>
+                <p>Canal 75</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_76.png" alt="ESPN 2">
+                <p>ESPN 2</p>
+                <p>Canal 76</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_77.png" alt="ESPN 3">
+                <p>ESPN 3</p>
+                <p>Canal 77</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_78.png" alt="ESPN 5">
+                <p>ESPN 5</p>
+                <p>Canal 78</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_79.png" alt="ESPN 4">
+                <p>ESPN 4</p>
+                <p>Canal 79</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_80.jpg" alt="ESPN 7">
+                <p>ESPN 7</p>
+                <p>Canal 80</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_81.png" alt="MERIDIANO TV">
+                <p>MERIDIANO TV</p>
+                <p>Canal 81</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_82.png" alt="PX SPORTS">
+                <p>PX SPORTS</p>
+                <p>Canal 82</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_83.jpg" alt="ESPN 6">
+                <p>ESPN 6</p>
+                <p>Canal 83</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_84.png" alt="AMERICA SPORTS">
+                <p>AMERICA SPORTS</p>
+                <p>Canal 84</p>
+            </div>
+        </div>   
+        <div class="categoria">Noticias</div>
+        <div class="canales-grid">
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_55.jpg" alt="DEUTSCHE WELLE">
+                <p>DEUTSCHE WELLE</p>
+                <p>Canal 55</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_56.png" alt="CONECTA2 TV">
+                <p>CONECTA2 TV</p>
+                <p>Canal 56</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_57.png" alt="3ABN">
+                <p>3ABN</p>
+                <p>Canal 57</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_58.png" alt="RT NOTICIAS">
+                <p>RT NOTICIAS</p>
+                <p>Canal 58</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_59.jpg" alt="TELESUR">
+                <p>TELESUR</p>
+                <p>Canal 59</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_60.jpg" alt="CABLE NOTICIAS">
+                <p>CABLE NOTICIAS</p>
+                <p>Canal 60</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_61.png" alt="CGTN ESPAÑOL">
+                <p>CGTN ESPAÑOL</p>
+                <p>Canal 61</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_62.jpg" alt="CREO TV">
+                <p>CREO TV</p>
+                <p>Canal 62</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_63.png" alt="EURONEWS">
+                <p>EURONEWS</p>
+                <p>Canal 63</p>
+            </div>
+        </div> 
+        <div class="categoria">Musicales</div>
+        <div class="canales-grid">
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_38.jpg" alt="LA RIVEREÑA">
+                <p>LA RIVEREÑA</p>
+                <p>Canal 38</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_48.jpg" alt="KIZZI">
+                <p>KIZZI</p>
+                <p>Canal 48</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_49.png" alt="MIMUSICA PERU">
+                <p>MIMUSICA PERU</p>
+                <p>Canal 49</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_50.png" alt="RUMBA TV">
+                <p>RUMBA TV</p>
+                <p>Canal 50</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_51.png" alt="MIX MUSIC">
+                <p>MIX MUSIC</p>
+                <p>Canal 51</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_52.png" alt="MIMUSICA HITS">
+                <p>MIMUSICA HITS</p>
+                <p>Canal 52</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_53.png" alt="TELE NOSTALGIA">
+                <p>TELE NOSTALGIA</p>
+                <p>Canal 53</p>
+            </div>
+        </div>   
+        <div class="categoria">Ciencia y cultura</div>
+        <div class="canales-grid">
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_28.jpg" alt="ANIMAL PLANET">
+                <p>ANIMAL PLANET</p>
+                <p>Canal 28</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_64.png" alt="NATIONAL GEOGRAPHIC">
+                <p>NATIONAL GEOGRAPHIC</p>
+                <p>Canal 64</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_65.jpg" alt="HISTORY CHANNEL">
+                <p>HISTORY CHANNEL</p>
+                <p>Canal 65</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_66.png" alt="UNIVERSAL">
+                <p>UNIVERSAL</p>
+                <p>Canal 66</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_67.jpg" alt="HISTORY 2">
+                <p>HISTORY 2</p>
+                <p>Canal 67</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_68.jpg" alt="TELEANTILLAS">
+                <p>TELEANTILLAS</p>
+                <p>Canal 68</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_69.png" alt="ATLAS TV">
+                <p>ATLAS TV</p>
+                <p>Canal 69</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_70.jpg" alt="WOBI">
+                <p>WOBI</p>
+                <p>Canal 70</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_71.jpg" alt="DISCOVERY TURBO">
+                <p>DISCOVERY TURBO</p>
+                <p>Canal 71</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_72.jpg" alt="REPRETEL 6">
+                <p>REPRETEL 6</p>
+                <p>Canal 72</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_73.jpg" alt="UNIVERSAL CRIME">
+                <p>UNIVERSAL CRIME</p>
+                <p>Canal 73</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_74.png" alt="TV AGRO">
+                <p>TV AGRO</p>
+                <p>Canal 74</p>
+            </div>
+        </div> 
+        <div class="categoria">Novelas</div>
+        <div class="canales-grid">
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_29.jpg" alt="CANAL DRAMA">
+                <p>CANAL DRAMA</p>
+                <p>Canal 29</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_30.jpg" alt="UNIVISION">
+                <p>UNIVISION</p>
+                <p>Canal 30</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_31.png" alt="PASIONES">
+                <p>PASIONES</p>
+                <p>Canal 31</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_32.png" alt="AZ CORAZON">
+                <p>AZ CORAZON</p>
+                <p>Canal 32</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_33.png" alt="VE PLUS TV">
+                <p>VE PLUS TV</p>
+                <p>Canal 33</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_34.png" alt="CARACOL TV">
+                <p>CARACOL TV</p>
+                <p>Canal 34</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_35.jpg" alt="TELEMUNDO">
+                <p>TELEMUNDO</p>
+                <p>Canal 35</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_36.jpg" alt="TV CENTRO">
+                <p>TV CENTRO</p>
+                <p>Canal 36</p>
+            </div>
+            <div class="canal-item">
+                <img src="/frontend/Resources/Images/canales/CH_37.png" alt="HOGAR TV">
+                <p>HOGAR TV</p>
+                <p>Canal 37</p>
+            </div>
+        </div>
+        <div class="categoria">Religion</div>
+        <div class="canales-grid">
+                <div class="canal-item">
+                    <img src="/frontend/Resources/Images/canales/CH_102.png" alt="ESNE TV">
+                    <p>ESNE TV</p>
+                    <p>Canal 102</p>
+                </div>
+                <div class="canal-item">
+                    <img src="/frontend/Resources/Images/canales/CH_105.png" alt="BETHEL TV">
+                    <p>BETHEL TV</p>
+                    <p>Canal 105</p>
+                </div>
+                <div class="canal-item">
+                    <img src="/frontend/Resources/Images/canales/CH_106.png" alt="EWTN">
+                    <p>EWTN</p>
+                    <p>Canal 106</p>
+                </div>
+                <div class="canal-item">
+                    <img src="/frontend/Resources/Images/canales/CH_107.jpg" alt="MARIA VISION">
+                    <p>MARIA VISION</p>
+                    <p>Canal 107</p>
+                </div>
+        </div>    
+        <div class="categoria">Exclusivos</div>
+        <div class="canales-grid">
+                <div class="canal-item">
+                    <img src="/frontend/Resources/Images/canales/CH_21.jpg" alt="CABLE VISION TV">
+                    <p>CABLE VISION TV</p>
+                    <p>Canal 21</p>
+                </div>
+        </div>    
+        </div>
+    </div>
+</div>
+
+<div class="beneficios-section">
+    <h2 class="text-center mb-5">Beneficios</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-3 mb-4">
+            <div class="beneficio-card">
+                <div class="beneficio-imagen">
+                    <img src="/frontend/Resources/Images/beneficio_icon/hd-icon (1).png" alt="Programación HD">
+                </div>
+                <h3>Programación HD</h3>
+                <p>Disfruta de una experiencia visual excepcional con nuestra programación en alta definición. Imágenes nítidas y colores vibrantes que harán que cada momento frente al televisor sea especial.</p>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="beneficio-card">
+                <div class="beneficio-imagen">
+                    <img src="/frontend/Resources/Images/beneficio_icon/economia-icon.png" alt="Económico">
+                </div>
+                <h3>Económico</h3>
+                <p>Ofrecemos planes accesibles que se ajustan a tu presupuesto, brindándote el mejor entretenimiento a precios competitivos. Más canales por menos dinero.</p>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="beneficio-card">
+                <div class="beneficio-imagen">
+                    <img src="/frontend/Resources/Images/beneficio_icon/pago_icon.png" alt="Pago Adelantado">
+                </div>
+                <h3>Beneficio de Pago Adelantado</h3>
+                <p>Obtén descuentos especiales al realizar pagos adelantados. Mientras más meses adelantes, mayores serán tus beneficios y ahorros.</p>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="beneficio-card">
+                <div class="beneficio-imagen">
+                    <img src="/frontend/Resources/Images/beneficio_icon/trayectoriahd-icon.png" alt="Sólida Trayectoria">
+                </div>
+                <h3>Sólida Trayectoria</h3>
+                <p>Respaldados por años de experiencia en el mercado, garantizamos un servicio confiable y de calidad. Tu satisfacción es nuestra prioridad.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="text-white py-4 bg-success"> 
+    <div class="container">
+        <div class="row align-items-center text-left">
+            <div class="col-12 col-sm-6 col-md-3 mb-4">
+                <img src="/frontend/Resources/Images/logo.png" alt="Logo de la Empresa" class="img-fluid" style="align-items: start;">
+                <p style="margin-top: 5em; font-size: 14px;" class="fw-light">TELEINCA S.A.C. <br> RUC xxxxxxxxxx</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 mb-4">
+                <h5>Legales</h5>
+                <ul class="list-unstyled">
+                    <li style="margin-bottom: -.5em;"><a href="#" class="text-white text-decoration-none">Terminos y Condiciones</a></li><br>
+                    <li style="margin-bottom: -.5em;"><a href="#" class="text-white text-decoration-none">Reclamos y Solicitudes en Linea</a></li><br>
+                    <li style="margin-bottom: -.5em;"><a href="#" class="text-white text-decoration-none">Libro de Reclamaciones</a></li><br>
+                    <li class="me-3 fw-light"><span class="fw-bold">Contacto:</span><br><p>contacto@teleinca.pe</p></li>
+                    <li><a style="text-decoration: none; color: green; background: white; padding: .3em 1em; border-radius: 1em;" href="#"><i class="bi bi-telephone"></i> Ventas: 062-514798</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 mb-4" style="padding-left: 1em;border-left: 1px solid white;">
+                <h5>Condiciones de uso</h5>
+                <ul class="list-unstyled">
+                    <li style="margin-bottom: -.5em;"><a href="#" class="text-white text-decoration-none">Informacion a Abonados y Usuarios</a></li><br>
+                    <li style="margin-bottom: -.5em;"><a href="#" class="text-white text-decoration-none">Preguntas Frecuentes</a></li><br>
+                    <li style="margin-bottom: -.5em;"><a href="#" class="text-white text-decoration-none">Privacidad de Datos</a></li><br>
+                    <li style="margin-bottom: -.5em;"><a href="#" class="text-white text-decoration-none">Promociones</a></li>
+                    <li class="me-3 fw-bold pt-3">Telefono:</li>
+                    <li class="me-3 fw-light">Atencion al Cliente:<br> +51 962 624 690</li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 mb-4" style="padding-left: 1em;border-left: 1px solid white;">
+                <h6>Direccion</h6>
+                <ul class="list-unstyled">
+                    <li class="me-3 fw-light">Centro de Experiencia Huanuco: Jr. Abtao N° 1719 Urb. Paucarbambabilla Huanuco-Huanuco-Huanuco</li><br>
+                    <li class="me-3 fw-light">Horario: De lunes a sábado de 8:30 a. m. a 6:30 p. m.</li>
+                    <br><br>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function mostrarFormulario() {
+        document.getElementById('formulario-contacto').style.display = 'block';
+    }
+
+    function seleccionarCobertura(zona) {
+        // Construir el mensaje y el enlace de WhatsApp
+        const mensaje = encodeURIComponent(`Hola! Estoy interesado en cable para la zona: ${zona}`);
+        const numeroWhatsApp = '+51903075166';
+        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+        
+        // Redirigir a WhatsApp
+        window.open(urlWhatsApp, '_blank');
+    }
+    function seleccionarOtraZona() {
+        // Obtener ubicación actual
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                const googleMapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
+                
+                const mensaje = encodeURIComponent(`Hola! Estoy interesado en cable. Mi ubicación es: ${googleMapsUrl}`);
+                const numeroWhatsApp = '+51903075166';
+                const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+                window.open(urlWhatsApp, '_blank');
+            }, function(error) {
+                // Si hay error al obtener ubicación, enviar mensaje sin ubicación
+                const mensaje = encodeURIComponent('Hola! Estoy interesado en cable pero no pude compartir mi ubicación.');
+                const numeroWhatsApp = '+51903075166';
+                const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+                window.open(urlWhatsApp, '_blank');
+            });
+        } else {
+            // Si el navegador no soporta geolocalización
+            const mensaje = encodeURIComponent('Hola! Estoy interesado en cable pero no pude compartir mi ubicación.');
+            const numeroWhatsApp = '+51903075166';
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+    }
+
+    function cerrarModal() {
+        document.getElementById('modal-exito').remove();
+        document.getElementById('modal-overlay').remove();
+        location.reload();
+    }
+</script>
+<script src="/frontend/Resources/Js/Sections.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Agregar estos scripts de Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/Css/panelUser.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Panel de Usuario</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div>
+                    <h1>Panel de Usuario</h1>
+                    <p>Gestiona tus recibos</p>
+                </div>
+                <a href="/frontend/Index.html" class="btn-cerrar-sesion">Cerrar Sesión</a>
+            </div>
+        </div>  
+        
+        <div class="tabs">
+            <button class="tab active" onclick="cambiarTab('pendientes')">Recibos Pendientes</button>
+            <button class="tab" onclick="cambiarTab('pagados')">Recibos Pagados</button>
+        </div>
+
+        <div class="content">
+            <div id="pendientes" class="tab-content active">
+                <div class="tabla-container">
+                    <table class="tabla-recibos">
+                        <thead>
+                            <tr>
+                                <th>ID Recibo</th>
+                                <th>Concepto</th>
+                                <th>Precio</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-body_pendientes">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div id="pagados" class="tab-content">
+                <div class="tabla-container">
+                    <table class="tabla-recibos">
+                        <thead>
+                            <tr>
+                                <th>ID Recibo</th>
+                                <th>Concepto</th>
+                                <th>Precio</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-body_pagados">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            async function cargarRecibosPendientes() {
+                try {
+                    const response = await fetch('http://localhost:3000/api/recibos_pendientes');
+                    const recibos = await response.json();
+                    
+                    const tablaBody = document.getElementById('tabla-body_pendientes');
+                    tablaBody.innerHTML = '';
+                    
+                    if (recibos.length === 0) {
+                        tablaBody.innerHTML = '<tr><td colspan="4">No hay recibos pendientes</td></tr>';
+                        return;
+                    }
+                    
+                    recibos.forEach(recibo => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${recibo.id_recibo || 'N/A'}</td>
+                            <td>${recibo.concepto_recibo || 'N/A'}</td>
+                            <td>S/. ${recibo.precio_recibo || '0.00'}</td>
+                            <td><button class="btn-pagar" onclick="realizarPago(${recibo.id_recibo})">Pagar</button></td>
+                        `;
+                        tablaBody.appendChild(tr);
+                    });
+                } catch (error) {
+                    const tablaBody = document.getElementById('tabla-body_pendientes');
+                    tablaBody.innerHTML = `
+                        <tr><td colspan="4">Error al cargar los recibos pendientes</td></tr>
+                    `;
+                }
+            }
+
+            async function cargarRecibosPagados() {
+                try {
+                    const response = await fetch('http://localhost:3000/api/recibos_pagados');
+                    const recibos = await response.json();
+                    
+                    const tablaBody = document.getElementById('tabla-body_pagados');
+                    tablaBody.innerHTML = '';
+                    
+                    if (recibos.length === 0) {
+                        tablaBody.innerHTML = '<tr><td colspan="4">No hay recibos pagados</td></tr>';
+                        return;
+                    }
+                    
+                    recibos.forEach(recibo => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${recibo.id_recibo || 'N/A'}</td>
+                            <td>${recibo.concepto_recibo || 'N/A'}</td>
+                            <td>S/. ${recibo.precio_recibo || '0.00'}</td>
+                            <td>Pagado</td>
+                        `;
+                        tablaBody.appendChild(tr);
+                    });
+                } catch (error) {
+                    const tablaBody = document.getElementById('tabla-body_pagados');
+                    tablaBody.innerHTML = `
+                        <tr><td colspan="4">Error al cargar los recibos pagados</td></tr>
+                    `;
+                }
+            }
+
+            function cambiarTab(tabId) {
+                // Ocultar todos los tab-content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.style.display = 'none';
+                    content.classList.remove('active');
+                });
+                
+                // Remover active de todos los tabs
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Mostrar el tab-content seleccionado
+                const selectedContent = document.getElementById(tabId);
+                selectedContent.style.display = 'block';
+                selectedContent.classList.add('active');
+                
+                // Activar el botón seleccionado
+                event.target.classList.add('active');
+                
+                // Cargar los recibos correspondientes
+                if (tabId === 'pendientes') {
+                    cargarRecibosPendientes();
+                } else {
+                    cargarRecibosPagados();
+                }
+            }
+
+            // Cargar recibos pendientes al iniciar la página
+            window.addEventListener('load', () => {
+                cargarRecibosPendientes();
+            });
+        </script>
+
+        <style>
+            .content {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+
+            #pendientes {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .tabla-container {
+                margin: 20px auto;
+                overflow-x: auto;
+                max-width: 80%;
+                width: 100%;
+            }
+
+            .tabla-recibos {
+                width: 100%;
+                border-collapse: collapse;
+                background: white;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+                margin: 0 auto;
+            }
+                
+            .tabla-recibos th,
+            .tabla-recibos td {
+                padding: 12px 15px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .tabla-recibos th {
+                background-color: #198754;
+                color: white;
+                font-weight: bold;
+            }
+
+            .tabla-recibos tr:hover {
+                background-color: #f5f5f5;
+            }
+
+            .btn-pagar {
+                background-color: #198754;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+                transition: background-color 0.3s;
+            }
+
+            .btn-pagar:hover {
+                background-color: #146c43;
+            }
+
+            .tab {
+                padding: 10px 20px;
+                border: none;
+                background: none;
+                cursor: pointer;
+                font-size: 16px;
+                color: #666;
+                transition: all 0.3s ease;
+            }
+
+            .tab.active {
+                color: #198754;
+                border-bottom: 3px solid #198754;
+            }
+
+            .tab-content {
+                display: none;
+                width: 100%;
+            }
+
+            .tab-content.active {
+                display: block;
+            }
+
+            #pendientes, #pagados {
+                width: 100%;
+            }
+        </style>
+    </div>
+</body>
+</html>

@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const recibosPagadosRoutes = require('./src/routes/recibos_pagados');
 const recibosPendientesRoutes = require('./src/routes/recibos_pendientes');
+const authRoutes = require('./src/routes/auth');
 const app = express();
 
 // Middlewares
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 // Rutas
 app.use('/api/recibos_pagados', recibosPagadosRoutes);
 app.use('/api/recibos_pendientes', recibosPendientesRoutes);
+app.use('/api', authRoutes);
 
 // Manejo de errores básico
 app.use((err, req, res, next) => {

@@ -14,7 +14,7 @@
         <div class="header">
             <div class="header-content">
                 <div>
-                    <h1>Panel de Usuario</h1>
+                    <h1>Panel de Usuario - ¡Hola, <span id="nombreUsuario"></span>! 👋</h1>
                     <p>Gestiona tus recibos</p>
                 </div>
                 <a href="/Index.html" class="btn-cerrar-sesion">Cerrar Sesión</a>
@@ -157,96 +157,17 @@
             window.addEventListener('load', () => {
                 cargarRecibosPendientes();
             });
+
+            // Obtener y mostrar el nombre del usuario al cargar la página
+            document.addEventListener('DOMContentLoaded', () => {
+                const nombreUsuario = sessionStorage.getItem('nombreUsuario');
+                if (nombreUsuario) {
+                    document.getElementById('nombreUsuario').textContent = nombreUsuario;
+                }
+            });
         </script>
 
-        <style>
-            .content {
-                display: flex;
-                justify-content: center;
-                width: 100%;
-            }
-
-            #pendientes {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-            }
-
-            .tabla-container {
-                margin: 20px auto;
-                overflow-x: auto;
-                max-width: 80%;
-                width: 100%;
-            }
-
-            .tabla-recibos {
-                width: 100%;
-                border-collapse: collapse;
-                background: white;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-                margin: 0 auto;
-            }
-                
-            .tabla-recibos th,
-            .tabla-recibos td {
-                padding: 12px 15px;
-                text-align: left;
-                border-bottom: 1px solid #ddd;
-            }
-
-            .tabla-recibos th {
-                background-color: #198754;
-                color: white;
-                font-weight: bold;
-            }
-
-            .tabla-recibos tr:hover {
-                background-color: #f5f5f5;
-            }
-
-            .btn-pagar {
-                background-color: #198754;
-                color: white;
-                border: none;
-                padding: 8px 16px;
-                border-radius: 4px;
-                cursor: pointer;
-                font-size: 14px;
-                transition: background-color 0.3s;
-            }
-
-            .btn-pagar:hover {
-                background-color: #146c43;
-            }
-
-            .tab {
-                padding: 10px 20px;
-                border: none;
-                background: none;
-                cursor: pointer;
-                font-size: 16px;
-                color: #666;
-                transition: all 0.3s ease;
-            }
-
-            .tab.active {
-                color: #198754;
-                border-bottom: 3px solid #198754;
-            }
-
-            .tab-content {
-                display: none;
-                width: 100%;
-            }
-
-            .tab-content.active {
-                display: block;
-            }
-
-            #pendientes, #pagados {
-                width: 100%;
-            }
-        </style>
+        
     </div>
 </body>
 </html>

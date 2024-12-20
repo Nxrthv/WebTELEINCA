@@ -1,11 +1,11 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'pruebaRecibos',
-  password: '1111',
-  port: 5433,
+  user: 'cab_vision_dev',
+  host: 'db01.grupocablevision.com',
+  database: 'cablevision',
+  password: 'OAak1BtP!a',
+  port: 5432,
 });
 
 // Opción 1: Exportación más moderna

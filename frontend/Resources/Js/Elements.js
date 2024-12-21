@@ -19,10 +19,6 @@ fetch(url)
     });
 }
 document.addEventListener("DOMContentLoaded", function() {
-cargarFragmento('/Views/Footer.html', 'contFoot');
-cargarFragmento('/Views/Nav.html', 'contNav');
+cargarFragmento('/frontend/Views/Footer.html', 'contFoot');
+cargarFragmento('/frontend/Views/Nav.html', 'contNav');
 });
-
-function internet() {
-    window.location.href = "/Views/Internet.html";
-}

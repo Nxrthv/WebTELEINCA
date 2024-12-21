@@ -232,6 +232,7 @@ h1 {
     object-fit: contain; /* Asegura que la imagen mantenga su proporción */
 }
 
+  
 /* Optimized Mobile Responsiveness */
 @media (max-width: 480px) {
     .header-content {

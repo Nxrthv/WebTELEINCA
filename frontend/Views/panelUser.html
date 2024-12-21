@@ -15,6 +15,7 @@
             <div class="header-content">
                 <div>
                     <h1>Panel de Usuario - ¡Hola, <span id="nombreUsuario"></span>! 👋</h1>
+                    <h1>Codigo: <span id="codigoUsuario"></span></h1>
                     <p>Gestiona tus recibos</p>
                 </div>
                 <a href="/Index.html" class="btn-cerrar-sesion">Cerrar Sesión</a>
@@ -35,6 +36,7 @@
                                 <th>ID Recibo</th>
                                 <th>Concepto</th>
                                 <th>Precio</th>
+                                <th>Fecha Vencimiento</th>
                                 <th>Estado</th>
                             </tr>
                         </thead>
@@ -52,6 +54,7 @@
                                 <th>ID Recibo</th>
                                 <th>Concepto</th>
                                 <th>Precio</th>
+                                <th>Fecha Vencimiento</th>
                                 <th>Estado</th>
                             </tr>
                         </thead>
@@ -65,7 +68,8 @@
         <script>
             async function cargarRecibosPendientes() {
                 try {
-                    const response = await fetch('http://localhost:3000/api/recibos_pendientes');
+                    const codigoUsuario = sessionStorage.getItem('codigoUsuario');
+                    const response = await fetch(`http://localhost:3000/api/recibos_pendientes/${codigoUsuario}`);
                     const recibos = await response.json();
                     
                     const tablaBody = document.getElementById('tabla-body_pendientes');
@@ -79,10 +83,12 @@
                     recibos.forEach(recibo => {
                         const tr = document.createElement('tr');
                         tr.innerHTML = `
-                            <td>${recibo.id_recibo || 'N/A'}</td>
-                            <td>${recibo.concepto_recibo || 'N/A'}</td>
-                            <td>S/. ${recibo.precio_recibo || '0.00'}</td>
+                            <td>${recibo.codigo || 'N/A'}</td>
+                            <td>${recibo.concepto || 'N/A'}</td>
+                            <td>S/. ${recibo.deuda  || '0.00'}</td>
+                            <td>${recibo.fecha_vencimiento || 'N/A'}</td>
                             <td><button class="btn-pagar" onclick="realizarPago(${recibo.id_recibo})">Pagar</button></td>
+                            
                         `;
                         tablaBody.appendChild(tr);
                     });
@@ -165,6 +171,14 @@
                     document.getElementById('nombreUsuario').textContent = nombreUsuario;
                 }
             });
+            //Obtener el codigo del usuario para hacer la consulta
+            document.addEventListener('DOMContentLoaded', () => {
+                const codigoUsuario = sessionStorage.getItem('codigoUsuario');
+                if (codigoUsuario) {
+                    document.getElementById('codigoUsuario').textContent = codigoUsuario;
+                }
+            });
+            
         </script>
 
         

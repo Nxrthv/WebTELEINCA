@@ -69,6 +69,7 @@
         if (data.success) {
           console.log('Login exitoso, redirigiendo...');
           sessionStorage.setItem('nombreUsuario', data.nombre);
+          sessionStorage.setItem('codigoUsuario', data.code);
           window.location.href = '/frontend/Views/panelUser.html';
         } else {
           console.log('Login fallido:', data.message || 'Sin mensaje de error');

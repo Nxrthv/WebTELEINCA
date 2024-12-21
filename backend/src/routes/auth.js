@@ -12,7 +12,8 @@ router.post('/login', async (req, res) => {
     if (result.rows.length > 0) {
       res.json({
         success: true,
-        nombre: result.rows[0].abonado
+        nombre: result.rows[0].abonado,
+        code: result.rows[0].codigo
       });
     } else {
       res.json({
@@ -27,6 +28,8 @@ router.post('/login', async (req, res) => {
       message: 'Error en el servidor'
     });
   }
+  
 });
+
 
 module.exports = router; 

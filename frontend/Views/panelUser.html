@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
     <title>Panel de Usuario</title>
 </head>
 <body>
@@ -54,7 +55,6 @@
                                 <th>ID Recibo</th>
                                 <th>Concepto</th>
                                 <th>Precio</th>
-                                <th>Fecha Vencimiento</th>
                                 <th>Estado</th>
                             </tr>
                         </thead>
@@ -102,7 +102,8 @@
 
             async function cargarRecibosPagados() {
                 try {
-                    const response = await fetch('http://localhost:3000/api/recibos_pagados');
+                    const codigoUsuario = sessionStorage.getItem('codigoUsuario');
+                    const response = await fetch(`http://localhost:3000/api/recibos_pagados/${codigoUsuario}`);
                     const recibos = await response.json();
                     
                     const tablaBody = document.getElementById('tabla-body_pagados');
@@ -116,10 +117,10 @@
                     recibos.forEach(recibo => {
                         const tr = document.createElement('tr');
                         tr.innerHTML = `
-                            <td>${recibo.id_recibo || 'N/A'}</td>
-                            <td>${recibo.concepto_recibo || 'N/A'}</td>
-                            <td>S/. ${recibo.precio_recibo || '0.00'}</td>
-                            <td>Pagado</td>
+                            <td>${recibo.codigo_pago || 'N/A'}</td>
+                            <td>${recibo.concepto || 'N/A'}</td>
+                            <td>S/. ${recibo.deuda || '0.00'}</td>
+                            <td class="check_item"><img src="/frontend/Resources/Images/pagado.png"></td>
                         `;
                         tablaBody.appendChild(tr);
                     });

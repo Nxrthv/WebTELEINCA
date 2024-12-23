@@ -87,7 +87,7 @@
                             <td>${recibo.concepto || 'N/A'}</td>
                             <td>S/. ${recibo.deuda  || '0.00'}</td>
                             <td>${recibo.fecha_vencimiento || 'N/A'}</td>
-                            <td><button class="btn-pagar" onclick="window.location.href='/frontend/Views/panelPago.html'">Pagar</button></td>
+                            <td><button class="btn-pagar" onclick="guardarCodigoYRedirigir('${recibo.codigo}')">Pagar</button></td>
                             
                         `;
                         tablaBody.appendChild(tr);
@@ -179,7 +179,13 @@
                     document.getElementById('codigoUsuario').textContent = codigoUsuario;
                 }
             });
-             
+            function guardarCodigoYRedirigir(codigo) {
+            localStorage.setItem('codigoRecibo', codigo);  // Guarda el código en localStorage
+            localStorage.setItem('codigoUsuario', codigoUsuario);
+            window.location.href = '/frontend/Views/panelPago.html';  // Redirige a la página de pago
+            console.log(codigo);
+            console.log(codigoUsuario);
+            }
         </script>
 
     </div>

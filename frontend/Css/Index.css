@@ -243,6 +243,65 @@ body{
     transition: ease-in-out .3s;
 }
 
+.cookieCard {
+  margin-inline: 1em;
+  width: 400px;
+  height: 200px;
+  border-radius: 1em;
+  background: linear-gradient(to right,#198754,#4da674);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1em;
+  position: relative;
+  overflow: hidden;
+}
+
+.cookieCard::before {
+  width: 150px;
+  height: 150px;
+  content: "";
+  background: linear-gradient(to right,#4da674,#c1e6ba);
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  right: -25%;
+  top: -25%;
+}
+
+.cookieHeading {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: rgb(241, 241, 241);
+  z-index: 2;
+}
+
+.cookieDescription {
+  font-size: 0.9em;
+  color: rgb(241, 241, 241);
+  z-index: 2;
+}
+
+.cookieDescription a {
+  color: rgb(241, 241, 241);
+}
+
+.acceptButton {
+  padding: 11px 20px;
+  background-color: #198754;
+  transition-duration: .2s;
+  border: none;
+  color: rgb(241, 241, 241);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.acceptButton:hover {
+  background-color: #4da674;
+  transition-duration: .2s;
+}
+
 /* Botones Emergentes */
 .btn-emergente{
     max-width: 100%;

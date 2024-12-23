@@ -6,7 +6,7 @@ document.head.appendChild(popperScript);
 
 // Cargar Bootstrap.js
 var bootstrapScript = document.createElement('script');
-bootstrapScript.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js';
+bootstrapScript.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js';
 bootstrapScript.type = 'text/javascript';
 document.head.appendChild(bootstrapScript);
 

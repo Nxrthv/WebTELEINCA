@@ -1,6 +1,13 @@
 :root{
-    --color-primario: #198754;
-    --color-blanco: white;
+    --green: #198754;
+    --green0: #023336;
+    --green1: #c1e6ba;
+    --green2: #eaf8e7;
+    --green3: #4da674;
+}
+
+.f-wrap{
+  flex-wrap: wrap;
 }
 
 body{
@@ -8,99 +15,6 @@ body{
     box-sizing: border-box;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
-/* Navegacion */
-#nav{
-    z-index: 1000;
-    top: 0;
-    width: 100%;
-    position: sticky;
-}
-.navbar {
-    width: 100%;
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
-    transition: top 0.3s;
-}
-  
-.navbar.fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-  }
-.navbar-toggler-icon {
-    filter: invert(100%);
-    filter: brightness(10);
-}
-.dropdown-item:focus, .dropdown-item:hover {
-    background-color:#198754 !important;
-    color: white !important;
-  }
-
-#login > a > button {
-  --hover-color: var(--color-primario);
-  --arrow-width: 10px;
-  --arrow-stroke: 2px;
-  box-sizing: border-box;
-  border: 1px solid white;
-  border-radius: 20px;
-  color: white;
-  padding: .5em 1.8em;
-  background: var(--primary-color);
-  display: flex;
-  gap: 0.6em;
-  transition: 0.2s ease;
-  align-items: center;
-  font-weight: bold;
-}
-
-#login > a > button .arrow-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#login > a > button .arrow {
-  margin-top: 1px;
-  width: var(--arrow-width);
-  background: var(--primary-color);
-  height: var(--arrow-stroke);
-  position: relative;
-  transition: 0.2s;
-}
-
-#login > a > button .arrow::before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  border: solid white;
-  border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
-  display: inline-block;
-  top: -3px;
-  right: 3px;
-  transition: 0.2s;
-  padding: 3px;
-  transform: rotate(-45deg);
-}
-
-#login > a > button:hover {
-  background-color: var(--hover-color);
-}
-
-#login > a > button:hover .arrow {
-  background: white;
-}
-
-#login > a > button:hover .arrow:before {
-  right: 0;
-}
-#logo{
-    width: 150px;
-}
-
 /* Rutas */
 .cont-user{
     max-width: 25em;
@@ -120,7 +34,7 @@ body{
     height: 50px;
     background-color: white;
     margin: 20px;
-    color: #198754;
+    color: var(--green);
     position: relative;
     overflow: hidden;
     font-size: 14px;
@@ -295,12 +209,13 @@ body{
     justify-content: space-around;
 }
 #cont-promociones > .card{
+    border: 0;
     z-index: 1;
     border-radius: 1em;
     width: 14em;
-    background: var(--color-primario);
+    background: var(--green3);
     padding: 1.5em;
-    color: var(--color-blanco);
+    color: white;
 }
 .card > button{
     transition: ease .3s;

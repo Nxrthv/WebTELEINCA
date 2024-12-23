@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/frontend/Css/Index.css"> <!--Estilos de index-->
-    <link rel="stylesheet" href="/frontend/Css/Cable.css"> <!--Estilos de cable-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> <!--Bootstrap-->
+    <link rel="stylesheet" href="/frontend/Css/Cable.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com"> <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!--Google Fonts-->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> <!--Google Fonts Monserrat-->
-    <title>Cable</title>
+    <title>TELEINCA | Cable</title>
 </head>
 <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 <body>
-    <div id="contNav"></div>
+    <div class="position-sticky top-0" id="contNav" style="z-index: 1000;"></div>
 <div class="hero-section">
     <div class="hero-content">
-        <h1>Obten cable HD desde S/. 50.00</h1>
-        <p>Mas de 100 canales a tu alcance</p>
+        <h1>Obtén cable HD desde S/. 50.00</h1>
+        <p>Más de 100 canales a tu alcance</p>
         <p>¡La mejor conexión al mejor precio! Aprovecha este cable por solo 50 soles</p>
         <button id="btnInteresa" onclick="mostrarFormulario()">Me interesa 😊+</button>
     </div>
@@ -30,10 +28,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="cobertura-options">
-                    <button class="cobertura-btn" onclick="seleccionarCobertura('Huanuco')">
+                    <button class="cobertura-btn" onclick="seleccionarCobertura('Huánuco')">
                         <div>
                             <i class="bi bi-geo-alt-fill"></i><br>
-                            Huanuco
+                            Huánuco
                         </div>
                     </button>
                     <button class="cobertura-btn" onclick="seleccionarCobertura('Amarilis')">
@@ -63,11 +61,11 @@
 <div class="canales-section">
     <h2>Descubre los canales que tenemos para ti</h2>
     <div class="categorias-container">
-        <div class="categoria">Nacionales</div>
+        <div class="categoria display-6 rounded-pill">Nacionales</div>
         <div class="canales-grid">
             <div class="canal-item">
-                <img src="/frontend/Resources/Images/canales/CH_03.png" alt="TV PERU">
-                <p>TV PERU</p>
+                <img src="/frontend/Resources/Images/canales/CH_03.png" alt="TV PERÚ">
+                <p>TV PERÚ</p>
                 <p>Canal 03</p>
             </div>
             <div class="canal-item">
@@ -101,8 +99,8 @@
                 <p>Canal 14</p>
             </div>
             <div class="canal-item">
-                <img src="/frontend/Resources/Images/canales/CH_15.png" alt="America TV">
-                <p>America TV</p>
+                <img src="/frontend/Resources/Images/canales/CH_15.png" alt="América TV">
+                <p>América TV</p>
                 <p>Canal 15</p>
             </div>
             <div class="canal-item">
@@ -121,7 +119,7 @@
                 <p>Canal 108</p>
             </div>
         </div>
-        <div class="categoria">Entretenimiento</div>
+        <div class="categoria display-6 rounded-pill">Entretenimiento</div>
         <div class="canales-grid">
             <div class="canal-item">
                 <img src="/frontend/Resources/Images/canales/CH_18.jpg" alt="AZ MUNDO">
@@ -139,7 +137,7 @@
                 <p>Canal 20</p>
             </div>
             <div class="canal-item">
-                <img src="/frontend/Resources/Images/canales/CH_22.jpg" alt="SUN CHANNEL ">
+                <img src="/frontend/Resources/Images/canales/CH_22.jpg" alt="SUN CHANNEL">
                 <p>SUN CHANNEL</p>
                 <p>Canal 22</p>
             </div>
@@ -164,12 +162,12 @@
                 <p>Canal 26</p>
             </div>
             <div class="canal-item">
-                <img src="/frontend/Resources/Images/canales/CH_27.png" alt="AZ click">
+                <img src="/frontend/Resources/Images/canales/CH_27.png" alt="AZ CLICK">
                 <p>AZ CLICK</p>
                 <p>Canal 27</p>
             </div>
         </div>
-        <div class="categoria">Películas y series</div>
+        <div class="categoria display-6 rounded-pill">Películas y series</div>
         <div class="canales-grid">
             <div class="canal-item">
                 <img src="/frontend/Resources/Images/canales/CH_85.png" alt="UNIVERSAL CINEMA">
@@ -197,12 +195,12 @@
                 <p>Canal 89</p>
             </div>
             <div class="canal-item">
-                <img src="/frontend/Resources/Images/canales/CH_90.jpg" alt="PANICO">
-                <p>PANICO</p>
+                <img src="/frontend/Resources/Images/canales/CH_90.jpg" alt="PÁNICO">
+                <p>PÁNICO</p>
                 <p>Canal 90</p>
             </div>
             <div class="canal-item">
-                <img src="/frontend/Resources/Images/canales/CH_91.png" alt="fixed">
+                <img src="/frontend/Resources/Images/canales/CH_91.png" alt="FX">
                 <p>FX</p>
                 <p>Canal 91</p>
             </div>
@@ -252,7 +250,7 @@
                 <p>Canal 104</p>
             </div>
         </div> 
-        <div class="categoria">Infantiles y animacion</div>
+        <div class="categoria display-6 rounded-pill">Infantiles y animación</div>
         <div class="canales-grid">
             <div class="canal-item">
                 <img src="/frontend/Resources/Images/canales/CH_39.png" alt="PLIM PLIM TV">
@@ -260,13 +258,13 @@
                 <p>Canal 39</p>
             </div>
             <div class="canal-item">
-                <img src="/frontend/Resources/Images/canales/CH_40.png" alt="DYSNEY CHANNEL">
-                <p>DYSNEY CHANNEL</p>
+                <img src="/frontend/Resources/Images/canales/CH_40.png" alt="DISNEY CHANNEL">
+                <p>DISNEY CHANNEL</p>
                 <p>Canal 40</p>
             </div>
             <div class="canal-item">
-                <img src="/frontend/Resources/Images/canales/CH_41.png" alt="DYSNEY JUNIOR">
-                <p>DYSNEY JUNIOR</p>
+                <img src="/frontend/Resources/Images/canales/CH_41.png" alt="DISNEY JUNIOR">
+                <p>DISNEY JUNIOR</p>
                 <p>Canal 41</p>
             </div>
             <div class="canal-item">
@@ -300,7 +298,7 @@
                 <p>Canal 54</p>
             </div>
         </div>
-        <div class="categoria">Deportes</div>
+        <div class="categoria display-6 rounded-pill">Deportes</div>
         <div class="canales-grid">
             <div class="canal-item">
                 <img src="/frontend/Resources/Images/canales/CH_75.png" alt="ESPN">
@@ -348,12 +346,12 @@
                 <p>Canal 83</p>
             </div>
             <div class="canal-item">
-                <img src="/frontend/Resources/Images/canales/CH_84.png" alt="AMERICA SPORTS">
-                <p>AMERICA SPORTS</p>
+                <img src="/frontend/Resources/Images/canales/CH_84.png" alt="AMÉRICA SPORTS">
+                <p>AMÉRICA SPORTS</p>
                 <p>Canal 84</p>
             </div>
         </div>   
-        <div class="categoria">Noticias</div>
+        <div class="categoria display-6 rounded-pill">Noticias</div>
         <div class="canales-grid">
             <div class="canal-item">
                 <img src="/frontend/Resources/Images/canales/CH_55.jpg" alt="DEUTSCHE WELLE">
@@ -401,7 +399,7 @@
                 <p>Canal 63</p>
             </div>
         </div> 
-        <div class="categoria">Musicales</div>
+        <div class="categoria display-6 rounded-pill">Musicales</div>
         <div class="canales-grid">
             <div class="canal-item">
                 <img src="/frontend/Resources/Images/canales/CH_38.jpg" alt="LA RIVEREÑA">
@@ -414,8 +412,8 @@
                 <p>Canal 48</p>
             </div>
             <div class="canal-item">
-                <img src="/frontend/Resources/Images/canales/CH_49.png" alt="MIMUSICA PERU">
-                <p>MIMUSICA PERU</p>
+                <img src="/frontend/Resources/Images/canales/CH_49.png" alt="MIMUSICA PERÚ">
+                <p>MIMUSICA PERÚ</p>
                 <p>Canal 49</p>
             </div>
             <div class="canal-item">
@@ -439,7 +437,7 @@
                 <p>Canal 53</p>
             </div>
         </div>   
-        <div class="categoria">Ciencia y cultura</div>
+        <div class="categoria display-6 rounded-pill">Ciencia y cultura</div>
         <div class="canales-grid">
             <div class="canal-item">
                 <img src="/frontend/Resources/Images/canales/CH_28.jpg" alt="ANIMAL PLANET">
@@ -502,7 +500,7 @@
                 <p>Canal 74</p>
             </div>
         </div> 
-        <div class="categoria">Novelas</div>
+        <div class="categoria display-6 rounded-pill">Novelas</div>
         <div class="canales-grid">
             <div class="canal-item">
                 <img src="/frontend/Resources/Images/canales/CH_29.jpg" alt="CANAL DRAMA">
@@ -510,8 +508,8 @@
                 <p>Canal 29</p>
             </div>
             <div class="canal-item">
-                <img src="/frontend/Resources/Images/canales/CH_30.jpg" alt="UNIVISION">
-                <p>UNIVISION</p>
+                <img src="/frontend/Resources/Images/canales/CH_30.jpg" alt="UNIVISIÓN">
+                <p>UNIVISIÓN</p>
                 <p>Canal 30</p>
             </div>
             <div class="canal-item">
@@ -520,8 +518,8 @@
                 <p>Canal 31</p>
             </div>
             <div class="canal-item">
-                <img src="/frontend/Resources/Images/canales/CH_32.png" alt="AZ CORAZON">
-                <p>AZ CORAZON</p>
+                <img src="/frontend/Resources/Images/canales/CH_32.png" alt="AZ CORAZÓN">
+                <p>AZ CORAZÓN</p>
                 <p>Canal 32</p>
             </div>
             <div class="canal-item">
@@ -550,7 +548,7 @@
                 <p>Canal 37</p>
             </div>
         </div>
-        <div class="categoria">Religion</div>
+        <div class="categoria display-6 rounded-pill">Religión</div>
         <div class="canales-grid">
                 <div class="canal-item">
                     <img src="/frontend/Resources/Images/canales/CH_102.png" alt="ESNE TV">
@@ -568,16 +566,16 @@
                     <p>Canal 106</p>
                 </div>
                 <div class="canal-item">
-                    <img src="/frontend/Resources/Images/canales/CH_107.jpg" alt="MARIA VISION">
-                    <p>MARIA VISION</p>
+                    <img src="/frontend/Resources/Images/canales/CH_107.jpg" alt="MARÍA VISIÓN">
+                    <p>MARÍA VISIÓN</p>
                     <p>Canal 107</p>
                 </div>
         </div>    
-        <div class="categoria">Exclusivos</div>
+        <div class="categoria display-6 rounded-pill">Exclusivos</div>
         <div class="canales-grid">
                 <div class="canal-item">
-                    <img src="/frontend/Resources/Images/canales/CH_21.jpg" alt="CABLE VISION TV">
-                    <p>CABLE VISION TV</p>
+                    <img src="/frontend/Resources/Images/canales/CH_21.jpg" alt="CABLE VISIÓN TV">
+                    <p>CABLE VISIÓN TV</p>
                     <p>Canal 21</p>
                 </div>
         </div>    
@@ -586,7 +584,7 @@
 </div>
 
 <div class="beneficios-section">
-    <h2 class="text-center mb-5">Beneficios</h2>
+    <h2 class="text-center mb-5 display-6">Beneficios de Cable</h2>
     <div class="row justify-content-center">
         <div class="col-md-3 mb-4">
             <div class="beneficio-card">

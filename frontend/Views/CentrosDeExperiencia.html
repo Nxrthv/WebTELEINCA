@@ -3,52 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/frontend/Css/Index.css">
     <link rel="shortcut icon" href="/frontend/Resources/Images/logo.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>TELEINCA | Centros de Experiencia</title>
     <style>
-        /* Estilos personalizados para el mapa */
-        #map {
+        #container {
+            position: relative;
+            width: 100%;
+            height: 50vh;
+            overflow: hidden;
+            }
+            .window {
+            position: absolute;
             width: 100%;
             height: 100%;
-        }
-        /* Estilo del panel */
-        #panel {
-            background-color: #f4f4f4;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-        }
+            transition: transform 1s ease;
+            }
+            .window-2 {
+            transform: translateX(100%);
+            }
+            .slide-left {
+            transform: translateX(-100%);
+            }
+            .slide-left-reverse {
+            transform: translateX(-100%);
+            }
+            .btn-slide {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            }
+            .btn-back {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            }
     </style>
 </head>
 <body>
-    <div id="contNav"></div>
-    <div class="my-5 d-flex justify-content-around">
+    <div class="position-sticky top-0" id="contNav" style="z-index: 1000;"></div>
+    <div class="my-5 d-flex justify-content-around container">
         <div class="align-content-center">
-            <h3>Centros de Experiencia</h3>
-            <p>Conoce todos nuestros centros de Experiancia</p>
+            <h3 class="display-5">Centros de Experiencia</h3>
+            <p>Confia unicamente en nuestros canales de contacto oficiales</p>
         </div>
-        <img class="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGD6cBxw-CcN_Qtev3_bf-pexmxcGLqARSWg&s" width="50%">
+        <img class="img-fluid" src="https://media.ambito.com/p/0ec3b619adc2aac5bdca0152938bfec9/adjuntos/239/imagenes/040/244/0040244118/1200x675/smart/servicio-al-clientejpg.jpg" width="50%">
     </div>
-    <div class="p-5 bg-secondary text-white">
+    <div id="container">
+        <div>
+            <button class="btn btn-success" onclick="goBackToFirstWindow()">Atencion remota</button>
+            <button class="btn btn-success" onclick="showSecondWindow()">Atencion presencial</button>
+        </div>
+        <div id="window1" class="window window-1 d-flex" style="background-color: #4da674;">
+            <div class="text-center my-5 text-white w-50">
+                <p class="display-6">Para comprar o contratar nuestros servicios</p>
+                <p>Lunes a Sabados: 8:30 - 18:30</p>
+                <p>Tambien atendemos por WhatsApp</p>
+            </div>
+            <div class="d-flex flex-wrap my-P5 w-50">
+                <buton class="btn btn-success p-5 m-1 w-50">contacto</buton>
+                <buton class="btn btn-success p-5 m-1 w-50">contacto</buton>
+                <buton class="btn btn-success p-5 m-1 w-50">contacto</buton>
+                <buton class="btn btn-success p-5 m-1 w-50">contacto</buton>
+            </div>
+        </div>
+        <div id="window2" class="window window-2" style="background-color: #4da674;">
+            <div class="text-center my-5 text-white">
+                <p class="display-6">Centros de Atención</p>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+    <div class="p-5 text-white" style="background-color: #4da674;">
         <h3 class="pb-4 display-6">Visita nuestro centro de experiencia en Huanuco</h3>
-        <div class="d-flex justify-content-evenly">
-            <div class="d-flex w-25 align-items-center">
+        <div class="d-flex f-wrap justify-content-evenly">
+            <div class="d-flex align-items-center">
                 <i class="bi bi-geo-alt-fill px-2" style="font-size: 5em;"></i>
-                <p>Centro de Experiencia Huanuco: Jr. Abtao N° 1719 Urb. Paucarbambabilla Huanuco-Huanuco-Huanuco</p>
+                <p><strong>Centro de Experiencia Huanuco</strong> <br> Jr. Abtao N° 1719 Urb. Paucarbambabilla - Huanuco</p>
             </div>
-            <div class="d-flex w-25 align-items-center">
+            <div class="d-flex align-items-center">
                 <i class="bi bi-headset px-2" style="font-size: 5em;"></i>
-                <p>Atencion al cliente<br>+51 962 624 690</p>
+                <p><strong>Atencion al cliente</strong> <br> +51 962 624 690</p>
             </div>
-            <div class="d-flex w-25 align-items-center">
+            <div class="d-flex align-items-center">
                 <i class="bi bi-whatsapp px-2" style="font-size: 4em;"></i>
-                <p>Ventas<br>+51 962 624 690</p>
+                <p><strong>Ventas</strong> <br> +51 962 624 690</p>
             </div>
-        </div>
+        </div>  
     </div>
+    <div id="contFoot"></div>
+    <script>
+        function showSecondWindow() {
+            const window1 = document.getElementById('window1');
+            const window2 = document.getElementById('window2');
+
+            window1.style.transition = 'transform 1s ease';
+            window1.style.transform = 'translateX(-100%)';
+
+            window2.style.transition = 'transform 1s ease';
+            window2.style.transform = 'translateX(0)';
+
+            setTimeout(() => {
+                window1.style.zIndex = '1';
+                window2.style.zIndex = '2';
+            }, 1000);
+        }
+
+        function goBackToFirstWindow() {
+            const window1 = document.getElementById('window1');
+            const window2 = document.getElementById('window2');
+
+            window2.style.transition = 'transform 1s ease';
+            window2.style.transform = 'translateX(100%)';
+
+            window1.style.transition = 'transform 1s ease';
+            window1.style.transform = 'translateX(0)';
+
+            setTimeout(() => {
+                window2.style.zIndex = '1';
+                window1.style.zIndex = '2';
+            }, 1000);
+        }
+    </script>
+    <script src="/frontend/Resources/Js/Scripts.js"></script>
+    <script src="/frontend/Resources/Js/Elements.js"></script>
 </body>
-<script src="/frontend/Resources/Js/Scripts.js"></script>
-<script src="/frontend/Resources/Js/Elements.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> 
 </html>

@@ -4,13 +4,6 @@
         background-color: #aaeccd;
     }
 
-    .beneficios-section h2 {
-        color: #333;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        margin-bottom: 2rem;
-    }
-
     .beneficio-card {
         background: white;
         padding: 1.5rem;
@@ -118,13 +111,9 @@
     .categoria {
         background-color: #198754;
         color: white;
-        padding: clamp(15px, 3vw, 20px) clamp(20px, 4vw, 40px);
-        border-radius: 25px;
-        font-family: 'Montserrat', sans-serif;
-        font-size: clamp(2rem, 2vw, 1.5rem);
-        font-weight: bold;
+        text-align: center;
+        padding: 10px;
         cursor: pointer;
-        transition: all 0.3s ease;
         width: 90%;
         max-width: 800px;
     }

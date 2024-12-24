@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/frontend/Css/Register.css">
   <link rel="shortcut icon" href="/frontend/Resources/Images/logo.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com"> <!--Google Fonts-->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!--Google Fonts-->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> <!--Google Fonts Monserrat-->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title>TELEINCA | Registrarse</title>
 </head>
 <body style="background-color: #eaf8e7;">
@@ -66,19 +69,36 @@
         console.log('Datos de la respuesta:', data);
         
         if (data.success) {
-          console.log('Login exitoso, redirigiendo...');
-          sessionStorage.setItem('nombreUsuario', data.nombre);
-          sessionStorage.setItem('codigoUsuario', data.code);
-          window.location.href = '/frontend/Views/panelUser.html';
+          Swal.fire({
+            icon: 'success',
+            title: '¡Bienvenido!',
+            text: `Hola, ${data.nombre}`,
+            confirmButtonText: 'Aceptar'
+          }).then(() => {
+            sessionStorage.setItem('nombreUsuario', data.nombre);
+            sessionStorage.setItem('codigoUsuario', data.code);
+            window.location.href = '/frontend/Views/panelUser.html';
+          });
         } else {
           console.log('Login fallido:', data.message || 'Sin mensaje de error');
-          alert('Credenciales incorrectas');
+          Swal.fire({
+            icon: 'error',
+            title: '¡Ups!',
+            text: data.message || 'Credenciales incorrectas. Intenta de nuevo.',
+            confirmButtonText: 'Aceptar'
+          });
         }
       } catch (error) {
         console.error('Error detallado:', error);
-        alert('Error al intentar iniciar sesión');
+        Swal.fire({
+          icon: 'error',
+          title: '¡Ups!',
+          text: 'Error al intentar iniciar sesión',
+          confirmButtonText: 'Aceptar'
+        });
       }
     }
   </script>
+  
 </body>
 </html>

@@ -10,13 +10,13 @@
         #container {
             position: relative;
             width: 100%;
-            height: 50vh;
+            height: 21em;
             overflow: hidden;
             }
             .window {
             position: absolute;
             width: 100%;
-            height: 100%;
+            height: 90%;
             transition: transform 1s ease;
             }
             .window-2 {
@@ -49,49 +49,41 @@
         </div>
         <img class="img-fluid" src="https://media.ambito.com/p/0ec3b619adc2aac5bdca0152938bfec9/adjuntos/239/imagenes/040/244/0040244118/1200x675/smart/servicio-al-clientejpg.jpg" width="50%">
     </div>
-    <div id="container">
-        <div>
+    <div id="container" style="top: -4em;">
+        <div class="w-25 d-flex justify-content-evenly mb-2">
             <button class="btn btn-success" onclick="goBackToFirstWindow()">Atencion remota</button>
             <button class="btn btn-success" onclick="showSecondWindow()">Atencion presencial</button>
         </div>
-        <div id="window1" class="window window-1 d-flex" style="background-color: #4da674;">
-            <div class="text-center my-5 text-white w-50">
+        <div id="window1" class="window window-1 d-flex align-items-center py-4" style="background-color: #4da674;">
+            <div class="text-center my-5 text-white" style="width: 50%;">
                 <p class="display-6">Para comprar o contratar nuestros servicios</p>
                 <p>Lunes a Sabados: 8:30 - 18:30</p>
                 <p>Tambien atendemos por WhatsApp</p>
             </div>
-            <div class="d-flex flex-wrap my-P5 w-50">
-                <buton class="btn btn-success p-5 m-1 w-50">contacto</buton>
-                <buton class="btn btn-success p-5 m-1 w-50">contacto</buton>
-                <buton class="btn btn-success p-5 m-1 w-50">contacto</buton>
-                <buton class="btn btn-success p-5 m-1 w-50">contacto</buton>
+            <div class="d-flex flex-wrap my-5" style="width: 50%;">
+                <buton class="btn btn-success m-2 align-content-center fw-bolder border-0" style="width: 18em; height: 6em; font-size: 16px;"><i class="bi bi-whatsapp"></i> General</buton>
+                <buton class="btn btn-success m-2 align-content-center fw-bolder border-0" style="width: 18em; height: 6em; font-size: 16px;"><i class="bi bi-whatsapp"></i> Oficina Huanuco</buton>
+                <buton class="btn btn-success m-2 align-content-center fw-bolder border-0" style="width: 18em; height: 6em; font-size: 16px;"><i class="bi bi-whatsapp"></i> Oficina Ambo</buton>
+                <buton class="btn btn-success m-2 align-content-center fw-bolder border-0" style="width: 18em; height: 6em; font-size: 16px;"><i class="bi bi-whatsapp"></i> Oficina La Merced</buton>
             </div>
         </div>
-        <div id="window2" class="window window-2" style="background-color: #4da674;">
-            <div class="text-center my-5 text-white">
-                <p class="display-6">Centros de Atención</p>
-            </div>
-            <div>
-
-            </div>
+        <div id="window2" class="window align-items-center window-2 p-4 justify-content-between text-white" style="background-color: #4da674;">
+            <h3 class="pb-4 display-6">Visita nuestro centro de experiencia en Huanuco</h3>
+            <div class="d-flex f-wrap justify-content-evenly">
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-geo-alt-fill px-2" style="font-size: 5em;"></i>
+                    <p><strong>Centro de Experiencia Huanuco</strong> <br> Jr. Abtao N° 1719 Urb. Paucarbambabilla - Huanuco</p>
+                </div>
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-headset px-2" style="font-size: 5em;"></i>
+                    <p><strong>Atencion al cliente</strong> <br> +51 962 624 690</p>
+                </div>
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-whatsapp px-2" style="font-size: 4em;"></i>
+                    <p><strong>Ventas</strong> <br> +51 962 624 690</p>
+                </div>
+            </div> 
         </div>
-    </div>
-    <div class="p-5 text-white" style="background-color: #4da674;">
-        <h3 class="pb-4 display-6">Visita nuestro centro de experiencia en Huanuco</h3>
-        <div class="d-flex f-wrap justify-content-evenly">
-            <div class="d-flex align-items-center">
-                <i class="bi bi-geo-alt-fill px-2" style="font-size: 5em;"></i>
-                <p><strong>Centro de Experiencia Huanuco</strong> <br> Jr. Abtao N° 1719 Urb. Paucarbambabilla - Huanuco</p>
-            </div>
-            <div class="d-flex align-items-center">
-                <i class="bi bi-headset px-2" style="font-size: 5em;"></i>
-                <p><strong>Atencion al cliente</strong> <br> +51 962 624 690</p>
-            </div>
-            <div class="d-flex align-items-center">
-                <i class="bi bi-whatsapp px-2" style="font-size: 4em;"></i>
-                <p><strong>Ventas</strong> <br> +51 962 624 690</p>
-            </div>
-        </div>  
     </div>
     <div id="contFoot"></div>
     <script>

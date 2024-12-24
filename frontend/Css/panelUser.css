@@ -1,46 +1,10 @@
 /* Base styles */
 body {
-    font-family: 'Montserrat', sans-serif;
     margin: 0 auto;
     background-color: #f5f5f5;
     padding: 0 15px;
     width: 100%;
     box-sizing: border-box;
-}
-
-.container {
-    max-width: 100%;
-    
-    padding: 0 15px;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 12px auto;
-}
-
-/* Header */
-.header {
-    background-color: #198754;
-    color: white;
-    padding: 12px;
-    border-radius: 15px;
-    margin-bottom: 15px;
-    width: calc(100% - 30px);
-    margin: 15px auto;
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    width: 100%;
-    
-}
-
-h1 {
-    font-size: clamp(1.2em, 4vw, 1.8em);
-    margin: 0;
 }
 
 .btn-cerrar-sesion {
@@ -124,26 +88,15 @@ h1 {
     transition: 800ms ease all;
 }
 
-/* Tabs */
-.tabs {
-    display: flex;
-    gap: clamp(4px, 1vw, 8px);
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-    width: calc(100% - 30px);
-}
-
 .tab {
-    padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px);
     border: none;
     background: none;
-    cursor: pointer;
     font-size: clamp(14px, 3vw, 16px);
     color: #666;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     flex: 1;
     text-align: center;
-    min-width: 120px;
+    min-width: 120px;   
 }
 
 .tab.active {
@@ -182,53 +135,15 @@ h1 {
 }
 
 /* Table */
-.tabla-container {
-    margin: 20px auto;
-    overflow-x: auto;
-    width: calc(100% - 30px);
-    
-    -webkit-overflow-scrolling: touch;
-}
-
-.tabla-recibos {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    margin: 12px auto;
-    width: calc(100% - 30px);
-}
-
-.tabla-recibos th,
-.tabla-recibos td {
-    padding: clamp(8px, 2vw, 12px) clamp(10px, 2vw, 15px);
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    font-size: clamp(12px, 2.5vw, 14px);
-}
-
-.tabla-recibos th {
-    background-color: #198754;
-    color: white;
-    font-weight: bold;
-    white-space: nowrap;
-}
-
-.tabla-recibos tr:hover {
-    background-color: #f5f5f5;
-}
 .check_item {
     display: flex;
-    align-items: center;
+    justify-content: center;
     padding: 10px;
-    width: 50px; /* Ancho en píxeles */
-    height: 50px; /* Alto en píxeles */
 
 }
 .check_item img {
-    width: 100%; /* Ajusta la imagen al contenedor */
-    height: 100%; /* Ajusta la altura al contenedor */
-    object-fit: contain; /* Asegura que la imagen mantenga su proporción */
+    width: 30px;
+    height: 30px;
 }
 
   

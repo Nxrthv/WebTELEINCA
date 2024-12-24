@@ -31,14 +31,14 @@ LEFT JOIN
     "SH_teleinca01".cobros_servicio cs
     ON d.codigo_abonado = cs.codigo_abonado
 WHERE 
-    (d.codigo_cobro IS not NULL OR d.codigo_cobro = '')
+    (d.codigo_cobro IS NOT NULL AND trim(d.codigo_cobro) != '')
     AND cs.anulado = 'f'
     AND d.anulado = 'f'
     AND d.fecha_ultimo_pago <= '2024-12-31'
 	  AND d.codigo_abonado = $1
 ORDER BY
 	d.codigo_abonado ASC,
-    d.fecha_ultimo_pago ASC
+    d.fecha_ultimo_pago DESC
     `;
     const result = await pool.query(query, [codigoUsuario]);
 

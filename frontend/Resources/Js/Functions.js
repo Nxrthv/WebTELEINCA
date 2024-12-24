@@ -39,3 +39,10 @@ function smoothScrollTo(sectionId) {
 
     requestAnimationFrame(animation);
 };
+
+function mejorarPlan() {
+        const mensaje = encodeURIComponent('Hola! Estoy interesado en mejorar mi plan de Internet.');
+        const numeroWhatsApp = '+51903075166';
+        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+        window.open(urlWhatsApp, '_blank');
+    }

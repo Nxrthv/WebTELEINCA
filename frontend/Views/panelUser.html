@@ -15,7 +15,9 @@
             <p>¡Hola, <span id="nombreUsuario"></span>! 👋 - <small>ID: <span id="codigoUsuario"></span></small></p>
             <div class="d-flex justify-content-between">
                 <p>Gestiona tus recibos</p>
-                <a href="/Index.html" style="height: 40px;" class="btn btn-danger mt-3"><i class="bi bi-box-arrow-right"></i> Salir</a>
+                <button onclick="cerrarSesion()" style="height: 40px;" class="btn btn-danger mt-3">
+                    <i class="bi bi-box-arrow-right"></i> Salir
+                </button>
             </div>
         </div>
         
@@ -176,8 +178,22 @@
             console.log(codigo);
             console.log(codigoUsuario);
             }
-        </script>
 
+            function cerrarSesion() {
+                // Limpiar todos los datos 
+                sessionStorage.clear();
+                localStorage.clear();
+                
+                // Redirigir al login
+                window.location.href = '/frontend/Views/Register.html';
+                
+                // Denegar navegación hacia atrás
+                window.history.pushState(null, '', '/Index.html');
+                window.onpopstate = function(event) {
+                    window.history.forward();
+                };
+            }
+        </script>
     </div>
 </body>
 </html>

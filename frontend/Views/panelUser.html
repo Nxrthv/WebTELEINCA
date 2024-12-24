@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <title>TELEINCA | Panel de Usuario</title>
 </head>
-<body>
+<body style="background-color: #eaf8e7;">
     <div class="container">
         <div class="bg-success display-6 text-white rounded px-4 mt-4 py-2">
             <p>¡Hola, <span id="nombreUsuario"></span>! 👋 - <small>ID: <span id="codigoUsuario"></span></small></p>
             <div class="d-flex justify-content-between">
                 <p>Gestiona tus recibos</p>
-                <button onclick="cerrarSesion()" style="height: 40px;" class="btn btn-danger mt-3">
+                <button onclick="cerrarSesion()" style="height: 40px; width: 100px;" class="btn btn-danger btn-fluid px-3 mt-3">
                     <i class="bi bi-box-arrow-right"></i> Salir
                 </button>
             </div>
@@ -26,7 +26,7 @@
             <button class="py-3 tab" onclick="cambiarTab('pagados')">Recibos Pagados</button>
         </div>
 
-        <div id="pendientes" class="tab-content active">
+        <div id="pendientes" class="tab-content table-responsive active">
             <table class="table mt-2 table-hover border text-center">
                 <thead class="bg-success text-white">
                     <tr>
@@ -42,7 +42,7 @@
             </table>
         </div>
         
-        <div id="pagados" class="tab-content">
+        <div id="pagados" class="tab-content table table-responsive">
             <table class="table mt-2 text-center table-striped border">
                 <thead class="bg-success text-white">
                     <tr>
@@ -56,7 +56,7 @@
                 </tbody>
             </table>
         </div>
-        
+        <script src="/frontend/Resources/Js/Scripts.js"></script>
         <script>
             async function cargarRecibosPendientes() {
                 try {
@@ -112,7 +112,7 @@
                             <td>${recibo.codigo_pago || 'N/A'}</td>
                             <td>${recibo.concepto || 'N/A'}</td>
                             <td>S/. ${recibo.deuda || '0.00'}</td>
-                            <td class="check_item"><img src="/frontend/Resources/Images/pagado.png"></td>
+                            <td><img class="img img-fluid check-item" src="/frontend/Resources/Images/pagado.png"></td>
                         `;
                         tablaBody.appendChild(tr);
                     });

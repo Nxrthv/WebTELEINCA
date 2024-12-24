@@ -79,7 +79,7 @@
                             <td>${recibo.concepto || 'N/A'}</td>
                             <td>S/. ${recibo.deuda  || '0.00'}</td>
                             <td>${recibo.fecha_vencimiento || 'N/A'}</td>
-                            <td><button class="btn btn-success rounded-pill px-4" onclick="guardarCodigoYRedirigir('${recibo.codigo}')">Pagar</button></td>
+                            <td><button class="btn btn-success rounded-pill px-4" onclick="guardarCodigoYRedirigir('${recibo.codigo}', '${recibo.deuda}')">Pagar</button></td>
                             
                         `;
                         tablaBody.appendChild(tr);
@@ -171,12 +171,14 @@
                     document.getElementById('codigoUsuario').textContent = codigoUsuario;
                 }
             });
-            function guardarCodigoYRedirigir(codigo) {
+            function guardarCodigoYRedirigir(codigo, monto) {
             localStorage.setItem('codigoRecibo', codigo);  // Guarda el código en localStorage
             localStorage.setItem('codigoUsuario', codigoUsuario);
+            localStorage.setItem('montoPago', monto);  // Guardamos el monto específico
             window.location.href = '/frontend/Views/panelPago.html';  // Redirige a la página de pago
             console.log(codigo);
             console.log(codigoUsuario);
+            console.log(monto);
             }
 
             function cerrarSesion() {

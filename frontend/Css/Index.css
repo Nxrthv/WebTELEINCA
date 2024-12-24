@@ -199,14 +199,16 @@ body{
 .d-img{
     height: 100%;
 }
-#cont-promociones{
-    width: 95%;
-    margin: auto;
-    justify-content: space-around;
+
+.cont{
+  min-width: 95%;
+  display: flex;
+  padding: auto;
+  justify-content: center;
 }
+
 #cont-promociones > .card{
     border: 0;
-    z-index: 1;
     border-radius: 1em;
     width: 14em;
     background: var(--green3);

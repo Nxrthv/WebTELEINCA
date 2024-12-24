@@ -77,7 +77,7 @@
                             <td>${recibo.concepto || 'N/A'}</td>
                             <td>S/. ${recibo.deuda  || '0.00'}</td>
                             <td>${recibo.fecha_vencimiento || 'N/A'}</td>
-                            <td><button class="btn-pagar" onclick="guardarCodigoYRedirigir('${recibo.codigo}')">Pagar</button></td>
+                            <td><button class="btn btn-success rounded-pill px-4" onclick="guardarCodigoYRedirigir('${recibo.codigo}')">Pagar</button></td>
                             
                         `;
                         tablaBody.appendChild(tr);

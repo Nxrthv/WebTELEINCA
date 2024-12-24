@@ -5,7 +5,7 @@ const pool = require('../config/database');
 router.get('/:codigoUsuario', async (req, res) => {
   try {
     const { codigoUsuario } = req.params;  // Recibir el parámetro del código único
-    console.log('codigoUsuario:', codigoUsuario);  // Depurar el parámetro recibido
+    //console.log('codigoUsuario:', codigoUsuario);  // Depurar el parámetro recibido
 
     const query = `
     

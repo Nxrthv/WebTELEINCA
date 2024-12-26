@@ -266,7 +266,18 @@
         font-size: 1rem;
         line-height: 1.6;
     }
-
+    .card-body-imagen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .card-body-imagen i {
+        padding: 30px;
+        border-radius: 50%;
+        background-color: rgba(0,0,0,0.05);
+    }
     /* Media Queries */
     @media (max-width: 768px) {
         .service-card {

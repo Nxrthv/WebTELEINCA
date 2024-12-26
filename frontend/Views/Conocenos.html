@@ -1,16 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/frontend/Resources/Images/logo.ico" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/frontend/Resources/Images/logo.ico" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <title>TELEINCA | Conocenos</title>
+    <style>
+        .cont-somos {
+            background-image: URL("https://www.intecsus.net/wp-content/uploads/2017/02/banner-4-telecomunicaciones-soluciones-por-industria.png");
+            height: 25em;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .text-cont {
+            z-index: 100;
+            border-radius: 1em;
+            font-size: 20px;
+        }
+
+        .card-info {
+            min-width: 20em;
+            transition: 0.5s ease;
+        }
+        .card-info:hover {
+            transform: scale(105%);
+            transition: 0.5s ease;
+        }
+
+        .collage-image {
+            object-fit: cover;
+            height: 200px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .expandable-button {
+            position: relative;
+            padding: 10px 20px;
+            width: 200px;
+            font-size: 16px;
+            background-color: #004443;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .expandable-button .content {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            font-weight: lighter;
+        }
+        .expandable-button:hover {
+            width: 100%;
+            background-color: #00755c;
+            margin: 1em 0 1em 0;
+            overflow-y: auto;
+        }
+        .expandable-button:hover .content {
+            opacity: 1;
+            max-height: 50px;
+        }
+
+        .testimonial-card {
+            margin: auto;
+            width: 380px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-quote {
+            font-size: 1.2rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="position-sticky top-0" id="contNav" style="z-index: 1000;"></div>
+    <div class="position-sticky top-0" id="contNav" style="z-index: 1000"></div>
+    <section id="somos">
+        <div class="cont-somos d-flex align-items-center justify-content-start">
+            <div class="text-cont w-md-100 w-100 text-white p-4">
+                <p class="display-6 fw-bold">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+                <p class="fw-light">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde
+                    placeat quod totam enim provident ullam illum eaque dolore veritatis
+                    reiciendis.
+                </p>
+                <button class="btn btn-success">Más información</button>
+            </div>
+        </div>
+    </section>
+    <section id="tecnologia-calidad" style="margin-top: -2em">
+        <div class="container col-12 d-flex justify-content-center flex-wrap">
+            <div class="text-white col-4 py-2 px-5 text-center card-info" style="background-color: #002e34">
+                <i class="bi bi-person-check-fill" style="font-size: 5em"></i>
+                <p>
+                    <strong>TECNOLOGY</strong><br /><small class="fw-light">Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit.
+                        Temporibus laborum facilis quisquam qui tempore dicta!</small>
+                </p>
+            </div>
+            <div class="text-white col-4 py-2 px-5 text-center card-info" style="background-color: #004443">
+                <i class="bi bi-person-check-fill" style="font-size: 5em"></i>
+                <p>
+                    <strong>TECNOLOGY</strong><br /><small class="fw-light">Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit.
+                        Temporibus laborum facilis quisquam qui tempore dicta!</small>
+                </p>
+            </div>
+            <div class="text-white col-4 py-2 px-5 text-center card-info" style="background-color: #00755c">
+                <i class="bi bi-person-check-fill" style="font-size: 5em"></i>
+                <p>
+                    <strong>TECNOLOGY</strong><br /><small class="fw-light">Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit.
+                        Temporibus laborum facilis quisquam qui tempore dicta!</small>
+                </p>
+            </div>
+        </div>
+    </section>
+    <section id="experiencia " class="container">
+        <div class="my-5 d-flex flex-wrap col-12">
+            <img src="/frontend/Resources/Images/beneficio_icon/collage.jpg" class="img img-fluid col-lg-6" style="max-height: max-content;" alt="">
+            <div class="col-lg-6">
+                <p class="display-6 mx-4 mb-4">¿Por que deberias elegirnos?</p>
+                <p class="fw-light px-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem minus eveniet vel quam eum earum ut tempora! Doloremque, ullam ipsa!</p>
+                <div class="mx-3">
+                    <div class="m-2">
+                        <button class="expandable-button">
+                            Nuestra Experiencia
+                            <div class="content">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Sequi, suscipit!
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="m-2">
+                        <button class="expandable-button">
+                            Nuestra Experiencia
+                            <div class="content">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Adipisci, illum.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="m-2">
+                        <button class="expandable-button">
+                            Nuestra Experiencia
+                            <div class="content">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Adipisci, illum.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="m-2">
+                        <button class="expandable-button">
+                            Nuestra Experiencia
+                            <div class="content">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Adipisci, illum.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="cobertura-alcance">
+
+    </div>
+    <div id="compromiso">
+
+    </div>
+    <section id="comentarios" class="container mb-5">
+        <h2 class="text-center mb-4">Lo que dicen nuestros clientes</h2>
+        <div id="testimonialCarousel" class="carousel slide m-auto" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="testimonial-card text-center text-black">
+                                <i class="bi bi-chat-left-quote"></i>
+                                <p class="testimonial-quote">
+                                    "La velocidad de internet es increíble, nunca había tenido una conexión tan estable. El servicio técnico siempre está disponible cuando lo necesito."
+                                </p>
+                                <p class="testimonial-author">
+                                    <i class="bi bi-person-check-fill"></i> - Ana Martínez, Cliente Residencial
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="testimonial-card text-center text-black">
+                                <i class="bi bi-chat-left-quote"></i>
+                                <p class="testimonial-quote">
+                                    "Como empresa de desarrollo de software, necesitábamos una conexión confiable y de alta velocidad. TELEINCA superó nuestras expectativas."
+                                </p>
+                                <p class="testimonial-author">
+                                    <i class="bi bi-person-check-fill"></i> - Roberto Sánchez, CEO TechSolutions
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="testimonial-card text-center text-black">
+                                <i class="bi bi-chat-left-quote"></i>
+                                <p class="testimonial-quote">
+                                    "La instalación fue rápida y profesional. Los técnicos fueron muy amables y explicaron todo el proceso detalladamente."
+                                </p>
+                                <p class="testimonial-author">
+                                    <i class="bi bi-person-check-fill"></i> - María González, Cliente Residencial
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="testimonial-card text-center text-black">
+                                <i class="bi bi-chat-left-quote"></i>
+                                <p class="testimonial-quote">
+                                    "Nuestro hotel necesitaba una solución de internet confiable para nuestros huéspedes. TELEINCA nos proporcionó exactamente lo que necesitábamos."
+                                </p>
+                                <p class="testimonial-author">
+                                    <i class="bi bi-person-check-fill"></i> - Jorge Ramírez, Gerente Hotel Plaza
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="testimonial-card text-center text-black">
+                                <i class="bi bi-chat-left-quote"></i>
+                                <p class="testimonial-quote">
+                                    "La relación calidad-precio es excelente. El servicio al cliente es excepcional y siempre están dispuestos a ayudar."
+                                </p>
+                                <p class="testimonial-author">
+                                    <i class="bi bi-person-check-fill"></i> - Luis Torres, Cliente Residencial
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="testimonial-card text-center text-black">
+                                <i class="bi bi-chat-left-quote"></i>
+                                <p class="testimonial-quote">
+                                    "Como centro educativo, necesitábamos una conexión robusta para nuestras clases en línea. TELEINCA nos brindó una solución perfecta."
+                                </p>
+                                <p class="testimonial-author">
+                                    <i class="bi bi-person-check-fill"></i> - Carmen Vega, Directora Instituto Técnico
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="testimonial-card text-center text-black">
+                                <i class="bi bi-chat-left-quote"></i>
+                                <p class="testimonial-quote">
+                                    "Llevamos más de 5 años con el servicio y nunca hemos tenido problemas graves. La atención al cliente es rápida y eficiente."
+                                </p>
+                                <p class="testimonial-author">
+                                    <i class="bi bi-person-check-fill"></i> - Pedro Díaz, Cliente Residencial
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="testimonial-card text-center text-black">
+                                <i class="bi bi-chat-left-quote"></i>
+                                <p class="testimonial-quote">
+                                    "Como clínica necesitábamos un servicio de internet confiable 24/7. TELEINCA nos ha proporcionado exactamente eso y más."
+                                </p>
+                                <p class="testimonial-author">
+                                    <i class="bi bi-person-check-fill"></i> - Dr. Felipe Morales, Director Clínica San Juan
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Carousel controls -->
+            <button class="carousel-control-prev text-black" style="font-size: 2em;" type="button" data-bs-target="#testimonialCarousel"
+                data-bs-slide="prev"><i class="bi bi-caret-left"></i></button>
+            <button class="carousel-control-next text-black" style="font-size: 2em;" type="button" data-bs-target="#testimonialCarousel"
+                data-bs-slide="next"><i class="bi bi-caret-right"></i></button>
+        </div>
+    </section>
     <div id="contFoot"></div>
 </body>
 <script src="/frontend/Resources/Js/Elements.js"></script>
 <script src="/frontend/Resources/Js/Scripts.js"></script>
+
 </html>

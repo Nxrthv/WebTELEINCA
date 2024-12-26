@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,78 +13,70 @@
             width: 100%;
             height: 20em;
             overflow: hidden;
-            }
-            .window {
+        }
+
+        .window {
             position: absolute;
             width: 100%;
             height: 90%;
             transition: transform 1s ease;
-            }
-            .window-2 {
+        }
+
+        .window-2 {
             transform: translateX(100%);
-            }
-            .slide-left {
+        }
+
+        .slide-left {
             transform: translateX(-100%);
-            }
-            .slide-left-reverse {
+        }
+
+        .slide-left-reverse {
             transform: translateX(-100%);
-            }
-            .btn-slide {
+        }
+
+        .btn-slide {
             position: absolute;
             top: 20px;
             right: 20px;
-            }
-            .btn-back {
+        }
+
+        .btn-back {
             position: absolute;
             top: 20px;
             left: 20px;
-            }
+        }
     </style>
 </head>
+
 <body>
     <div class="position-sticky top-0" id="contNav" style="z-index: 1000;"></div>
-    <div class="my-5 d-flex justify-content-around container">
+    <div class="my-5 d-flex justify-content-evenly flex-wrap">
         <div class="align-content-center">
-            <h3 class="display-5">Centros de Experiencia</h3>
-            <p>Confia unicamente en nuestros canales de contacto oficiales</p>
-        </div>
-        <img class="img-fluid" src="https://media.ambito.com/p/0ec3b619adc2aac5bdca0152938bfec9/adjuntos/239/imagenes/040/244/0040244118/1200x675/smart/servicio-al-clientejpg.jpg" width="50%">
-    </div>
-    <div id="container" style="top: -4em; margin-bottom: -4em;">
-        <div class="w-25 d-flex justify-content-evenly mb-2">
-            <button class="btn btn-success" onclick="goBackToFirstWindow()">Atencion remota</button>
-            <button class="btn btn-success" onclick="showSecondWindow()">Atencion presencial</button>
-        </div>
-        <div id="window1" class="window window-1 d-flex align-items-center py-4" style="background-color: #4da674;">
-            <div class="text-center my-5 text-white" style="width: 50%;">
-                <p class="display-6">Para comprar o contratar nuestros servicios</p>
-                <p>Lunes a Sabados: 8:30 - 18:30</p>
-                <p>Tambien atendemos por WhatsApp</p>
+            <h3 class="display-5 mx-3">Centros de Experiencia</h3>
+            <p class="mx-4">Confía únicamente en nuestros canales de contacto oficiales</p>
+            <div class="container p-3" style="max-height: 300px; width: 380px; overflow-y: auto;">
+                <div class="list-group">
+                    <div class="list-group-item">
+                        <p><strong style="color: #00755c;">Centro Huanuco</strong><br><small>Jr. Las Dalias N°134 Urb.Paucarbambilla - Huanuo</small><br>
+                            <a href="/Index.html"><small>https://teleinca.com.pe/teleinca-centro-de-huanuco</small></a><br>
+                            <strong>Horario: </strong><small>Lunes a Sabado de 8:30 a.m. a 6:30 p.m.</small></p>
+                    </div>
+                    <div class="list-group-item">
+                        <p><strong style="color: #00755c;">Centro Ambo</strong><br><small>Calle Constitución N° 288 - Ambo</small><br>
+                            <a href="/Index.html"><small>https://teleinca.com.pe/teleinca-centro-de-ambo</small></a><br>
+                            <strong>Horario: </strong><small>Lunes a Sabado de 8:30 a.m. a 6:30 p.m.</small></p>
+                    </div>
+                    <div class="list-group-item">
+                        <p><strong style="color: #00755c;">Centro Chanchamayo</strong><br><small>Jr. Junín S/N Junín - Chanchamayo</small><br>
+                            <a href="/Index.html"><small>https://teleinca.com.pe/teleinca-centro-de-chanchamayo</small></a><br>
+                            <strong>Horario: </strong><small>Lunes a Sabado de 8:30 a.m. a 6:30 p.m.</small></p>
+                    </div>
+                </div>
             </div>
-            <div class="d-flex flex-wrap my-5" style="width: 50%;">
-                <buton class="btn btn-success m-2 align-content-center fw-bolder border-0" style="width: 18em; height: 6em; font-size: 16px;"><i class="bi bi-whatsapp"></i> General</buton>
-                <buton class="btn btn-success m-2 align-content-center fw-bolder border-0" style="width: 18em; height: 6em; font-size: 16px;"><i class="bi bi-whatsapp"></i> Oficina Huanuco</buton>
-                <buton class="btn btn-success m-2 align-content-center fw-bolder border-0" style="width: 18em; height: 6em; font-size: 16px;"><i class="bi bi-whatsapp"></i> Oficina Ambo</buton>
-                <buton class="btn btn-success m-2 align-content-center fw-bolder border-0" style="width: 18em; height: 6em; font-size: 16px;"><i class="bi bi-whatsapp"></i> Oficina La Merced</buton>
-            </div>
         </div>
-        <div id="window2" class="window align-items-center window-2 p-4 justify-content-between text-white" style="background-color: #4da674;">
-            <h3 class="pb-4 display-6">Visita nuestro centro de experiencia en Huanuco</h3>
-            <div class="d-flex f-wrap justify-content-evenly">
-                <div class="d-flex align-items-center">
-                    <i class="bi bi-geo-alt-fill px-2" style="font-size: 5em;"></i>
-                    <p><strong>Centro de Experiencia Huanuco</strong> <br> Jr. Abtao N° 1719 Urb. Paucarbambabilla - Huanuco</p>
-                </div>
-                <div class="d-flex align-items-center">
-                    <i class="bi bi-headset px-2" style="font-size: 5em;"></i>
-                    <p><strong>Atencion al cliente</strong> <br> +51 962 624 690</p>
-                </div>
-                <div class="d-flex align-items-center">
-                    <i class="bi bi-whatsapp px-2" style="font-size: 4em;"></i>
-                    <p><strong>Ventas</strong> <br> +51 962 624 690</p>
-                </div>
-            </div> 
-        </div>
+        <img class="img img-fluid mt-3"
+            src="https://peruretail.sfo3.cdn.digitaloceanspaces.com/wp-content/uploads/cyber-plaza-fachada-dia.jpg"
+            width="700px">
     </div>
     <div id="contFoot"></div>
     <script>
@@ -122,4 +115,5 @@
     <script src="/frontend/Resources/Js/Scripts.js"></script>
     <script src="/frontend/Resources/Js/Elements.js"></script>
 </body>
+
 </html>

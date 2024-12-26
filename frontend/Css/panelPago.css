@@ -127,7 +127,24 @@ body {
   border-radius: 2px;
   margin-top: 7px;
 }
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  transition: all 0.3s ease;
+}
 
+.btn-success:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+.shadow {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08) !important;
+}
+
+.rounded-4 {
+  border-radius: 1rem !important;
+}
 @media only screen and (max-width: 480px) {
   .cont-btn {
     transform: scale(0.7);

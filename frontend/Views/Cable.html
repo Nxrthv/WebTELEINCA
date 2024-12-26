@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/frontend/Css/Cable.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <title>TELEINCA | Cable</title>
 </head>
 <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
@@ -62,39 +63,61 @@
         <div class="row">
             <!-- Apartados -->
             <div class="col-12">
-                <ul class="nav nav-pills" id="tabList" role="tablist">
-                    <li class="item" role="presentation">
-                        <a class="nav-link active" id="tab1" data-bs-toggle="pill" href="#content1" role="tab" aria-controls="content1" aria-selected="true">Nacionales</a>
+                <ul class="tab-list" id="tabList" role="tablist">
+                    <li class="tab-item" role="presentation">
+                        <a class="tab-link active" id="tab1" data-bs-toggle="pill" href="#content1" role="tab">
+                            <i class="bi bi-house-door"></i> TV Nacional
+                        </a>
                     </li>
-                    <li class="item" role="presentation">
-                        <a class="nav-link" id="tab2" data-bs-toggle="pill" href="#content2" role="tab" aria-controls="content2" aria-selected="false">Entretenimiento</a>
+                    <li class="tab-item" role="presentation">
+                        <a class="tab-link" id="tab2" data-bs-toggle="pill" href="#content2" role="tab">
+                            <i class="bi bi-tv"></i> Entretenimiento
+                        </a>
                     </li>
-                    <li class="item" role="presentation">
-                        <a class="nav-link" id="tab3" data-bs-toggle="pill" href="#content3" role="tab" aria-controls="content3" aria-selected="false">Peliculas y Series</a>
+                    <li class="tab-item" role="presentation">
+                        <a class="tab-link" id="tab3" data-bs-toggle="pill" href="#content3" role="tab">
+                            <i class="bi bi-film"></i> Películas
+                        </a>
                     </li>
-                    <li class="item" role="presentation">
-                        <a class="nav-link" id="tab4" data-bs-toggle="pill" href="#content4" role="tab" aria-controls="content4" aria-selected="false">Infantiles y Animacion</a>
+                    <li class="tab-item" role="presentation">
+                        <a class="tab-link" id="tab4" data-bs-toggle="pill" href="#content4" role="tab">
+                            <i class="bi bi-emoji-smile"></i> Niños
+                        </a>
                     </li>
-                    <li class="item" role="presentation">
-                        <a class="nav-link" id="tab5" data-bs-toggle="pill" href="#content5" role="tab" aria-controls="content5" aria-selected="false">Deportes</a>
+                    <li class="tab-item" role="presentation">
+                        <a class="tab-link" id="tab5" data-bs-toggle="pill" href="#content5" role="tab">
+                            <i class="bi bi-trophy"></i> Deportes
+                        </a>
                     </li>
-                    <li class="item" role="presentation">
-                        <a class="nav-link" id="tab6" data-bs-toggle="pill" href="#content6" role="tab" aria-controls="content6" aria-selected="false">Noticias</a>
+                    <li class="tab-item" role="presentation">
+                        <a class="tab-link" id="tab6" data-bs-toggle="pill" href="#content6" role="tab">
+                            <i class="bi bi-newspaper"></i> Noticias
+                        </a>
                     </li>
-                    <li class="item" role="presentation">
-                        <a class="nav-link" id="tab7" data-bs-toggle="pill" href="#content7" role="tab" aria-controls="content7" aria-selected="false">Musicales</a>
+                    <li class="tab-item" role="presentation">
+                        <a class="tab-link" id="tab7" data-bs-toggle="pill" href="#content7" role="tab">
+                            <i class="bi bi-music-note"></i> Música
+                        </a>
                     </li>
-                    <li class="item" role="presentation">
-                        <a class="nav-link" id="tab8" data-bs-toggle="pill" href="#content8" role="tab" aria-controls="content8" aria-selected="false">Ciencia y Cultura</a>
+                    <li class="tab-item" role="presentation">
+                        <a class="tab-link" id="tab8" data-bs-toggle="pill" href="#content8" role="tab">
+                            <i class="bi bi-book"></i> Cultura
+                        </a>
                     </li>
-                    <li class="item" role="presentation">
-                        <a class="nav-link" id="tab9" data-bs-toggle="pill" href="#content9" role="tab" aria-controls="content9" aria-selected="false">Novelas</a>
+                    <li class="tab-item" role="presentation">
+                        <a class="tab-link" id="tab9" data-bs-toggle="pill" href="#content9" role="tab">
+                            <i class="bi bi-heart"></i> Novelas
+                        </a>
                     </li>
-                    <li class="item" role="presentation">
-                        <a class="nav-link" id="tab10" data-bs-toggle="pill" href="#content10" role="tab" aria-controls="content10" aria-selected="false">Religion</a>
+                    <li class="tab-item" role="presentation">
+                        <a class="tab-link" id="tab10" data-bs-toggle="pill" href="#content10" role="tab">
+                            <i class="bi bi-pray"></i> Religión
+                        </a>
                     </li>
-                    <li class="item" role="presentation">
-                        <a class="nav-link" id="tab11" data-bs-toggle="pill" href="#content11" role="tab" aria-controls="content11" aria-selected="false">Exclusivos</a>
+                    <li class="tab-item" role="presentation">
+                        <a class="tab-link" id="tab11" data-bs-toggle="pill" href="#content11" role="tab">
+                            <i class="bi bi-star"></i> Exclusivos
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -122,8 +145,24 @@
                         <p>EXITOSA<br><small>Canal 07</small></p>
                     </div>
                     <div class="canal-item">
+                        <img src="/frontend/Resources/Images/canales/CH_08.png" alt="la Tele">
+                        <p>la Tele<br><small>Canal 08</small></p>
+                    </div>
+                    <div class="canal-item">
                         <img src="/frontend/Resources/Images/canales/CH_09.png" alt="ATV">
                         <p>ATV<br><small>Canal 09</small></p>
+                    </div>
+                    <div class="canal-item">
+                        <img src="/frontend/Resources/Images/canales/CH_10.png" alt="Global TV">
+                        <p>Global TV<br><small>Canal 10</small></p>
+                    </div>
+                    <div class="canal-item">
+                        <img src="/frontend/Resources/Images/canales/CH_11.png" alt="Nativa">
+                        <p>Nativa<br><small>Canal 11</small></p>
+                    </div>
+                    <div class="canal-item">
+                        <img src="/frontend/Resources/Images/canales/CH_12.png" alt="TV PERÚ">
+                        <p>Willax<br><small>Canal 12</small></p>
                     </div>
                     <div class="canal-item">
                         <img src="/frontend/Resources/Images/canales/CH_13.png" alt="Global TV">
@@ -156,11 +195,11 @@
                 <div class="categoria display-6 rounded-pill">Entretenimiento</div>
                 <div class="canales-grid">
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_18.jpg" alt="AZ MUNDO">
+                        <img src="/frontend/Resources/Images/canales/CH_18.png" alt="AZ MUNDO">
                         <p>AZ MUNDO<br><small>Canal 18</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_19.jpg" alt="CORAL 39">
+                        <img src="/frontend/Resources/Images/canales/CH_19.png" alt="CORAL 39">
                         <p>CORAL 39<br><small>Canal 19</small></p>
                     </div>
                     <div class="canal-item">
@@ -168,7 +207,7 @@
                         <p>E! ENTERTAINMENT<br><small>Canal 20</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_22.jpg" alt="SUN CHANNEL">
+                        <img src="/frontend/Resources/Images/canales/CH_22.png" alt="SUN CHANNEL">
                         <p>SUN CHANNEL<br><small>Canal 22</small></p>
                     </div>
                     <div class="canal-item">
@@ -180,11 +219,11 @@
                         <p>EL GOURMET<br><small>Canal 24</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_25.jpg" alt="VENUS (CANAL CODIFICADO)">
+                        <img src="/frontend/Resources/Images/canales/CH_25.png" alt="VENUS (CANAL CODIFICADO)">
                         <p>VENUS (CANAL CODIFICADO)<br><small>Canal 25</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_26.jpg" alt="MAGAZINE TV">
+                        <img src="/frontend/Resources/Images/canales/CH_26.png" alt="MAGAZINE TV">
                         <p>MAGAZINE TV<br><small>Canal 26</small></p>
                     </div>
                     <div class="canal-item">
@@ -210,7 +249,7 @@
                         <p>TELESISTEMAS<br><small>Canal 87</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_88.jpg" alt="UNIVERSAL PREMIER">
+                        <img src="/frontend/Resources/Images/canales/CH_88.png" alt="UNIVERSAL PREMIER">
                         <p>UNIVERSAL PREMIER<br><small>Canal 88</small></p>
                     </div>
                     <div class="canal-item">
@@ -218,7 +257,7 @@
                         <p>STAR CHANNEL<br><small>Canal 89</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_90.jpg" alt="PÁNICO">
+                        <img src="/frontend/Resources/Images/canales/CH_90.png" alt="PÁNICO">
                         <p>PÁNICO<br><small>Canal 90</small></p>
                     </div>
                     <div class="canal-item">
@@ -234,7 +273,7 @@
                         <p>SONY CHANNEL<br><small>Canal 93</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_94.jpg" alt="CINE PLATINO">
+                        <img src="/frontend/Resources/Images/canales/CH_94.png" alt="CINE PLATINO">
                         <p>CINE PLATINO<br><small>Canal 94</small></p>
                     </div>
                     <div class="canal-item">
@@ -242,7 +281,7 @@
                         <p>A&E<br><small>Canal 98</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_99.jpg" alt="CINE MEXICANO">
+                        <img src="/frontend/Resources/Images/canales/CH_99.png" alt="CINE MEXICANO">
                         <p>CINE MEXICANO<br><small>Canal 99</small></p>
                     </div>
                     <div class="canal-item">
@@ -250,7 +289,7 @@
                         <p>CINE FAMILIAR<br><small>Canal 100</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_101.jpg" alt="OROMAR TV">
+                        <img src="/frontend/Resources/Images/canales/CH_101.png" alt="OROMAR TV">
                         <p>OROMAR TV<br><small>Canal 101</small></p>
                     </div>
                     <div class="canal-item">
@@ -280,15 +319,15 @@
                         <p>DISNEY JUNIOR<br><small>Canal 41</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_42.jpg" alt="FUN BOX">
+                        <img src="/frontend/Resources/Images/canales/CH_42.png" alt="FUN BOX">
                         <p>FUN BOX<br><small>Canal 42</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_43.jpg" alt="CANAL INFANTIL">
+                        <img src="/frontend/Resources/Images/canales/CH_43.png" alt="CANAL INFANTIL">
                         <p>CANAL INFANTIL<br><small>Canal 43</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_45.jpg" alt="ZOO MOO">
+                        <img src="/frontend/Resources/Images/canales/CH_45.png" alt="ZOO MOO">
                         <p>ZOO MOO<br><small>Canal 45</small></p>
                     </div>
                     <div class="canal-item">
@@ -296,7 +335,7 @@
                         <p>ANIMOTION<br><small>Canal 46</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_47.jpg" alt="LOVE NATURE">
+                        <img src="/frontend/Resources/Images/canales/CH_47.png" alt="LOVE NATURE">
                         <p>LOVE NATURE<br><small>Canal 47</small></p>
                     </div>
                     <div class="canal-item">
@@ -330,7 +369,7 @@
                         <p>ESPN 4<br><small>Canal 79</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_80.jpg" alt="ESPN 7">
+                        <img src="/frontend/Resources/Images/canales/CH_80.png" alt="ESPN 7">
                         <p>ESPN 7<br><small>Canal 80</small></p>
                     </div>
                     <div class="canal-item">
@@ -342,7 +381,7 @@
                         <p>PX SPORTS<br><small>Canal 82</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_83.jpg" alt="ESPN 6">
+                        <img src="/frontend/Resources/Images/canales/CH_83.png" alt="ESPN 6">
                         <p>ESPN 6<br><small>Canal 83</small></p>
                     </div>
                     <div class="canal-item">
@@ -356,7 +395,7 @@
                 <div class="categoria display-6 rounded-pill">Noticias</div>
                 <div class="canales-grid">
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_55.jpg" alt="DEUTSCHE WELLE">
+                        <img src="/frontend/Resources/Images/canales/CH_55.png" alt="DEUTSCHE WELLE">
                         <p>DEUTSCHE WELLE<br><small>Canal 55</small></p>
                     </div>
                     <div class="canal-item">
@@ -372,11 +411,11 @@
                         <p>RT NOTICIAS<br><small>Canal 58</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_59.jpg" alt="TELESUR">
+                        <img src="/frontend/Resources/Images/canales/CH_59.png" alt="TELESUR">
                         <p>TELESUR<br><small>Canal 59</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_60.jpg" alt="CABLE NOTICIAS">
+                        <img src="/frontend/Resources/Images/canales/CH_60.png" alt="CABLE NOTICIAS">
                         <p>CABLE NOTICIAS<br><small>Canal 60</small></p>
                     </div>
                     <div class="canal-item">
@@ -384,7 +423,7 @@
                         <p>CGTN ESPAÑOL<br><small>Canal 61</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_62.jpg" alt="CREO TV">
+                        <img src="/frontend/Resources/Images/canales/CH_62.png" alt="CREO TV">
                         <p>CREO TV<br><small>Canal 62</small></p>
                     </div>
                     <div class="canal-item">
@@ -398,11 +437,11 @@
                 <div class="categoria display-6 rounded-pill">Musicales</div>
                 <div class="canales-grid">
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_38.jpg" alt="LA RIVEREÑA">
+                        <img src="/frontend/Resources/Images/canales/CH_38.png" alt="LA RIVEREÑA">
                         <p>LA RIVEREÑA<br><small>Canal 38</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_48.jpg" alt="KIZZI">
+                        <img src="/frontend/Resources/Images/canales/CH_48.png" alt="KIZZI">
                         <p>KIZZI<br><small>Canal 48</small></p>
                     </div>
                     <div class="canal-item">
@@ -432,7 +471,7 @@
                 <div class="categoria display-6 rounded-pill">Ciencia y cultura</div>
                 <div class="canales-grid">
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_28.jpg" alt="ANIMAL PLANET">
+                        <img src="/frontend/Resources/Images/canales/CH_28.png" alt="ANIMAL PLANET">
                         <p>ANIMAL PLANET<br><small>Canal 28</small></p>
                     </div>
                     <div class="canal-item">
@@ -440,7 +479,7 @@
                         <p>NATIONAL GEOGRAPHIC<br><small>Canal 64</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_65.jpg" alt="HISTORY CHANNEL">
+                        <img src="/frontend/Resources/Images/canales/CH_65.png" alt="HISTORY CHANNEL">
                         <p>HISTORY CHANNEL<br><small>Canal 65</small></p>
                     </div>
                     <div class="canal-item">
@@ -448,11 +487,11 @@
                         <p>UNIVERSAL<br><small>Canal 66</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_67.jpg" alt="HISTORY 2">
+                        <img src="/frontend/Resources/Images/canales/CH_67.png" alt="HISTORY 2">
                         <p>HISTORY 2<br><small>Canal 67</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_68.jpg" alt="TELEANTILLAS">
+                        <img src="/frontend/Resources/Images/canales/CH_68.png" alt="TELEANTILLAS">
                         <p>TELEANTILLAS<br><small>Canal 68</small></p>
                     </div>
                     <div class="canal-item">
@@ -460,19 +499,19 @@
                         <p>ATLAS TV<br><small>Canal 69</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_70.jpg" alt="WOBI">
+                        <img src="/frontend/Resources/Images/canales/CH_70.png" alt="WOBI">
                         <p>WOBI<br><small>Canal 70</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_71.jpg" alt="DISCOVERY TURBO">
+                        <img src="/frontend/Resources/Images/canales/CH_71.png" alt="DISCOVERY TURBO">
                         <p>DISCOVERY TURBO<br><small>Canal 71</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_72.jpg" alt="REPRETEL 6">
+                        <img src="/frontend/Resources/Images/canales/CH_72.png" alt="REPRETEL 6">
                         <p>REPRETEL 6<br><small>Canal 72</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_73.jpg" alt="UNIVERSAL CRIME">
+                        <img src="/frontend/Resources/Images/canales/CH_73.png" alt="UNIVERSAL CRIME">
                         <p>UNIVERSAL CRIME<br><small>Canal 73</small></p>
                     </div>
                     <div class="canal-item">
@@ -486,11 +525,11 @@
                 <div class="categoria display-6 rounded-pill">Novelas</div>
                 <div class="canales-grid">
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_29.jpg" alt="CANAL DRAMA">
+                        <img src="/frontend/Resources/Images/canales/CH_29.png" alt="CANAL DRAMA">
                         <p>CANAL DRAMA<br><small>Canal 29</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_30.jpg" alt="UNIVISIÓN">
+                        <img src="/frontend/Resources/Images/canales/CH_30.png" alt="UNIVISIÓN">
                         <p>UNIVISIÓN<br><small>Canal 30</small></p>
                     </div>
                     <div class="canal-item">
@@ -510,11 +549,11 @@
                         <p>CARACOL TV<br><small>Canal 34</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_35.jpg" alt="TELEMUNDO">
+                        <img src="/frontend/Resources/Images/canales/CH_35.png" alt="TELEMUNDO">
                         <p>TELEMUNDO<br><small>Canal 35</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_36.jpg" alt="TV CENTRO">
+                        <img src="/frontend/Resources/Images/canales/CH_36.png" alt="TV CENTRO">
                         <p>TV CENTRO<br><small>Canal 36</small></p>
                     </div>
                     <div class="canal-item">
@@ -540,7 +579,7 @@
                         <p>EWTN<br><small>Canal 106</small></p>
                     </div>
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_107.jpg" alt="MARÍA VISIÓN">
+                        <img src="/frontend/Resources/Images/canales/CH_107.png" alt="MARÍA VISIÓN">
                         <p>MARÍA VISIÓN<br><small>Canal 107</small></p>
                     </div>
                 </div>
@@ -550,7 +589,7 @@
                 <div class="categoria display-6 rounded-pill">Exclusivos</div>
                 <div class="canales-grid">
                     <div class="canal-item">
-                        <img src="/frontend/Resources/Images/canales/CH_21.jpg" alt="CABLE VISIÓN TV">
+                        <img src="/frontend/Resources/Images/canales/CH_21.png" alt="CABLE VISIÓN TV" style="max-width: 200px;">
                         <p>CABLE VISIÓN TV<br><small>Canal 21</small></p>
                     </div>
                 </div>
@@ -615,7 +654,7 @@
         function seleccionarCobertura(zona) {
             // Construir el mensaje y el enlace de WhatsApp
             const mensaje = encodeURIComponent(`Hola! Estoy interesado en cable para la zona: ${zona}`);
-            const numeroWhatsApp = '+51903075166';
+            const numeroWhatsApp = '+51962624690';
             const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
 
             // Redirigir a WhatsApp
@@ -630,20 +669,20 @@
                     const googleMapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
 
                     const mensaje = encodeURIComponent(`Hola! Estoy interesado en cable. Mi ubicación es: ${googleMapsUrl}`);
-                    const numeroWhatsApp = '+51903075166';
+                    const numeroWhatsApp = '+51962624690';
                     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
                     window.open(urlWhatsApp, '_blank');
                 }, function (error) {
                     // Si hay error al obtener ubicación, enviar mensaje sin ubicación
                     const mensaje = encodeURIComponent('Hola! Estoy interesado en cable pero no pude compartir mi ubicación.');
-                    const numeroWhatsApp = '+51903075166';
+                    const numeroWhatsApp = '+51962624690';
                     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
                     window.open(urlWhatsApp, '_blank');
                 });
             } else {
                 // Si el navegador no soporta geolocalización
                 const mensaje = encodeURIComponent('Hola! Estoy interesado en cable pero no pude compartir mi ubicación.');
-                const numeroWhatsApp = '+51903075166';
+                const numeroWhatsApp = '+51962624690';
                 const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
                 window.open(urlWhatsApp, '_blank');
             }

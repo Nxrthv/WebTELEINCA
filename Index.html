@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="position-sticky top-0" style="z-index: 1000;" id="contNav"></div>
+    <div class="position-sticky top-0 col-12" style="z-index: 1000;" id="contNav"></div>
     <div id="carouselExampleCaptions" class="carousel slide">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -22,15 +22,9 @@
         <div class="carousel-inner">
             <div class="carousel-item active d-item">
                 <img src="/frontend/Resources/Images/promos.jpeg" class="d-block w-100 img-fluid" alt="slider 1">
-                <!-- <div class="carousel-caption top-0 mt-4">
-            <button class="btn btn-primary px-4 py-2 ps-5 mt-5 bg-success border-0">Informacion</button>
-            </div> -->
             </div>
             <div class="carousel-item d-item">
                 <img src="/frontend/Resources/Images/promos2.jpeg" class="d-block w-100 img-fluid" alt="slider 2">
-                <!-- <div class="carousel-caption top-0 mt-4">
-            <button class="btn btn-primary px-4 py-2 ps-5 mt-5 bg-success border-0">Informacion</button>
-            </div> -->
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
@@ -48,12 +42,12 @@
         <h1 class="mt-5 text-center display-6">Nuestras Promociones</h1>
         <div class="cont-user">
             <div class="buttons">
-                <a href="/frontend/Views/Internet.html"><button class="btn"><span></span>
+                <a href="/frontend/Views/Internet.html"><button><span></span>
                         <p data-start="good luck!" data-text="Contratar" data-title="Solo Internet"></p>
                     </button></a>
             </div>
             <div class="buttons">
-                <a href="/frontend/Views/Cable.html"><button class="btn"><span></span>
+                <a href="/frontend/Views/Cable.html"><button><span></span>
                         <p data-start="good luck!" data-text="Contratar" data-title="Solo Cable"></p>
                     </button></a>
             </div>
@@ -152,9 +146,9 @@
             </div>
         </div>
     </section>
-    <h1 class="my-5 text-center display-6">Beneficios de Nuestros Servicios</h1>
-    <div id="beneficios" class="container my-4">
-        <div class="row" id="beneficios">
+    <h1 class="my-5 text-center display-6" id="beneficios">Beneficios de Nuestros Servicios</h1>
+    <section class="container">
+        <div class="row my-4">
             <div class="col-12 col-sm-6 col-md-4 mb-4">
                 <div class="card border-0">
                     <img src="/frontend/Resources/Images/beneficio_icon/2.jpg" class="m-auto p-1" alt="">
@@ -183,27 +177,27 @@
                 </div>
             </div>
         </div>
-    </div>
-    <h1 class="text-center display-6 my-5">Formas de Pago</h1>
-    <div id="pagos" class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-4 col-sm-3 col-md-2">
+    </section>
+    <h1 class="text-center display-6 my-5" id="pagos">Formas de Pago</h1>
+    <section class="container my-5">
+        <div class="d-flex justify-content-evenly">
+            <div>
                 <img id="plataformas" src="https://cableredperu.com/wp-content/uploads/2023/07/logo-yapoe.png"
                     alt="Yape" class="img-fluid">
             </div>
-            <div class="col-4 col-sm-3 col-md-2">
+            <div>
                 <img id="plataformas"
                     src="https://www.bancodealimentos.org.ar/wp-content/uploads/2022/10/LOGO-BBVA-coreblue_RGB_DDB.png"
                     alt="BBVA" class="img-fluid">
             </div>
-            <div class="col-4 col-sm-3 col-md-2 ">
+            <div>
                 <img id="plataformas" src="https://marketing-peru.beglobal.biz/wp-content/uploads/2024/10/bcp-logo.png"
                     alt="BCP" class="img-fluid">
             </div>
         </div>
-    </div>
+    </section>
     <h1 class="text-center display-6 mt-5">¿Ya eres cliente?</h1>
-    <div class="my-5 d-flex flex-wrap justify-content-center">
+    <section class="my-5 d-flex flex-wrap justify-content-center">
 
         <div class="cookieCard m-2">
             <p class="cookieHeading">Paga tu boleta</p>
@@ -214,10 +208,10 @@
             <p class="cookieHeading">Mejora tu plan</p>
             <p class="cookieDescription">Mejora tu experiencia con nosotros, haz clic aquí y descubre todos nuestros
                 planes.</p>
-            <button class="acceptButton rounded-pill" onclick=mejorarPlan()>Ver mas</button>
+            <button class="acceptButton rounded-pill"><a class="text-white text-decoration-none" href="https://wa.me/51903075166?text=Hola! Estoy interesado en mejorar mi servicio." target="_blank">Ver mas</a></button>
         </div>
 
-    </div>
+    </section>
     <div class="btn-emergente">
         <!-- Boton de WhatsApp -->
         <a href="https://wa.me/51962624690?text=Hola, tengo una consulta." target="_blank" class="whatsapp-btn m-1"
@@ -233,7 +227,7 @@
         </a>
     </div>
     <div id="contFoot"></div>
-    <script src="/frontend/Resources/Js/Scripts.js"></script>
+    <script src="/frontend/Resources/Js/Dependencias.js"></script>
     <script src="/frontend/Resources/Js/Functions.js"></script>
     <script src="/frontend/Resources/Js/Elements.js"></script>
 </body>

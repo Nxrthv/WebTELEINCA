@@ -119,6 +119,7 @@ app.listen(PORT, () => {
   console.log(`------------------------------------------------------------------`);
   console.log(`--------------------------ServidorWeb-----------------------------`);
   console.log(`-----Oficina de Sistemas y Tecnologías de la Información 2024-----`);
+  console.log(`------------------------------------------------------------------`);
   console.log(`->Servidor corriendo en puerto ${PORT}`);
 });
 

@@ -27,15 +27,3 @@ var jqueryScript = document.createElement('script');
 jqueryScript.src = 'https://code.jquery.com/jquery-3.5.1.slim.min.js';
 jqueryScript.type = 'text/javascript';
 document.head.appendChild(jqueryScript);
-
-// Cargar Bootstrap JS
-var bootstrapJsScript = document.createElement('script');
-bootstrapJsScript.src = 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js';
-bootstrapJsScript.type = 'text/javascript';
-document.head.appendChild(bootstrapJsScript);
-
-// Cargar Popper.js adicional
-var popperJsScript = document.createElement('script');
-popperJsScript.src = 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js';
-popperJsScript.type = 'text/javascript';
-document.head.appendChild(popperJsScript);

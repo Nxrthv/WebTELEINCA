@@ -39,7 +39,7 @@ transporter.verify(function(error, success) {
     if (error) {
         console.log('Error de verificación del transporter:', error);
     } else {
-        console.log('Servidor listo para enviar correos');
+        console.log('->Servidor listo para enviar correos');
     }
 });
 
@@ -109,5 +109,17 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
+  console.log(`------------------------------------------------------------------`);
+  console.log(`-    ****** ****** *      ****** ****** *     * ****** ******    -`);
+  console.log(`-      **   *      *      *        **   * *   * *      *    *    -`);
+  console.log(`-      **   *      *      *        **   *  *  * *      *    *    -`);
+  console.log(`-      **   ****** *      ******   **   *   * * *      ******    -`);
+  console.log(`-      **   *      *      *        **   *    ** *      *    *    -`);
+  console.log(`-      **   ****** ****** ****** ****** *     * ****** *    *    -`);
+  console.log(`------------------------------------------------------------------`);
+  console.log(`--------------------------ServidorWeb-----------------------------`);
+  console.log(`-----Oficina de Sistemas y Tecnologías de la Información 2024-----`);
+  console.log(`->Servidor corriendo en puerto ${PORT}`);
 });
+
 

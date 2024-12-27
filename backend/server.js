@@ -5,7 +5,7 @@ const recibosPagadosRoutes = require('./src/routes/recibos_pagados');
 const recibosPendientesRoutes = require('./src/routes/recibos_pendientes');
 const authRoutes = require('./src/routes/auth');
 const app = express();
-
+require('dotenv').config();
 // Middlewares
 app.use(cors());
 app.use(express.json());
@@ -22,11 +22,16 @@ app.use('/api', authRoutes);
 
 // Configuración del transporter de nodemailer para Gmail
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'medinadazadaniel@gmail.com',
-        pass: 'gjylbwuppotzoqlq'
-    }
+  host: 'mail.canguapps.com', // Servidor de correo
+  port: 587,                 // Puerto (SMTP)
+  secure: false,             // Cambiar a true para SSL (puerto 465)
+  auth: {
+    user: process.env.SMTP_USER,        
+    pass: process.env.SMTP_PASS,      
+  },
+  tls: {
+      rejectUnauthorized: false, // Esto permite certificados TLS no verificados
+  },   
 });
 
 // Verificar la conexión inmediatamente
@@ -54,8 +59,8 @@ app.post('/api/procesar-pago', async (req, res) => {
   }
 
   const mailOptions = {
-    from: '"Sistema de Pagos-Teleinca" <medinadazadaniel@gmail.com>',
-    to: 'dameda97@gmail.com',
+    from: '"Sistema de Pagos-Teleinca" <sicv@cablevision.pe>',
+    to: 'huanuco@huanucotelecom.com , huanucoap2@huanucotelecom.com',
     subject: `Nuevo pago recibido - ${metodoPago}`,
     html: `
       <h2>SOLICITUD DE PAGO</h2>

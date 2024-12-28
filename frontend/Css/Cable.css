@@ -76,7 +76,7 @@
 }
 
 .hero-section {
-    background-image: url('/frontend/Resources/Images/cable_fondo.jpeg');
+    background-image: url('frontend/Resources/Images/cable_fondo.jpeg');
     background-size: cover;
     background-position: center;
     min-height: 700px;

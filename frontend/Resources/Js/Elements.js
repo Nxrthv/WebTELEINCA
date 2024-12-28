@@ -9,7 +9,9 @@ function getCardData(cardId) {
     alert(paquete + "\n" + internet + "\n" + cable + "\n" + precio);
 }
 function cargarFragmento(url, contenedorId) {
-fetch(url)
+const baseUrl = '/TeleIncaWebp/';
+const fullUrl = baseUrl + url;
+    fetch(fullUrl)
     .then(response => response.text())
     .then(html => {
     document.getElementById(contenedorId).innerHTML = html;
@@ -19,6 +21,6 @@ fetch(url)
     });
 }
 document.addEventListener("DOMContentLoaded", function() {
-cargarFragmento('/frontend/Views/Footer.html', 'contFoot');
-cargarFragmento('/frontend/Views/Nav.html', 'contNav');
+cargarFragmento('frontend/Views/Footer.html', 'contFoot');
+cargarFragmento('frontend/Views/Nav.html', 'contNav');
 });

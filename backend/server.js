@@ -7,7 +7,28 @@ const authRoutes = require('./src/routes/auth');
 const app = express();
 require('dotenv').config();
 // Middlewares
-app.use(cors());
+app.use((req, res, next) => {
+  console.log(`-> ${new Date().toISOString()} - Petición recibida: ${req.method} ${req.url}`);
+  next();
+});
+
+app.use(cors({
+  origin: ['http://191.97.50.142:11004'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
+// Para mejor debugging, modifica el log de CORS
+app.use((req, res, next) => {
+  console.log('\n=== PETICIÓN RECIBIDA ===');
+  console.log('-> Origen de la petición:', req.headers.origin);
+  console.log('-> Método:', req.method);
+  console.log('-> URL:', req.url);
+  console.log('-> Puerto del servidor:', process.env.PORT || 3000);
+  next();
+});
+
 app.use(express.json());
 
 // Ruta de prueba básica
@@ -45,12 +66,21 @@ transporter.verify(function(error, success) {
 
 // Nueva ruta para procesar pagos con más logging
 app.post('/api/procesar-pago', async (req, res) => {
-  console.log('Datos recibidos en el servidor:', req.body);
+  console.log('\n=== NUEVO INTENTO DE PAGO ===');
+  console.log('-> Timestamp:', new Date().toISOString());
+  console.log('-> IP del cliente:', req.ip);
+  console.log('-> Datos recibidos:', JSON.stringify(req.body, null, 2));
 
   const { metodoPago, codigoRecibo, codigoUsuario, numeroTransaccion, montoPago } = req.body;
   
   if (!metodoPago || !codigoRecibo || !codigoUsuario || !numeroTransaccion || !montoPago) {
-    console.log('Datos faltantes:', { metodoPago, codigoRecibo, codigoUsuario, numeroTransaccion, montoPago });
+    console.log('-> ERROR: Datos faltantes:', {
+      metodoPago: !!metodoPago,
+      codigoRecibo: !!codigoRecibo,
+      codigoUsuario: !!codigoUsuario,
+      numeroTransaccion: !!numeroTransaccion,
+      montoPago: !!montoPago
+    });
     return res.status(400).json({
       success: false,
       message: 'Faltan datos requeridos',
@@ -72,15 +102,17 @@ app.post('/api/procesar-pago', async (req, res) => {
   };
 
   try {
-    console.log('Intentando enviar correo con opciones:', mailOptions);
+    console.log('-> Iniciando envío de correo...');
     const info = await transporter.sendMail(mailOptions);
-    console.log('Información del envío:', info);
+    console.log('-> Correo enviado exitosamente');
+    console.log('-> ID del mensaje:', info.messageId);
     res.json({ 
       success: true, 
       message: 'Correo enviado exitosamente',
       messageId: info.messageId 
     });
   } catch (error) {
+    console.log('-> ERROR al enviar correo:', error.message);
     console.error('Error detallado del servidor:', {
       message: error.message,
       code: error.code,
@@ -102,24 +134,35 @@ app.post('/api/procesar-pago', async (req, res) => {
 
 // Manejo de errores básico
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  console.error('\n=== ERROR EN EL SERVIDOR ===');
+  console.error('-> Timestamp:', new Date().toISOString());
+  console.error('-> Ruta:', req.path);
+  console.error('-> Método:', req.method);
+  console.error('-> Error:', err.message);
+  console.error('-> Stack:', err.stack);
   res.status(500).send('¡Algo salió mal!');
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en puerto ${PORT}`);
-  console.log(`------------------------------------------------------------------`);
-  console.log(`-    ****** ****** *      ****** ****** *     * ****** ******    -`);
-  console.log(`-      **   *      *      *        **   * *   * *      *    *    -`);
-  console.log(`-      **   *      *      *        **   *  *  * *      *    *    -`);
-  console.log(`-      **   ****** *      ******   **   *   * * *      ******    -`);
-  console.log(`-      **   *      *      *        **   *    ** *      *    *    -`);
-  console.log(`-      **   ****** ****** ****** ****** *     * ****** *    *    -`);
-  console.log(`------------------------------------------------------------------`);
-  console.log(`--------------------------ServidorWeb-----------------------------`);
-  console.log(`-----Oficina de Sistemas y Tecnologías de la Información 2024-----`);
-  console.log(`------------------------------------------------------------------`);
+  //console.clear(); // Limpia la consola al iniciar
+  console.log(`\n=== INICIO DEL SERVIDOR ===`);
+  console.log(`-> Timestamp: ${new Date().toISOString()}`);
+  console.log(`-> Puerto: ${PORT}`);
+  console.log(`-> Modo: ${process.env.NODE_ENV || 'desarrollo'}`);
+  console.log(`-> CORS habilitado para: ${JSON.stringify(cors.origin)}`);
+  
+  console.log(`-----------------------------------------------------------------`);
+  console.log(`-    ****** ****** *      ****** ****** *    * ****** ******    -`);
+  console.log(`-      **   *      *      *        **   **   * *      *    *    -`);
+  console.log(`-      **   *      *      *        **   * *  * *      *    *    -`);
+  console.log(`-      **   ****** *      ******   **   *  * * *      ******    -`);
+  console.log(`-      **   *      *      *        **   *   ** *      *    *    -`);
+  console.log(`-      **   ****** ****** ****** ****** *    * ****** *    *    -`);
+  console.log(`-----------------------------------------------------------------`);
+  console.log(`--------------------------ServidorWeb----------------------------`);
+  console.log(`-----Oficina de Sistemas y Tecnologías de la Información 2024----`);
+  console.log(`-----------------------------------------------------------------`);
   console.log(`->Servidor corriendo en puerto ${PORT}`);
 });
 

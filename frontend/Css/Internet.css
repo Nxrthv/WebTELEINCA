@@ -1,6 +1,6 @@
     /* Estilos del hero */
     .hero-section {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/frontend/Resources/Images/internet_fondo.jpg');
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('frontend/Resources/Images/internet_fondo.jpg');
         background-size: cover;
         background-position: center;
         height: 100vh;

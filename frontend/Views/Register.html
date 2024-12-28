@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <base href="/TeleIncaWebp/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/frontend/Css/Register.css">
-  <link rel="shortcut icon" href="/frontend/Resources/Images/logo.ico" type="image/x-icon">
-  <link rel="stylesheet" href="/frontend/Css/Loading.css">
+  <link rel="stylesheet" href="frontend/Css/Register.css">
+  <link rel="shortcut icon" href="frontend/Resources/Images/logo.ico" type="image/x-icon">
+  <link rel="stylesheet" href="frontend/Css/Loading.css">
   <link rel="preconnect" href="https://fonts.googleapis.com"> <!--Google Fonts-->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!--Google Fonts-->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> <!--Google Fonts Monserrat-->
@@ -33,7 +34,7 @@
 <body class="body">
   <form class="form_container" onsubmit="ingresarPanel(event)">
     <div class="logo_container">
-      <a href="/Index.html"><img src="/frontend/Resources/Images/logo.ico" alt=""></a>
+      <a href="Index.html"><img src="frontend/Resources/Images/logo.ico" alt=""></a>
     </div>
     <div class="title_container">
       <p class="title">Bienvenid@</p>
@@ -60,7 +61,7 @@
     <button title="Sign In" type="submit" class="sign-in_btn">
       <span>Ingresar</span>
     </button>
-    <a href="/frontend/Resources/Images/terminos_y_condiciones.pdf" download class="note">Terminos de uso &amp; Condiciones</a>
+    <a href="frontend/Resources/Images/terminos_y_condiciones.pdf" download class="note">Terminos de uso &amp; Condiciones</a>
   </form>
   <script>
     async function ingresarPanel(event) {
@@ -72,13 +73,14 @@
       console.log('Datos a enviar:', { dni, password });
       
       try {
-        console.log('Iniciando fetch a:', 'http://localhost:3000/api/login');
+        console.log('Iniciando fetch a:', 'http://191.97.50.142:11004/api/login');
         
-        const response = await fetch('http://localhost:3000/api/login', {
+        const response = await fetch('http://191.97.50.142:11004/api/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
+          credentials: 'include',
           body: JSON.stringify({ dni, password })
         });
         
@@ -96,7 +98,7 @@
           }).then(() => {
             sessionStorage.setItem('nombreUsuario', data.nombre);
             sessionStorage.setItem('codigoUsuario', data.code);
-            window.location.href = '/frontend/Views/panelUser.html';
+            window.location.href = 'frontend/Views/panelUser.html';
           });
         } else {
           console.log('Login fallido:', data.message || 'Sin mensaje de error');
@@ -118,6 +120,6 @@
       }
     }
   </script>
-  <script src="/frontend/Resources/Js/Functions.js"></script>
+  <script src="frontend/Resources/Js/Functions.js"></script>
 </body>
 </html>

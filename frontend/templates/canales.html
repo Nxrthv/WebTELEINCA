@@ -4,8 +4,8 @@
 <head>
     <base href="/TeleIncaWebp/">
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../../frontend/Css/Cable.css" />
-    <link rel="shortcut icon" href="../../frontend/Resources/Images/icon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/frontend/styles/canales.css" />
+    <link rel="shortcut icon" href="/frontend/Resources/Images/teleinca.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <title>TELEINCA | Canales</title>
@@ -13,18 +13,18 @@
 
 <body class="exo">
     <div class="position-sticky top-0" id="contNav" style="z-index: 1000"></div>
-    <div class="text-center p-4 mt-5">
+    <div class="text-center p-4 mt-5 elemento">
         <p class="display-6 fw-bold" style="color: var(--color5)">
             ¡Descubre los más de 100 canales que tenemos para ti!
         </p>
     </div>
-    <div class="container my-lg-5 my-2">
+    <div class="container my-lg-5 my-2 elemento">
         <div class="col-12 text-center div-responsivex" id="categoryContainer">
             <ul class="d-flex nav-pills list-unstyled channel-categories" id="tabList" role="tablist"></ul>
         </div>
         <div class="tab-content" id="channelTabContent"></div>
     </div>
-    <section class="col-12 p-2">
+    <section class="col-12 p-2 elemento">
         <p class="text-center my-4 display-5 fw-bold color" style="color: var(--color5)">Beneficios</p>
         <div class="d-flex div-responsivex">
             <div class="col-12 col-md-4 col-lg-3 px-5 pb-3 p-lg-2">
@@ -79,9 +79,9 @@
     </section>
     <div id="contFoot"></div>
 </body>
-<script src="../../frontend/Resources/Js/Dependencias.js"></script>
-<script src="../../frontend/Resources/Js/Elements.js"></script>
-<script src="../../frontend/Resources/Js/Functions.js"></script>
+<script src="../../frontend/Resources/js/dependencies.js"></script>
+<script src="../../frontend/Resources/js/elements.js"></script>
+<script src="../../frontend/Resources/js/functions.js"></script>
 <script>
     function loadChannelData() {
         fetch("../../frontend/Resources/Canales.json")

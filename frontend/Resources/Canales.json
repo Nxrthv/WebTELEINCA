@@ -7,77 +7,77 @@
         "channels": [
           {
             "name": "TV PERÚ",
-            "image": "frontend/Resources/Images/Canales/CH_03.png",
+            "image": "../frontend/resources/images/Canales/CH_03.png",
             "number": "#03"
           },
           {
             "name": "TELECENTRO",
-            "image": "frontend/Resources/Images/Canales/CH_04.png",
+            "image": "../frontend/resources/images/Canales/CH_04.png",
             "number": "#04"
           },
           {
             "name": "LATINA",
-            "image": "frontend/Resources/Images/Canales/CH_06.png",
+            "image": "../frontend/resources/images/Canales/CH_06.png",
             "number": "#06"
           },
           {
             "name": "EXITOSA",
-            "image": "frontend/Resources/Images/Canales/CH_07.png",
+            "image": "../frontend/resources/images/Canales/CH_07.png",
             "number": "#07"
           },
           {
             "name": "la Tele",
-            "image": "frontend/Resources/Images/Canales/CH_08.png",
+            "image": "../frontend/resources/images/Canales/CH_08.png",
             "number": "#08"
           },
           {
             "name": "ATV",
-            "image": "frontend/Resources/Images/Canales/CH_09.png",
+            "image": "../frontend/resources/images/Canales/CH_09.png",
             "number": "#09"
           },
           {
             "name": "Global TV",
-            "image": "frontend/Resources/Images/Canales/CH_10.png",
+            "image": "../frontend/resources/images/Canales/CH_10.png",
             "number": "#10"
           },
           {
             "name": "Nativa",
-            "image": "frontend/Resources/Images/Canales/CH_11.png",
+            "image": "../frontend/resources/images/Canales/CH_11.png",
             "number": "#11"
           },
           {
             "name": "Willax",
-            "image": "frontend/Resources/Images/Canales/CH_12.png",
+            "image": "../frontend/resources/images/Canales/CH_12.png",
             "number": "#12"
           },
           {
             "name": "Global TV",
-            "image": "frontend/Resources/Images/Canales/CH_13.png",
+            "image": "../frontend/resources/images/Canales/CH_13.png",
             "number": "#13"
           },
           {
             "name": "Inka TV",
-            "image": "frontend/Resources/Images/Canales/CH_14.png",
+            "image": "../frontend/resources/images/Canales/CH_14.png",
             "number": "#14"
           },
           {
             "name": "América TV",
-            "image": "frontend/Resources/Images/Canales/CH_15.png",
+            "image": "../frontend/resources/images/Canales/CH_15.png",
             "number": "#15"
           },
           {
             "name": "Panamericana",
-            "image": "frontend/Resources/Images/Canales/CH_16.png",
+            "image": "../frontend/resources/images/Canales/CH_16.png",
             "number": "#16"
           },
           {
             "name": "RPP",
-            "image": "frontend/Resources/Images/Canales/CH_17.png",
+            "image": "../frontend/resources/images/Canales/CH_17.png",
             "number": "#17"
           },
           {
             "name": "ANTENA 1",
-            "image": "frontend/Resources/Images/Canales/CH_108.PNG",
+            "image": "../frontend/resources/images/Canales/CH_108.PNG",
             "number": "#108"
           }
         ]
@@ -89,47 +89,47 @@
         "channels": [
           {
             "name": "AZ MUNDO",
-            "image": "frontend/Resources/Images/Canales/CH_18.png",
+            "image": "../frontend/resources/images/Canales/CH_18.png",
             "number": "#18"
           },
           {
             "name": "CORAL 39",
-            "image": "frontend/Resources/Images/Canales/CH_19.png",
+            "image": "../frontend/resources/images/Canales/CH_19.png",
             "number": "#19"
           },
           {
             "name": "E! ENTERTAINMENT",
-            "image": "frontend/Resources/Images/Canales/CH_20.png",
+            "image": "../frontend/resources/images/Canales/CH_20.png",
             "number": "#20"
           },
           {
             "name": "SUN CHANNEL",
-            "image": "frontend/Resources/Images/Canales/CH_22.png",
+            "image": "../frontend/resources/images/Canales/CH_22.png",
             "number": "#22"
           },
           {
             "name": "LIFETIME",
-            "image": "frontend/Resources/Images/Canales/CH_23.png",
+            "image": "../frontend/resources/images/Canales/CH_23.png",
             "number": "#23"
           },
           {
             "name": "EL GOURMET",
-            "image": "frontend/Resources/Images/Canales/CH_24.png",
+            "image": "../frontend/resources/images/Canales/CH_24.png",
             "number": "#24"
           },
           {
             "name": "VENUS (CANAL CODIFICADO)",
-            "image": "frontend/Resources/Images/Canales/CH_25.png",
+            "image": "../frontend/resources/images/Canales/CH_25.png",
             "number": "#25"
           },
           {
             "name": "MAGAZINE TV",
-            "image": "frontend/Resources/Images/Canales/CH_26.png",
+            "image": "../frontend/resources/images/Canales/CH_26.png",
             "number": "#26"
           },
           {
             "name": "AZ CLICK",
-            "image": "frontend/Resources/Images/Canales/CH_27.png",
+            "image": "../frontend/resources/images/Canales/CH_27.png",
             "number": "#27"
           }
         ]
@@ -141,82 +141,82 @@
         "channels": [
           {
             "name": "UNIVERSAL CINEMA",
-            "image": "frontend/Resources/Images/Canales/CH_85.png",
+            "image": "../frontend/resources/images/Canales/CH_85.png",
             "number": "#85"
           },
           {
             "name": "CINECANAL",
-            "image": "frontend/Resources/Images/Canales/CH_86.png",
+            "image": "../frontend/resources/images/Canales/CH_86.png",
             "number": "#86"
           },
           {
             "name": "TELESISTEMAS",
-            "image": "frontend/Resources/Images/Canales/CH_87.png",
+            "image": "../frontend/resources/images/Canales/CH_87.png",
             "number": "#87"
           },
           {
             "name": "UNIVERSAL PREMIER",
-            "image": "frontend/Resources/Images/Canales/CH_88.png",
+            "image": "../frontend/resources/images/Canales/CH_88.png",
             "number": "#88"
           },
           {
             "name": "STAR CHANNEL",
-            "image": "frontend/Resources/Images/Canales/CH_89.png",
+            "image": "../frontend/resources/images/Canales/CH_89.png",
             "number": "#89"
           },
           {
             "name": "PÁNICO",
-            "image": "frontend/Resources/Images/Canales/CH_90.png",
+            "image": "../frontend/resources/images/Canales/CH_90.png",
             "number": "#90"
           },
           {
             "name": "FX",
-            "image": "frontend/Resources/Images/Canales/CH_91.png",
+            "image": "../frontend/resources/images/Canales/CH_91.png",
             "number": "#91"
           },
           {
             "name": "AXN",
-            "image": "frontend/Resources/Images/Canales/CH_92.png",
+            "image": "../frontend/resources/images/Canales/CH_92.png",
             "number": "#92"
           },
           {
             "name": "SONY CHANNEL",
-            "image": "frontend/Resources/Images/Canales/CH_93.png",
+            "image": "../frontend/resources/images/Canales/CH_93.png",
             "number": "#93"
           },
           {
             "name": "CINE PLATINO",
-            "image": "frontend/Resources/Images/Canales/CH_94.png",
+            "image": "../frontend/resources/images/Canales/CH_94.png",
             "number": "#94"
           },
           {
             "name": "A&E",
-            "image": "frontend/Resources/Images/Canales/CH_98.png",
+            "image": "../frontend/resources/images/Canales/CH_98.png",
             "number": "#98"
           },
           {
             "name": "CINE MEXICANO",
-            "image": "frontend/Resources/Images/Canales/CH_99.png",
+            "image": "../frontend/resources/images/Canales/CH_99.png",
             "number": "#99"
           },
           {
             "name": "CINE FAMILIAR",
-            "image": "frontend/Resources/Images/Canales/CH_100.png",
+            "image": "../frontend/resources/images/Canales/CH_100.png",
             "number": "#100"
           },
           {
             "name": "OROMAR TV",
-            "image": "frontend/Resources/Images/Canales/CH_101.png",
+            "image": "../frontend/resources/images/Canales/CH_101.png",
             "number": "#101"
           },
           {
             "name": "EUROCHANNEL",
-            "image": "frontend/Resources/Images/Canales/CH_103.png",
+            "image": "../frontend/resources/images/Canales/CH_103.png",
             "number": "#103"
           },
           {
             "name": "DHE",
-            "image": "frontend/Resources/Images/Canales/CH_104.png",
+            "image": "../frontend/resources/images/Canales/CH_104.png",
             "number": "#104"
           }
         ]
@@ -228,47 +228,47 @@
         "channels": [
           {
             "name": "PLIM PLIM TV",
-            "image": "frontend/Resources/Images/Canales/CH_39.png",
+            "image": "../frontend/resources/images/Canales/CH_39.png",
             "number": "#39"
           },
           {
             "name": "DISNEY CHANNEL",
-            "image": "frontend/Resources/Images/Canales/CH_40.png",
+            "image": "../frontend/resources/images/Canales/CH_40.png",
             "number": "#40"
           },
           {
             "name": "DISNEY JUNIOR",
-            "image": "frontend/Resources/Images/Canales/CH_41.png",
+            "image": "../frontend/resources/images/Canales/CH_41.png",
             "number": "#41"
           },
           {
             "name": "FUN BOX",
-            "image": "frontend/Resources/Images/Canales/CH_42.png",
+            "image": "../frontend/resources/images/Canales/CH_42.png",
             "number": "#42"
           },
           {
             "name": "CANAL INFANTIL",
-            "image": "frontend/Resources/Images/Canales/CH_43.png",
+            "image": "../frontend/resources/images/Canales/CH_43.png",
             "number": "#43"
           },
           {
             "name": "ZOO MOO",
-            "image": "frontend/Resources/Images/Canales/CH_45.png",
+            "image": "../frontend/resources/images/Canales/CH_45.png",
             "number": "#45"
           },
           {
             "name": "ANIMOTION",
-            "image": "frontend/Resources/Images/Canales/CH_46.png",
+            "image": "../frontend/resources/images/Canales/CH_46.png",
             "number": "#46"
           },
           {
             "name": "LOVE NATURE",
-            "image": "frontend/Resources/Images/Canales/CH_47.png",
+            "image": "../frontend/resources/images/Canales/CH_47.png",
             "number": "#47"
           },
           {
             "name": "CLAN TV",
-            "image": "frontend/Resources/Images/Canales/CH_54.png",
+            "image": "../frontend/resources/images/Canales/CH_54.png",
             "number": "#54"
           }
         ]
@@ -280,52 +280,52 @@
         "channels": [
           {
             "name": "ESPN",
-            "image": "frontend/Resources/Images/Canales/CH_75.png",
+            "image": "../frontend/resources/images/Canales/CH_75.png",
             "number": "#75"
           },
           {
             "name": "ESPN 2",
-            "image": "frontend/Resources/Images/Canales/CH_76.png",
+            "image": "../frontend/resources/images/Canales/CH_76.png",
             "number": "#76"
           },
           {
             "name": "ESPN 3",
-            "image": "frontend/Resources/Images/Canales/CH_77.png",
+            "image": "../frontend/resources/images/Canales/CH_77.png",
             "number": "#77"
           },
           {
             "name": "ESPN 5",
-            "image": "frontend/Resources/Images/Canales/CH_78.png",
+            "image": "../frontend/resources/images/Canales/CH_78.png",
             "number": "#78"
           },
           {
             "name": "ESPN 4",
-            "image": "frontend/Resources/Images/Canales/CH_79.png",
+            "image": "../frontend/resources/images/Canales/CH_79.png",
             "number": "#79"
           },
           {
             "name": "ESPN 7",
-            "image": "frontend/Resources/Images/Canales/CH_80.png",
+            "image": "../frontend/resources/images/Canales/CH_80.png",
             "number": "#80"
           },
           {
             "name": "MERIDIANO TV",
-            "image": "frontend/Resources/Images/Canales/CH_81.png",
+            "image": "../frontend/resources/images/Canales/CH_81.png",
             "number": "#81"
           },
           {
             "name": "PX SPORTS",
-            "image": "frontend/Resources/Images/Canales/CH_82.png",
+            "image": "../frontend/resources/images/Canales/CH_82.png",
             "number": "#82"
           },
           {
             "name": "ESPN 6",
-            "image": "frontend/Resources/Images/Canales/CH_83.png",
+            "image": "../frontend/resources/images/Canales/CH_83.png",
             "number": "#83"
           },
           {
             "name": "AMÉRICA SPORTS",
-            "image": "frontend/Resources/Images/Canales/CH_84.png",
+            "image": "../frontend/resources/images/Canales/CH_84.png",
             "number": "#84"
           }
         ]
@@ -337,47 +337,47 @@
         "channels": [
           {
             "name": "DEUTSCHE WELLE",
-            "image": "frontend/Resources/Images/Canales/CH_55.png",
+            "image": "../frontend/resources/images/Canales/CH_55.png",
             "number": "#55"
           },
           {
             "name": "CONECTA2 TV",
-            "image": "frontend/Resources/Images/Canales/CH_56.png",
+            "image": "../frontend/resources/images/Canales/CH_56.png",
             "number": "#56"
           },
           {
             "name": "3ABN",
-            "image": "frontend/Resources/Images/Canales/CH_57.png",
+            "image": "../frontend/resources/images/Canales/CH_57.png",
             "number": "#57"
           },
           {
             "name": "RT NOTICIAS",
-            "image": "frontend/Resources/Images/Canales/CH_58.png",
+            "image": "../frontend/resources/images/Canales/CH_58.png",
             "number": "#58"
           },
           {
             "name": "TELESUR",
-            "image": "frontend/Resources/Images/Canales/CH_59.png",
+            "image": "../frontend/resources/images/Canales/CH_59.png",
             "number": "#59"
           },
           {
             "name": "CABLE NOTICIAS",
-            "image": "frontend/Resources/Images/Canales/CH_60.png",
+            "image": "../frontend/resources/images/Canales/CH_60.png",
             "number": "#60"
           },
           {
             "name": "CGTN ESPAÑOL",
-            "image": "frontend/Resources/Images/Canales/CH_61.png",
+            "image": "../frontend/resources/images/Canales/CH_61.png",
             "number": "#61"
           },
           {
             "name": "CREO TV",
-            "image": "frontend/Resources/Images/Canales/CH_62.png",
+            "image": "../frontend/resources/images/Canales/CH_62.png",
             "number": "#62"
           },
           {
             "name": "EURONEWS",
-            "image": "frontend/Resources/Images/Canales/CH_63.png",
+            "image": "../frontend/resources/images/Canales/CH_63.png",
             "number": "#63"
           }
         ]
@@ -389,37 +389,37 @@
         "channels": [
           {
             "name": "LA RIVEREÑA",
-            "image": "frontend/Resources/Images/Canales/CH_38.png",
+            "image": "../frontend/resources/images/Canales/CH_38.png",
             "number": "#38"
           },
           {
             "name": "KIZZI",
-            "image": "frontend/Resources/Images/Canales/CH_48.png",
+            "image": "../frontend/resources/images/Canales/CH_48.png",
             "number": "#48"
           },
           {
             "name": "MIMUSICA PERÚ",
-            "image": "frontend/Resources/Images/Canales/CH_49.png",
+            "image": "../frontend/resources/images/Canales/CH_49.png",
             "number": "#49"
           },
           {
             "name": "RUMBA TV",
-            "image": "frontend/Resources/Images/Canales/CH_50.png",
+            "image": "../frontend/resources/images/Canales/CH_50.png",
             "number": "#50"
           },
           {
             "name": "MIX MUSIC",
-            "image": "frontend/Resources/Images/Canales/CH_51.png",
+            "image": "../frontend/resources/images/Canales/CH_51.png",
             "number": "#51"
           },
           {
             "name": "MIMUSICA HITS",
-            "image": "frontend/Resources/Images/Canales/CH_52.png",
+            "image": "../frontend/resources/images/Canales/CH_52.png",
             "number": "#52"
           },
           {
             "name": "TELE NOSTALGIA",
-            "image": "frontend/Resources/Images/Canales/CH_53.png",
+            "image": "../frontend/resources/images/Canales/CH_53.png",
             "number": "#53"
           }
         ]
@@ -431,62 +431,62 @@
         "channels": [
           {
             "name": "ANIMAL PLANET",
-            "image": "frontend/Resources/Images/Canales/CH_28.png",
+            "image": "../frontend/resources/images/Canales/CH_28.png",
             "number": "#28"
           },
           {
             "name": "NATIONAL GEOGRAPHIC",
-            "image": "frontend/Resources/Images/Canales/CH_64.png",
+            "image": "../frontend/resources/images/Canales/CH_64.png",
             "number": "#64"
           },
           {
             "name": "HISTORY CHANNEL",
-            "image": "frontend/Resources/Images/Canales/CH_65.png",
+            "image": "../frontend/resources/images/Canales/CH_65.png",
             "number": "#65"
           },
           {
             "name": "UNIVERSAL",
-            "image": "frontend/Resources/Images/Canales/CH_66.png",
+            "image": "../frontend/resources/images/Canales/CH_66.png",
             "number": "#66"
           },
           {
             "name": "HISTORY 2",
-            "image": "frontend/Resources/Images/Canales/CH_67.png",
+            "image": "../frontend/resources/images/Canales/CH_67.png",
             "number": "#67"
           },
           {
             "name": "TELEANTILLAS",
-            "image": "frontend/Resources/Images/Canales/CH_68.png",
+            "image": "../frontend/resources/images/Canales/CH_68.png",
             "number": "#68"
           },
           {
             "name": "ATLAS TV",
-            "image": "frontend/Resources/Images/Canales/CH_69.png",
+            "image": "../frontend/resources/images/Canales/CH_69.png",
             "number": "#69"
           },
           {
             "name": "WOBI",
-            "image": "frontend/Resources/Images/Canales/CH_70.png",
+            "image": "../frontend/resources/images/Canales/CH_70.png",
             "number": "#70"
           },
           {
             "name": "DISCOVERY TURBO",
-            "image": "frontend/Resources/Images/Canales/CH_71.png",
+            "image": "../frontend/resources/images/Canales/CH_71.png",
             "number": "#71"
           },
           {
             "name": "REPRETEL 6",
-            "image": "frontend/Resources/Images/Canales/CH_72.png",
+            "image": "../frontend/resources/images/Canales/CH_72.png",
             "number": "#72"
           },
           {
             "name": "UNIVERSAL CRIME",
-            "image": "frontend/Resources/Images/Canales/CH_73.png",
+            "image": "../frontend/resources/images/Canales/CH_73.png",
             "number": "#73"
           },
           {
             "name": "TV AGRO",
-            "image": "frontend/Resources/Images/Canales/CH_74.png",
+            "image": "../frontend/resources/images/Canales/CH_74.png",
             "number": "#74"
           }
         ]
@@ -498,47 +498,47 @@
         "channels": [
           {
             "name": "KANAL DRAMA",
-            "image": "frontend/Resources/Images/Canales/CH_29.png",
+            "image": "../frontend/resources/images/Canales/CH_29.png",
             "number": "#29"
           },
           {
             "name": "UNIVISIÓN",
-            "image": "frontend/Resources/Images/Canales/CH_30.png",
+            "image": "../frontend/resources/images/Canales/CH_30.png",
             "number": "#30"
           },
           {
             "name": "PASIONES",
-            "image": "frontend/Resources/Images/Canales/CH_31.png",
+            "image": "../frontend/resources/images/Canales/CH_31.png",
             "number": "#31"
           },
           {
             "name": "AZ CORAZÓN",
-            "image": "frontend/Resources/Images/Canales/CH_32.png",
+            "image": "../frontend/resources/images/Canales/CH_32.png",
             "number": "#32"
           },
           {
             "name": "VE PLUS TV",
-            "image": "frontend/Resources/Images/Canales/CH_33.png",
+            "image": "../frontend/resources/images/Canales/CH_33.png",
             "number": "#33"
           },
           {
             "name": "CARACOL TV",
-            "image": "frontend/Resources/Images/Canales/CH_34.png",
+            "image": "../frontend/resources/images/Canales/CH_34.png",
             "number": "#34"
           },
           {
             "name": "TELEMUNDO",
-            "image": "frontend/Resources/Images/Canales/CH_35.png",
+            "image": "../frontend/resources/images/Canales/CH_35.png",
             "number": "#35"
           },
           {
             "name": "TV CENTRO",
-            "image": "frontend/Resources/Images/Canales/CH_36.png",
+            "image": "../frontend/resources/images/Canales/CH_36.png",
             "number": "#36"
           },
           {
             "name": "HOGAR TV",
-            "image": "frontend/Resources/Images/Canales/CH_37.png",
+            "image": "../frontend/resources/images/Canales/CH_37.png",
             "number": "#37"
           }
         ]
@@ -550,22 +550,22 @@
         "channels": [
           {
             "name": "ESNE TV",
-            "image": "frontend/Resources/Images/Canales/CH_102.png",
+            "image": "../frontend/resources/images/Canales/CH_102.png",
             "number": "#102"
           },
           {
             "name": "BETHEL TV",
-            "image": "frontend/Resources/Images/Canales/CH_105.png",
+            "image": "../frontend/resources/images/Canales/CH_105.png",
             "number": "#105"
           },
           {
             "name": "EWTN",
-            "image": "frontend/Resources/Images/Canales/CH_106.png",
+            "image": "../frontend/resources/images/Canales/CH_106.png",
             "number": "#106"
           },
           {
             "name": "MARÍA VISIÓN",
-            "image": "frontend/Resources/Images/Canales/CH_107.png",
+            "image": "../frontend/resources/images/Canales/CH_107.png",
             "number": "#107"
           }
         ]
@@ -577,7 +577,7 @@
         "channels": [
           {
             "name": "CABLE VISIÓN TV",
-            "image": "frontend/Resources/Images/Canales/CH_21.png",
+            "image": "../frontend/resources/images/Canales/CH_21.png",
             "number": "#21"
           }
         ]

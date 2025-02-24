@@ -2,12 +2,10 @@
 <html lang="es">
 
 <head>
-    <base href="/TelecomHuanucop/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../frontend/Css/Index.css">
-    <link rel="stylesheet" href="../../frontend/Css/Loading.css">
-    <link rel="shortcut icon" href="../../frontend/Resources/Images/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../frontend/styles/index.css">
+    <link rel="shortcut icon" href="../../frontend/Resources/Images/teleinca.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>TELEINCA S.A.C.</title>
 </head>
@@ -999,9 +997,9 @@
     </div>
     <div id="contFoot"></div>
 </body>
-<script src="../../frontend/Resources/Js/Dependencias.js"></script>
-<script src="../../frontend/Resources/Js/Functions.js"></script>
-<script src="../../frontend/Resources/Js/Elements.js"></script>
+<script src="../../frontend/Resources/js/dependencies.js"></script>
+<script src="../../frontend/Resources/js/functions.js"></script>
+<script src="../../frontend/Resources/js/elements.js"></script>
 <script>
     async function enviarCorreo(event) {
         event.preventDefault();
@@ -1043,24 +1041,6 @@
     }
 </script>
 <script>
-    const elementos = document.querySelectorAll('.elemento');
-
-    const manejarScroll = () => {
-        const alturaVentana = window.innerHeight;
-
-        elementos.forEach((elemento) => {
-            const posicionElemento = elemento.getBoundingClientRect().top;
-
-            if (posicionElemento < alturaVentana - 100) {
-                elemento.classList.add('aparecer');
-            }
-        });
-    };
-
-    window.addEventListener('scroll', manejarScroll);
-    manejarScroll();
-</script>
-<script>
     const carousel = document.querySelector('.comments');
     const dots = document.querySelectorAll('.dot');
     const cardWidth = document.querySelector('.card').offsetWidth;
@@ -1085,5 +1065,4 @@
     }
 
 </script>
-
 </html>

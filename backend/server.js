@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({
-  origin: ['http://191.97.50.142:11004'],
+  origin: ['http://201.230.101.89:11004'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true

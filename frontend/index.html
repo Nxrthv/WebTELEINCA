@@ -4,10 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../frontend/styles/index.css">
-    <link rel="shortcut icon" href="../../frontend/Resources/Images/teleinca.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/index.css ">
+    <link rel="shortcut icon" href="Resources/Images/teleinca.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>TELEINCA S.A.C.</title>
+    <style>
+        #chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #chatbot-container {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+        }
+
+        #chatbot-header {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+
+        #chatbot-messages {
+            height: 250px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        #chatbot-input {
+            width: calc(100% - 20px);
+            padding: 5px;
+            margin: 5px;
+        }
+
+        #chatbot-send {
+            width: 100%;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body class="exo">
@@ -21,10 +75,10 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active d-item">
-                <img src="../../frontend/Resources/Images/banner1.jpg" class="d-block w-100 img-fluid" alt="slider 1">
+                <img src="Resources/Images/banner1.jpg" class="d-block w-100 img-fluid" alt="slider 1">
             </div>
             <div class="carousel-item d-item">
-                <img src="../../frontend/Resources/Images/banner2.png" class="d-block w-100 img-fluid" alt="slider 2">
+                <img src="Resources/Images/banner2.png" class="d-block w-100 img-fluid" alt="slider 2">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
@@ -334,6 +388,15 @@
                 <a class="tab-link0" id="tab4" data-bs-toggle="pill" href="#pack-coaxial" role="tab"
                     aria-controls="content4" aria-selected="false"></a>
             </ul>
+        </div>
+    </section>
+    <section>
+        <div id="chatbot-button" onclick="toggleChat()">💬 Chat </div>
+        <div id="chatbot-container">
+            <div id="chatbot-header">Soporte Online</div>
+            <div id="chatbot-messages"></div>
+            <input type="text" id="chatbot-input" placeholder="Escribe un mensaje..." />
+            <button id="chatbot-send">Enviar</button>
         </div>
     </section>
     <section>
@@ -742,11 +805,12 @@
     <section class="my-5 p-5 d-flex flex-wrap" style="background-color: rgba(233, 233, 233, 0.651);">
         <span id="pagos"></span>
         <div class="d-flex flex-column align-items-center col-lg-5 col-12 py-3">
-            <img src="../../frontend/Resources/Images/pagoatiempo0.png"
-                style="filter: drop-shadow(0 0 7px rgb(158, 158, 158));" width="300px">
+            <img src="Resources/Images/pagoatiempo0.png" style="filter: drop-shadow(0 0 7px rgb(158, 158, 158));"
+                width="300px">
             <p class="fs-3 fw-bold text-center my-2" style="color: #2da85a;">Paga antes del</p>
             <p class="text-white fs-3 rounded-pill px-5 py-2 m-0 text-center" style="background-color: #2da85a;">
-                <b>Ultimo dia de cada Mes</b></p>
+                <b>Ultimo dia de cada Mes</b>
+            </p>
             <p class="fs-3 fw-bold text-center my-2" style="color: #2da85a;">y obten tu</p>
             <div class="text-white fs-3 m-0 py-3 text-center w-50 mx-auto"
                 style="background-color: #2da85a; border-top-left-radius: 2em; border-bottom-right-radius: 2em; border-top-right-radius: .5em; border-bottom-left-radius: .5em;">
@@ -759,18 +823,18 @@
             <p class="pb-4 fs-6">Selecciona el metodo de pago que prefieras y conoce los pasos para pagar tu recibo en
                 las diferentes Apps. Paga desde la tranquilidad de tu hogar y sin comisiones.</p>
             <div class="d-flex justify-content-center gap-3 gap-lg-5 align-items-center">
-                <img id="plataformas" style="width: 90px; padding-top: 1.5em;"
-                    src="../../frontend/Resources/Images/yape.png" alt="Yape" class="img-fluid">
-                <img id="plataformas" style=" width: 130px;" src="../../frontend/Resources/Images/bbva.png" alt="BBVA"
+                <img id="plataformas" style="width: 90px; padding-top: 1.5em;" src="Resources/Images/yape.png"
+                    alt="Yape" class="img-fluid">
+                <img id="plataformas" style=" width: 130px;" src="Resources/Images/bbva.png" alt="BBVA"
                     class="img-fluid">
-                <img id="plataformas" style=" width: 130px;" src="../../frontend/Resources/Images/bcplogo.png" alt="BCP"
+                <img id="plataformas" style=" width: 130px;" src="Resources/Images/bcplogo.png" alt="BCP"
                     class="img-fluid">
             </div>
         </div>
     </section>
     <section class="my-5 d-flex flex-wrap justify-content-center">
         <div class="col-lg-4 col-12 justify-content-center">
-            <h1 class="text-center display-6 fw-bold py-4">¿Ya Contrataste?</h1>
+            <h1 class="text-center display-6 fw-bold pb-5 pt-4">¿Ya Contrataste?</h1>
             <div class="cookieCard mx-auto">
                 <p class="cookieHeading"><i class="bi bi-graph-up-arrow"></i> Mejora tu plan</p>
                 <p class="cookieDescription">Mejora tu experiencia con nosotros, haz clic aquí y descubre todos nuestros
@@ -781,7 +845,7 @@
             </div>
         </div>
         <div class="col-lg-8 col-12">
-            <div style="position: relative; overflow: hidden; width: 95%;">
+            <div style="position: relative; overflow: hidden; width: 97%;">
                 <h1 class="text-center display-6 fw-bold py-4">Nuestros Clientes</h1>
                 <div class="comments d-flex gap-3">
                     <div class="card col-12 col-lg-6">
@@ -997,9 +1061,9 @@
     </div>
     <div id="contFoot"></div>
 </body>
-<script src="../../frontend/Resources/js/dependencies.js"></script>
-<script src="../../frontend/Resources/js/functions.js"></script>
-<script src="../../frontend/Resources/js/elements.js"></script>
+<script src="js/dependencies.js"></script>
+<script src="js/functions.js"></script>
+<script src="js/elements.js"></script>
 <script>
     async function enviarCorreo(event) {
         event.preventDefault();
@@ -1065,4 +1129,45 @@
     }
 
 </script>
+<script>
+    // window.botpressWebChat.init({
+    //     host: "https://cdn.botpress.cloud/webchat/v1",
+    //     botId: "cv-agent-okfl",
+    // });
+    // document.getElementById("chatbot-send").addEventListener("click", sendMessage);
+
+    async function sendMessage() {
+        const inputField = document.getElementById("chatbot-input");
+        const message = inputField.value.trim();
+        if (!message) return;
+
+        addMessage("Tú", message);
+
+        const response = await fetch("http://localhost:4444/chatbot", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message, sessionId: "123" }),
+        });
+
+        const data = await response.json();
+        addMessage("Bot", data.reply);
+
+        inputField.value = "";
+    }
+
+    function addMessage(sender, message) {
+        const chatBox = document.getElementById("chatbot-messages");
+        const messageElement = document.createElement("p");
+        messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+        chatBox.appendChild(messageElement);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function toggleChat() {
+        const chat = document.getElementById("chatbot-container");
+        chat.style.display = chat.style.display === "none" ? "flex" : "none";
+    }
+
+</script>
+
 </html>

@@ -21,6 +21,6 @@ const fullUrl = baseUrl + url;
     });
 }
 document.addEventListener("DOMContentLoaded", function() {
-cargarFragmento('../../frontend/templates/footer.html', 'contFoot');
-cargarFragmento('../../frontend/templates/nav.html', 'contNav');
+cargarFragmento('../templates/footer.html', 'contFoot');
+cargarFragmento('../templates/nav.html', 'contNav');
 });

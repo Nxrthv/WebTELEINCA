@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../config/database');
+const pool = require('../../config/database');
 
 router.get('/:codigoUsuario', async (req, res) => {
   try {
@@ -31,14 +31,14 @@ LEFT JOIN
     "SH_teleinca01".cobros_servicio cs
     ON d.codigo_abonado = cs.codigo_abonado
 WHERE 
-    (d.codigo_cobro IS NOT NULL AND trim(d.codigo_cobro) != '')
+    (d.codigo_cobro IS NULL OR d.codigo_cobro = '')
     AND cs.anulado = 'f'
     AND d.anulado = 'f'
     AND d.fecha_ultimo_pago <= (DATE_TRUNC('month', CURRENT_DATE) + INTERVAL '1 MONTH - 1 DAY')
 	  AND d.codigo_abonado = $1
 ORDER BY
 	d.codigo_abonado ASC,
-    d.fecha_ultimo_pago DESC
+    d.fecha_ultimo_pago ASC
     `;
     const result = await pool.query(query, [codigoUsuario]);
 
@@ -48,5 +48,6 @@ ORDER BY
     res.status(500).json({ message: 'Error al consultar la base de datos' });
   }
 });
+
 
 module.exports = router;

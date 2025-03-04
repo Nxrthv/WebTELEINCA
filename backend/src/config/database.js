@@ -1,15 +1,17 @@
-const { Pool } = require('pg');
-require('dotenv').config();
+import pkg from "pg";
+const { Pool } = pkg;
 
+// Datos de conexión
 const pool = new Pool({
-  user: process.env.SDB_USER,
-  host: process.env.SDB_HOST,
-  database: process.env.SDB_DATABASE,
-  password: process.env.SDB_PASSWORD,
-  port: process.env.SDB_PORT,
+    user: "cab_vision_dev",
+    host: "db01.grupocablevision.com",
+    database: "cablevision",
+    password: "OAak1BtP!a",
+    port: 5432,
 });
 
-// Opción 1: Exportación más moderna
-//export default pool;
+pool.connect()
+    .then(() => console.log("Conectado a PostgreSQL"))
+    .catch(err => console.error("Error de conexión a PostgreSQL:", err));
 
-module.exports = pool;
+export default pool;

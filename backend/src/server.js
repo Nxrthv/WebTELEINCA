@@ -1,169 +1,82 @@
-const express = require('express');
-const nodemailer = require('nodemailer');
-const cors = require('cors');
-const recibosPagadosRoutes = require('./src/routes/recibos_pagados');
-const recibosPendientesRoutes = require('./src/routes/recibos_pendientes');
-const authRoutes = require('./src/routes/auth');
+import express from "express";
+import cors from "cors";
+import path from 'path';
+import { v4 as uuidv4 } from 'uuid';
+import pool from './config/database.js';
+import authRoutes from './routes/auth.js';
+
 const app = express();
-require('dotenv').config();
-// Middlewares
-app.use((req, res, next) => {
-  console.log(`-> ${new Date().toISOString()} - Petición recibida: ${req.method} ${req.url}`);
-  next();
-});
-
-app.use(cors({
-  origin: ['http://201.230.101.89:11004'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
-
-// Para mejor debugging, modifica el log de CORS
-app.use((req, res, next) => {
-  console.log('\n=== PETICIÓN RECIBIDA ===');
-  console.log('-> Origen de la petición:', req.headers.origin);
-  console.log('-> Método:', req.method);
-  console.log('-> URL:', req.url);
-  console.log('-> Puerto del servidor:', process.env.PORT || 3000);
-  next();
-});
-
 app.use(express.json());
+app.use(cors());
 
-// Ruta de prueba básica
-app.get('/', (req, res) => {
-  res.send('API de Recibos funcionando');
+app.set('view engine', 'ejs');
+app.set('views', path.join(process.cwd(), 'backend/src/views'));
+
+app.use('/api/users', authRoutes);
+
+//Recursos Frontend
+app.use(express.static(path.join(process.cwd(), 'frontend', 'public')));
+app.use('/c', express.static(path.join(process.cwd(), 'frontend', 'public')));
+app.use('/ce', express.static(path.join(process.cwd(), 'frontend', 'public')));
+app.use('/co', express.static(path.join(process.cwd(), 'frontend', 'public')));
+app.use('/log', express.static(path.join(process.cwd(), 'frontend', 'public')));
+
+//Administrador
+app.get('/a/url', (req, res) => {  
+    const id = uuidv4();
+    res.redirect(`/a/${id}`);
+});
+app.get('/a/:id', (req, res) => {
+    res.render('admin', { title: "Administrador | TELEINCA S.A.C." });
 });
 
-// Rutas
-app.use('/api/recibos_pagados', recibosPagadosRoutes);
-app.use('/api/recibos_pendientes', recibosPendientesRoutes);
-app.use('/api', authRoutes);
-
-// Configuración del transporter de nodemailer para Gmail
-const transporter = nodemailer.createTransport({
-  host: 'mail.canguapps.com', // Servidor de correo
-  port: 587,                 // Puerto (SMTP)
-  secure: false,             // Cambiar a true para SSL (puerto 465)
-  auth: {
-    user: process.env.SMTP_USER,        
-    pass: process.env.SMTP_PASS,      
-  },
-  tls: {
-      rejectUnauthorized: false, // Esto permite certificados TLS no verificados
-  },   
+//Ruta Principal
+app.get('/', async (req, res) => {
+    res.render('index', { title: "TELEINCA S.A.C." });
 });
 
-// Verificar la conexión inmediatamente
-transporter.verify(function(error, success) {
-    if (error) {
-        console.log('Error de verificación del transporter:', error);
-    } else {
-        console.log('->Servidor listo para enviar correos');
-    }
+//Login
+app.get('/log/url', (req, res) => {
+    const id = uuidv4();
+    res.redirect(`/log/${id}`);
+});
+app.get('/log/:id', (req, res) => {
+    const { id } = req.params;
+    res.render('login', { title: "Iniciar Sesión | TELEINCA S.A.C.", id });
 });
 
-// Nueva ruta para procesar pagos con más logging
-app.post('/api/procesar-pago', async (req, res) => {
-  console.log('\n=== NUEVO INTENTO DE PAGO ===');
-  console.log('-> Timestamp:', new Date().toISOString());
-  console.log('-> IP del cliente:', req.ip);
-  console.log('-> Datos recibidos:', JSON.stringify(req.body, null, 2));
-
-  const { metodoPago, codigoRecibo, codigoUsuario, numeroTransaccion, montoPago } = req.body;
-  
-  if (!metodoPago || !codigoRecibo || !codigoUsuario || !numeroTransaccion || !montoPago) {
-    console.log('-> ERROR: Datos faltantes:', {
-      metodoPago: !!metodoPago,
-      codigoRecibo: !!codigoRecibo,
-      codigoUsuario: !!codigoUsuario,
-      numeroTransaccion: !!numeroTransaccion,
-      montoPago: !!montoPago
-    });
-    return res.status(400).json({
-      success: false,
-      message: 'Faltan datos requeridos',
-      missingFields: { metodoPago, codigoRecibo, codigoUsuario, numeroTransaccion, montoPago }
-    });
-  }
-
-  const mailOptions = {
-    from: '"Sistema de Pagos-Teleinca" <sicv@cablevision.pe>',
-    to: 'huanuco@huanucotelecom.com , huanucoap2@huanucotelecom.com',
-    subject: `Nuevo pago recibido - ${metodoPago}`,
-    html: `
-      <h2>SOLICITUD DE PAGO</h2>
-      <p><strong>Número de deuda:</strong> ${codigoRecibo}</p>
-      <p><strong>Código de abonado:</strong> ${codigoUsuario}</p>
-      <p><strong>Número de Transferencia de ${metodoPago}:</strong> ${numeroTransaccion}</p>
-      <p><strong>Monto de pago:</strong> S/. ${montoPago}</p>
-    `
-  };
-
-  try {
-    console.log('-> Iniciando envío de correo...');
-    const info = await transporter.sendMail(mailOptions);
-    console.log('-> Correo enviado exitosamente');
-    console.log('-> ID del mensaje:', info.messageId);
-    res.json({ 
-      success: true, 
-      message: 'Correo enviado exitosamente',
-      messageId: info.messageId 
-    });
-  } catch (error) {
-    console.log('-> ERROR al enviar correo:', error.message);
-    console.error('Error detallado del servidor:', {
-      message: error.message,
-      code: error.code,
-      command: error.command,
-      stack: error.stack
-    });
-    
-    res.status(500).json({
-      success: false,
-      message: 'Error al enviar el correo',
-      error: {
-        message: error.message,
-        code: error.code,
-        command: error.command
-      }
-    });
-  }
+//Guia de Canales
+app.get('/c/url', (req, res) => {
+    const id = uuidv4();
+    res.redirect(`/c/${id}`);
+});
+app.get('/c/:id', (req, res) => {
+    const { id } = req.params;
+    res.render('canales', { title: "Tv Digital | TELEINCA S.A.C.", id });
 });
 
-// Manejo de errores básico
-app.use((err, req, res, next) => {
-  console.error('\n=== ERROR EN EL SERVIDOR ===');
-  console.error('-> Timestamp:', new Date().toISOString());
-  console.error('-> Ruta:', req.path);
-  console.error('-> Método:', req.method);
-  console.error('-> Error:', err.message);
-  console.error('-> Stack:', err.stack);
-  res.status(500).send('¡Algo salió mal!');
+//Centros de Experiencia
+app.get('/ce/url', (req, res) => {
+    const id = uuidv4();
+    res.redirect(`/ce/${id}`);
+});
+app.get('/ce/:id', (req, res) => {
+    const { id } = req.params;
+    res.render('centrosDeExperiencia', { title: "Centros de Experiencia | TELEINCA S.A.C.", id });
 });
 
-const PORT = process.env.PORT || 3000;
+//Conocenos
+app.get('/co/url', (req, res) => {
+    const id = uuidv4();
+    res.redirect(`/co/${id}`);
+});
+app.get('/co/:id', (req, res) => {
+    const { id } = req.params;
+    res.render('conocenos', { title: "Conocenos | TELEINCA S.A.C.", id });
+});
+
+//Ruta Localhost
+const PORT = process.env.PORT || 4444;
 app.listen(PORT, () => {
-  //console.clear(); // Limpia la consola al iniciar
-  console.log(`\n=== INICIO DEL SERVIDOR ===`);
-  console.log(`-> Timestamp: ${new Date().toISOString()}`);
-  console.log(`-> Puerto: ${PORT}`);
-  console.log(`-> Modo: ${process.env.NODE_ENV || 'desarrollo'}`);
-  console.log(`-> CORS habilitado para: ${JSON.stringify(cors.origin)}`);
-  
-  console.log(`-----------------------------------------------------------------`);
-  console.log(`-    ****** ****** *      ****** ****** *    * ****** ******    -`);
-  console.log(`-      **   *      *      *        **   **   * *      *    *    -`);
-  console.log(`-      **   *      *      *        **   * *  * *      *    *    -`);
-  console.log(`-      **   ****** *      ******   **   *  * * *      ******    -`);
-  console.log(`-      **   *      *      *        **   *   ** *      *    *    -`);
-  console.log(`-      **   ****** ****** ****** ****** *    * ****** *    *    -`);
-  console.log(`-----------------------------------------------------------------`);
-  console.log(`--------------------------ServidorWeb----------------------------`);
-  console.log(`-----Oficina de Sistemas y Tecnologías de la Información 2024----`);
-  console.log(`-----------------------------------------------------------------`);
-  console.log(`->Servidor corriendo en puerto ${PORT}`);
+    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 });
-
-

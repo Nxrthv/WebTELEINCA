@@ -52,15 +52,15 @@ function smoothScrollTo(sectionId, offset = 75) {
 };
 
 // Animacion de carga
-// window.addEventListener("load", () => {
-//     const loading = document.getElementById("loading");
-//     const content = document.getElementById("content");
+window.addEventListener("load", () => {
+    const loading = document.getElementById("loading");
+    const content = document.getElementById("content");
 
-//     setTimeout(() => {
-//         loading.style.display = "none";
-//         content.style.display = "block";
-//     }, 1000);
-// });
+    setTimeout(() => {
+        loading.style.display = "none";
+        content.style.display = "block";
+    }, 500);
+});
 
 //Reducir el Nav al Scroollear
 window.onscroll = function () {

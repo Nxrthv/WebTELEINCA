@@ -5,18 +5,20 @@
     "cors": "^2.8.5",
     "dialogflow": "^1.2.0",
     "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
     "express": "^4.21.2",
     "morgan": "^1.10.0",
-    "pg": "^8.13.3"
+    "pg": "^8.13.3",
+    "uuid": "^11.1.0"
   },
   "name": "teleincawebp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node backend/src/index.js",
-    "dev": "node --watch backend/src/index.js"
+    "start": "node backend/src/server.js",
+    "dev": "node --watch backend/src/server.js"
   },
   "repository": {
     "type": "git",

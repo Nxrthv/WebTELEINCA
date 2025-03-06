@@ -1,1173 +1,918 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/index.css">
-    <link rel="shortcut icon" href="resources/Images/teleinca.ico" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title><%= title %></title>
-    <style>
-        #chatbot-button {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background-color: #007bff;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        },
+                        secondary: {
+                            50: '#fefce8',
+                            100: '#fef9c3',
+                            200: '#fef08a',
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                            700: '#a16207',
+                            800: '#854d0e',
+                            900: '#713f12',
+                            950: '#422006',
+                        },
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'slide-in-right': 'slideInRight 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideInRight: {
+                            '0%': { transform: 'translateX(20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                    },
+                }
+            }
         }
-
-        #chatbot-container {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 300px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            display: none;
-            flex-direction: column;
-        }
-
-        #chatbot-header {
-            background: #007bff;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            border-radius: 10px 10px 0 0;
-        }
-
-        #chatbot-messages {
-            height: 250px;
-            overflow-y: auto;
-            padding: 10px;
-        }
-
-        #chatbot-input {
-            width: calc(100% - 20px);
-            padding: 5px;
-            margin: 5px;
-        }
-
-        #chatbot-send {
-            width: 100%;
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .clip-path-slant {
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            }
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
-<body>
+<body class="bg-gray-50">
     
     <%- include('reusable/navigation') %>
 
-    <div id="carouselExampleCaptions" class="carousel slide">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active d-item">
-                <img src="Resources/Images/banner1.jpg" class="d-block w-100 img-fluid" alt="slider 1">
-            </div>
-            <div class="carousel-item d-item">
-                <img src="Resources/Images/banner2.png" class="d-block w-100 img-fluid" alt="slider 2">
+    <!-- Slider Promociones -->
+    <!-- <div class="relative w-full mx-auto">
+        <div id="slider" class="relative overflow-hidden h-56 md:h-96" style="height: max-content;">
+            <div class="flex transition-transform duration-700 ease-in-out">
+                <img src="/resources/images/banner1.jpg" class="w-full flex-shrink-0 object-cover" alt="Slider 1">
+                <img src="/resources/images/banner2.png" class="w-full flex-shrink-0 object-cover" alt="Slider 2">
+                <img src="/resources/images/banner1.jpg" class="w-full flex-shrink-0 object-cover" alt="Slider 3">
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+    
+        Botón Anterior 
+        <button id="prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 p-2 rounded-full shadow-md">
+            <svg class="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+    
+        Botón Siguiente
+        <button id="next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 p-2 rounded-full shadow-md">
+            <svg class="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
         </button>
-    </div>
-    <section id="promociones">
-        <h1 class="mt-4 mt-lg-5 text-center display-6 fw-bold elemento">Escoge plan que prefieras</h1>
-        <div class="col-lg-4 col-12 mx-auto d-flex flex-wrap justify-content-center">
-            <div class="buttons p-3 elemento">
-                <button onclick="smoothScrollTo('internet-cable')"><span></span>
-                    <p data-start="good luck!" data-text="Contratar" data-title="Solo Internet"></p>
-                </button>
-            </div>
-            <div class="buttons p-3 elemento">
-                <button onclick="smoothScrollTo('internet-cable')"><span></span>
-                    <p data-start="good luck!" data-text="Contratar" data-title="Solo Cable"></p>
-                </button>
-            </div>
+    
+        Indicadores
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            <span class="dot w-3 h-3 bg-gray-400 rounded-full cursor-pointer"></span>
+            <span class="dot w-3 h-3 bg-gray-400 rounded-full cursor-pointer"></span>
+            <span class="dot w-3 h-3 bg-gray-400 rounded-full cursor-pointer"></span>
         </div>
-        <div id="duos" class="mb-5">
-            <div class="tab-content mx-auto" style="max-width: 70em;">
-                <div id="pack-fibra" class="tab-pane fade show active" role="tabpanel" aria-labelledby="tab3">
-                    <div class="d-flex px-3 div-responsive justify-content-start gap-5">
-                        <div id="pf-1" class="mx-4 col-10 col-lg-3 elemento">
-                            <p class="tag py-1">Nuevo Plan</p>
-                            <div class="plan-card">
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                        INTERNET</span> 100% Fibra Optica
-                                    <span class="fs-4">80Mbps</span>
-                                </p>
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-tv"></i> +100
-                                        CANALES</span> Nacionales e Internacionales
-                                </p>
-                                <div class="etiquet-price">
-                                    <p id="precio">90.00</p>
-                                    <div></div>
-                                </div>
-                                <div class="benefits-list my-3">
-                                    <ul>
-                                        <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Conexion a dos TVs</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span>
-                                        </li>
-                                        <li><i class="bi bi-check-circle"></i><span>TV en vivo: deportes, series y
-                                                peliculas</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <button class="w-100 button-get-plan rounded-pill" onclick="sendMessage('pf-1')">
-                                    ¡Quiero este Plan!
-                                </button>
-                                <p style="font-size: 10px;" class="mt-3 mb-0 text-center">Promoción válida solo para Los
-                                    Portales,
-                                    San Andreas, La
-                                    Esperanza, Huayopampa, Jancao, Llicua Alta (Parcial), Fonavi II, La Colectora.</p>
-                            </div>
-                        </div>
-                        <div id="pf-2" class="mx-4 col-10 col-lg-3 elemento">
-                            <p class="tag py-1">Nuevo Plan</p>
-                            <div class="plan-card">
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                        INTERNET</span> 100% Fibra Optica
-                                    <span class="fs-4">100Mbps</span>
-                                </p>
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-tv"></i> +100
-                                        CANALES</span> Nacionales e Internacionales
-                                </p>
-                                <div class="etiquet-price">
-                                    <p id="precio">100.00</p>
-                                    <div></div>
-                                </div>
-                                <div class="benefits-list my-3">
-                                    <ul>
-                                        <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Conexion a dos TVs</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span>
-                                        </li>
-                                        <li><i class="bi bi-check-circle"></i><span>TV en vivo: deportes, series y
-                                                peliculas</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <button class="button-get-plan w-100 rounded-pill" onclick="sendMessage('pf-2')">
-                                    ¡Quiero este Plan!
-                                </button>
-                                <p style="font-size: 10px;" class="mt-3 mb-0 text-center">Promoción válida solo para Los
-                                    Portales,
-                                    San Andreas, La
-                                    Esperanza, Huayopampa, Jancao, Llicua Alta (Parcial), Fonavi II, La Colectora.</p>
-                            </div>
-                        </div>
-                        <div id="pf-3" class="mx-4 col-10 col-lg-3 elemento">
-                            <p class="tag py-1">Nuevo Plan</p>
-                            <div class="plan-card">
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                        INTERNET</span> 100% Fibra Optica
-                                    <span class="fs-4">150Mbps</span>
-                                </p>
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-tv"></i> +100
-                                        CANALES</span> Nacionales e Internacionales
-                                </p>
-                                <div class="etiquet-price">
-                                    <p id="precio">110.00</p>
-                                    <div></div>
-                                </div>
-                                <div class="benefits-list my-3">
-                                    <ul>
-                                        <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Conexion a dos TVs</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span>
-                                        </li>
-                                        <li><i class="bi bi-check-circle"></i><span>TV en vivo: deportes, series y
-                                                peliculas</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <button class="button-get-plan w-100 rounded-pill" onclick="sendMessage('pf-3')">
-                                    ¡Quiero este Plan!
-                                </button>
-                                <p style="font-size: 10px;" class="mt-3 mb-0 text-center">Promoción válida solo para Los
-                                    Portales,
-                                    San Andreas, La
-                                    Esperanza, Huayopampa, Jancao, Llicua Alta (Parcial), Fonavi II, La Colectora.</p>
-                            </div>
-                        </div>
-                        <div id="pf-4" class="mx-4 col-10 col-lg-3 elemento">
-                            <p class="tag py-1">Plan Recomendado</p>
-                            <div class="plan-card">
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                        INTERNET</span> 100% Fibra Optica
-                                    <span class="fs-4">200Mbps</span>
-                                </p>
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-tv"></i> +100
-                                        CANALES</span> Nacionales e Internacionales</p>
-                                <div class="etiquet-price">
-                                    <p id="precio">130.00</p>
-                                    <div></div>
-                                </div>
-                                <div class="benefits-list my-3">
-                                    <ul>
-                                        <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Conexion a dos TVs</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span>
-                                        </li>
-                                        <li><i class="bi bi-check-circle"></i><span>TV en vivo: deportes, series y
-                                                peliculas</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <button class="button-get-plan w-100 rounded-pill" onclick="sendMessage('pf-4')">
-                                    ¡Quiero este Plan!
-                                </button>
-                                <p style="font-size: 10px;" class="mt-3 mb-0 text-center">Promoción válida solo para Los
-                                    Portales,
-                                    San Andreas, La
-                                    Esperanza, Huayopampa, Jancao, Llicua Alta (Parcial), Fonavi II, La Colectora.</p>
-                            </div>
-                        </div>
-                        <div id="pf-5" class="mx-4 col-10 col-lg-3 elemento">
-                            <p class="tag py-1">Plan Recomendado</p>
-                            <div class="plan-card">
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                        INTERNET</span> 100% Fibra Optica
-                                    <span class="fs-4">250Mbps</span>
-                                </p>
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-tv"></i> +100
-                                        CANALES</span> Nacionales e Internacionales
-                                </p>
-                                <div class="etiquet-price">
-                                    <p id="precio">150.00</p>
-                                    <div></div>
-                                </div>
-                                <div class="benefits-list my-3">
-                                    <ul>
-                                        <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Conexion a dos TVs</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span>
-                                        </li>
-                                        <li><i class="bi bi-check-circle"></i><span>TV en vivo: deportes, series y
-                                                peliculas</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <button class="button-get-plan w-100 rounded-pill" onclick="sendMessage('pf-5')">
-                                    ¡Quiero este Plan!
-                                </button>
-                                <p style="font-size: 10px;" class="mt-3 mb-0 text-center">Promoción válida solo para Los
-                                    Portales,
-                                    San Andreas, La
-                                    Esperanza, Huayopampa, Jancao, Llicua Alta (Parcial), Fonavi II, La Colectora.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="pack-coaxial" class="tab-pane fade" role="tabpanel" aria-labelledby="tab4">
-                    <div class="d-flex px-3 d-flex div-responsive lg-justify-content-start gap-5 mb-3">
-                        <div id="pc-1" class="mx-4 col-10 col-lg-3">
-                            <div class="plan-card">
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                        INTERNET</span> por Coneccion Coaxial
-                                    <span class="fs-4">10Mbps</span>
-                                </p>
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-tv"></i> +100
-                                        CANALES</span> Nacionales e Internacionales
-                                </p>
-                                <div class="etiquet-price">
-                                    <p id="precio">90.00</p>
-                                    <div></div>
-                                </div>
-                                <div class="benefits-list my-3">
-                                    <ul>
-                                        <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Conexion a dos TVs</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span>
-                                        </li>
-                                        <li><i class="bi bi-check-circle"></i><span>TV en vivo: deportes, series y
-                                                peliculas</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <button class="button-get-plan w-100 rounded-pill" onclick="sendMessage('pc-1')">
-                                    ¡Quiero este Plan!
-                                </button>
-                                <p style="font-size: 10px;" class="mt-3 mb-0 text-center">Promoción válida solo para Los
-                                    Carrizales, Predio Tingo,
-                                    Pucuchinche, Kotosh, Pillco Marca, Yacutoma, Colpa Baja y Huachog.</p>
-                            </div>
-                        </div>
-                        <div id="pc-2" class="mx-4 col-10 col-lg-3">
-                            <div class="plan-card">
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                        INTERNET</span> por Coneccion Coaxial
-                                    <span class="fs-4">20Mbps</span>
-                                </p>
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-tv"></i> +100
-                                        CANALES</span> Nacionales e Internacionales
-                                </p>
-                                <div class="etiquet-price">
-                                    <p id="precio">105.00</p>
-                                    <div></div>
-                                </div>
-                                <div class="benefits-list my-3">
-                                    <ul>
-                                        <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Conexion a dos TVs</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span>
-                                        </li>
-                                        <li><i class="bi bi-check-circle"></i><span>TV en vivo: deportes, series y
-                                                peliculas</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <button class="button-get-plan w-100 rounded-pill" onclick="sendMessage('pc-2')">
-                                    ¡Quiero este Plan!
-                                </button>
-                                <p style="font-size: 10px;" class="mt-3 mb-0 text-center">Promoción válida solo para Los
-                                    Carrizales, Predio Tingo,
-                                    Pucuchinche, Kotosh, Pillco Marca, Yacutoma, Colpa Baja y Huachog.</p>
-                            </div>
-                        </div>
-                        <div id="pc-3" class="mx-4 col-10 col-lg-3">
-                            <p class="tag py-1">Plan Recomendado</p>
-                            <div class="plan-card">
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                        INTERNET</span> por Coneccion Coaxial
-                                    <span class="fs-4">40Mbps</span>
-                                </p>
-                                <p class="text-center my-3 pack fs-6"><span class="fs-4"><i class="bi bi-tv"></i> +100
-                                        CANALES</span> Nacionales e Internacionales</p>
-                                <div class="etiquet-price">
-                                    <p id="precio">115.00</p>
-                                    <div></div>
-                                </div>
-                                <div class="benefits-list my-3">
-                                    <ul>
-                                        <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Conexion a dos TVs</span></li>
-                                        <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span>
-                                        </li>
-                                        <li><i class="bi bi-check-circle"></i><span>TV en vivo: deportes, series y
-                                                peliculas</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <button class="button-get-plan w-100 rounded-pill" onclick="sendMessage('pc-3')">
-                                    ¡Quiero este Plan!
-                                </button>
-                                <p style="font-size: 10px;" class="mt-3 mb-0 text-center">Promoción válida solo para Los
-                                    Carrizales, Predio Tingo,
-                                    Pucuchinche, Kotosh, Pillco Marca, Yacutoma, Colpa Baja y Huachog.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <ul class="nav nav-pills flex-wrap d-flex mx-auto justify-content-center" id="tabList" role="tablist">
-                <a class="tab-link0 active" id="tab3" data-bs-toggle="pill" href="#pack-fibra" role="tab"
-                    aria-controls="content3" aria-selected="true"></a>
-                <a class="tab-link0" id="tab4" data-bs-toggle="pill" href="#pack-coaxial" role="tab"
-                    aria-controls="content4" aria-selected="false"></a>
-            </ul>
-        </div>
-    </section>
-    <section>
-        <div id="chatbot-button" onclick="toggleChat()">💬 Chat </div>
-        <div id="chatbot-container">
-            <div id="chatbot-header">Soporte Online</div>
-            <div id="chatbot-messages"></div>
-            <input type="text" id="chatbot-input" placeholder="Escribe un mensaje..." />
-            <button id="chatbot-send">Enviar</button>
-        </div>
-    </section>
-    <section>
-        <span id="internet-cable"></span>
-        <ul class="nav nav-pills col-12 flex-wrap d-flex mx-auto my-3 gap-3 justify-content-center elemento"
-            id="tabList" role="tablist">
-            <a class="fancy tab-link col-7 col-lg-2 active" id="tab1" data-bs-toggle="pill" href="#content1" role="tab"
-                aria-controls="content1" aria-selected="true">
-                <span class="top-key"></span>
-                <span class="text0"><i class="bi bi-modem"></i> Internet</span>
-                <span class="bottom-key-1"></span>
-                <span class="bottom-key-2"></span>
-            </a>
-            <a class="fancy tab-link col-7 col-lg-2" id="tab2" data-bs-toggle="pill" href="#content2" role="tab"
-                aria-controls="content2" aria-selected="false">
-                <span class="top-key"></span>
-                <span class="text0"><i class="bi bi-tv"></i> Cable</span>
-                <span class="bottom-key-1"></span>
-                <span class="bottom-key-2"></span>
-            </a>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane fade show active px-lg-4" id="content1" role="tabpanel" aria-labelledby="tab1">
-                <div class="d-flex px-3 div-responsive">
-                    <div id="pif-1" class="mx-lg-1 mx-5 col-10 col-lg-3 elemento">
-                        <p id="paquete" class="tag0 py-1">Plan Full Internet Fibra</p>
-                        <div class="plan-card0">
-                            <p class="text-center my-3 pack0 fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                    INTERNET</span> 100% Fibra Optica
-                                <span class="fs-4">80Mbps</span>
-                            </p>
-                            <div class="etiquet-price0">
-                                <p id="precio">40.00</p>
-                                <div></div>
-                            </div>
-                            <div class="benefits-list0 my-3">
-                                <ul>
-                                    <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Prestamo de Router</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>40 metros de cable para
-                                            distribuir</span></li>
-                                    </li>
-                                </ul>
-                            </div>
-                            <button class="w-100 button-get-plan0 rounded-pill" onclick="sendMessageP('pif-1')">
-                                ¡Quiero este Plan!
-                            </button>
-                            <p style="font-size: 10px;" class="mt-3 mb-0 text-center text-white">Promoción válida solo
-                                para Los Carrizales, Predio
-                                Tingo, Pucuchinche, Kotosh, Pillco Marca, Yacutoma, Colpa Baja y Huachog.</p>
-                        </div>
-                    </div>
-                    <div id="pi-1" class="mx-lg-1 mx-3 col-10 col-lg-3 elemento">
-                        <p id="paquete" class="tag0 py-1">Plan Full Internet</p>
-                        <div class="plan-card0">
-                            <p class="text-center my-3 pack0 fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                    INTERNET</span> por Coneccion Coaxial
-                                <span class="fs-4">10Mbps</span>
-                            </p>
-                            <div class="etiquet-price0">
-                                <p id="precio">40.00</p>
-                                <div></div>
-                            </div>
-                            <div class="benefits-list0 my-3">
-                                <ul>
-                                    <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Prestamo de Router</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>40 metros de cable para
-                                            distribuir</span></li>
-                                    </li>
-                                </ul>
-                            </div>
-                            <button class="w-100 button-get-plan0 rounded-pill" onclick="sendMessageP('pi-1')">
-                                ¡Quiero este Plan!
-                            </button>
-                            <p style="font-size: 10px;" class="mt-3 mb-0 text-center text-white">Promoción válida solo
-                                para Los Carrizales, Predio
-                                Tingo, Pucuchinche, Kotosh, Pillco Marca, Yacutoma, Colpa Baja y Huachog.</p>
-                        </div>
-                    </div>
-                    <div id="pif-2" class="mx-lg-1 mx-3 col-10 col-lg-3 elemento">
-                        <p id="paquete" class="tag0 py-1">Plan Full Internet Fibra</p>
-                        <div class="plan-card0">
-                            <p class="text-center my-3 pack0 fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                    INTERNET</span> 100% Fibra Optica
-                                <span class="fs-4">100Mbps</span>
-                            </p>
-                            <div class="etiquet-price0">
-                                <p id="precio">50.00</p>
-                                <div></div>
-                            </div>
-                            <div class="benefits-list0 my-3">
-                                <ul>
-                                    <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Prestamo de Router</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>40 metros de cable para
-                                            distribuir</span></li>
-                                    </li>
-                                </ul>
-                            </div>
-                            <button class="w-100 button-get-plan0 rounded-pill" onclick="sendMessageP('pif-2')">
-                                ¡Quiero este Plan!
-                            </button>
-                            <p style="font-size: 10px;" class="mt-3 mb-0 text-center text-white">Promoción válida solo
-                                para Los Carrizales, Predio
-                                Tingo, Pucuchinche, Kotosh, Pillco Marca, Yacutoma, Colpa Baja y Huachog.</p>
-                        </div>
-                    </div>
-                    <div id="pi-2" class="mx-lg-1 mx-3 col-10 col-lg-3 elemento">
-                        <p id="paquete" class="tag0 py-1">Plan Full Internet</p>
-                        <div class="plan-card0">
-                            <p class="text-center my-3 pack0 fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                    INTERNET</span> por Coneccion Coaxial
-                                <span class="fs-4">20Mbps</span>
-                            </p>
-                            <div class="etiquet-price0">
-                                <p id="precio">55.00</p>
-                                <div></div>
-                            </div>
-                            <div class="benefits-list0 my-3">
-                                <ul>
-                                    <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Prestamo de Router</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>40 metros de cable para
-                                            distribuir</span></li>
-                                </ul>
-                            </div>
-                            <button class="w-100 button-get-plan0 rounded-pill" onclick="sendMessageP('pi-2')">
-                                ¡Quiero este Plan!
-                            </button>
-                            <p style="font-size: 10px;" class="mt-3 mb-0 text-center text-white">Promoción válida solo
-                                para Los Carrizales, Predio
-                                Tingo, Pucuchinche, Kotosh, Pillco Marca, Yacutoma, Colpa Baja y Huachog.</p>
-                        </div>
-                    </div>
-                    <div id="pif-3" class="mx-lg-1 mx-3 col-10 col-lg-3 elemento">
-                        <p id="paquete" class="tag0 py-1">Plan Full Internet Fibra</p>
-                        <div class="plan-card0">
-                            <p class="text-center my-3 pack0 fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                    INTERNET</span> 100% Fibra Optica
-                                <span class="fs-4">150Mbps</span>
-                            </p>
-                            <div class="etiquet-price0">
-                                <p id="precio">60.00</p>
-                                <div></div>
-                            </div>
-                            <div class="benefits-list0 my-3">
-                                <ul>
-                                    <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Prestamo de Router</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>40 metros de cable para
-                                            distribuir</span></li>
-                                    </li>
-                                </ul>
-                            </div>
-                            <button class="w-100 button-get-plan0 rounded-pill" onclick="sendMessageP('pif-3')">
-                                ¡Quiero este Plan!
-                            </button>
-                            <p style="font-size: 10px;" class="mt-3 mb-0 text-center text-white">Promoción válida solo
-                                para Los Carrizales, Predio
-                                Tingo, Pucuchinche, Kotosh, Pillco Marca, Yacutoma, Colpa Baja y Huachog.</p>
-                        </div>
-                    </div>
-                    <div id="pi-3" class="mx-lg-1 mx-3 col-10 col-lg-3 elemento">
-                        <p id="paquete" class="tag0 py-1">Plan Full Internet</p>
-                        <div class="plan-card0">
-                            <p class="text-center my-3 pack0 fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                    INTERNET</span> por Coneccion Coaxial
-                                <span class="fs-4">40Mbps</span>
-                            </p>
-                            <div class="etiquet-price0">
-                                <p id="precio">65.00</p>
-                                <div></div>
-                            </div>
-                            <div class="benefits-list0 my-3">
-                                <ul>
-                                    <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Prestamo de Router</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>40 metros de cable para
-                                            distribuir</span></li>
-                                </ul>
-                            </div>
-                            <button class="w-100 button-get-plan0 rounded-pill" onclick="sendMessageP('pi-3')">
-                                ¡Quiero este Plan!
-                            </button>
-                            <p style="font-size: 10px;" class="mt-3 mb-0 text-center text-white">Promoción válida solo
-                                para Los Carrizales, Predio
-                                Tingo, Pucuchinche, Kotosh, Pillco Marca, Yacutoma, Colpa Baja y Huachog.</p>
-                        </div>
-                    </div>
-                    <div id="pif-4" class="mx-lg-1 mx-3 col-10 col-lg-3 elemento">
-                        <p id="paquete" class="tag0 py-1">Plan Full Internet Fibra</p>
-                        <div class="plan-card0">
-                            <p class="text-center my-3 pack0 fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                    INTERNET</span> 100% Fibra Optica
-                                <span class="fs-4">200Mbps</span>
-                            </p>
-                            <div class="etiquet-price0">
-                                <p id="precio">80.00</p>
-                                <div></div>
-                            </div>
-                            <div class="benefits-list0 my-3">
-                                <ul>
-                                    <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Prestamo de Router</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>40 metros de cable para
-                                            distribuir</span></li>
-                                    </li>
-                                </ul>
-                            </div>
-                            <button class="w-100 button-get-plan0 rounded-pill" onclick="sendMessageP('pif-4')">
-                                ¡Quiero este Plan!
-                            </button>
-                            <p style="font-size: 10px;" class="mt-3 mb-0 text-center text-white">Promoción válida solo
-                                para Los Carrizales, Predio
-                                Tingo, Pucuchinche, Kotosh, Pillco Marca, Yacutoma, Colpa Baja y Huachog.</p>
-                        </div>
-                    </div>
-                    <div id="pif-5" class="mx-lg-1 mx-3 col-10 col-lg-3 elemento">
-                        <p id="paquete" class="tag0 py-1">Plan Full Internet Fibra</p>
-                        <div class="plan-card0">
-                            <p class="text-center my-3 pack0 fs-6"><span class="fs-4"><i class="bi bi-router"></i>
-                                    INTERNET</span> 100% Fibra Optica
-                                <span class="fs-4">250Mbps</span>
-                            </p>
-                            <div class="etiquet-price0">
-                                <p id="precio">100.00</p>
-                                <div></div>
-                            </div>
-                            <div class="benefits-list0 my-3">
-                                <ul>
-                                    <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Prestamo de Router</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Internet rapido y estable</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>40 metros de cable para
-                                            distribuir</span></li>
-                                    </li>
-                                </ul>
-                            </div>
-                            <button class="w-100 button-get-plan0 rounded-pill" onclick="sendMessageP('pif-5')">
-                                ¡Quiero este Plan!
-                            </button>
-                            <p style="font-size: 10px;" class="mt-3 mb-0 text-center text-white">Promoción válida solo
-                                para Los Carrizales, Predio
-                                Tingo, Pucuchinche, Kotosh, Pillco Marca, Yacutoma, Colpa Baja y Huachog.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="content2" role="tabpanel" aria-labelledby="tab2">
-                <div class="d-flex div-responsive px-4">
-                    <div id="pcf-1" class="mx-lg-1 mx-5 col-10 col-lg-3">
-                        <p id="paquete" class="tag0 py-1">Cable por Fibra</p>
-                        <div class="plan-card0">
-                            <p class="text-center my-3 pack0 fs-6"><span class="fs-4"><i class="bi bi-tv"></i> +100
-                                    CANALES</span> Nacionales e Internacionales
-                            </p>
-                            <div class="etiquet-price0">
-                                <p id="precio">50.00</p>
-                                <div></div>
-                            </div>
-                            <div class="benefits-list0 my-3">
-                                <ul>
-                                    <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Coneccion a dos TVs</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>40 metros de cable para
-                                            distribuir</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>TV en vivo: deportes, series y
-                                            mas</span></li>
-                                    </li>
-                                </ul>
-                            </div>
-                            <button class="w-100 button-get-plan0 rounded-pill" onclick="sendMessageP('pcf-1')">
-                                ¡Quiero este Plan!
-                            </button>
-                            <p style="font-size: 10px;" class="mt-3 mb-0 text-center text-white">Promoción válida solo
-                                para Portales, Huayopampa, Colectora, Fonavi 2 y Fonavi 3.</p>
-                        </div>
-                    </div>
-                    <div id="pcc-1" class="mx-lg-1 mx-3 col-10 col-lg-3">
-                        <p id="paquete" class="tag0 py-1">Cable por Coaxial</p>
-                        <div class="plan-card0">
-                            <p class="text-center my-3 pack0 fs-6"><span class="fs-4"><i class="bi bi-tv"></i> +100
-                                    CANALES</span> Nacionales e Internacionales
-                            </p>
-                            <div class="etiquet-price0">
-                                <p id="precio">30.00</p>
-                                <div></div>
-                            </div>
-                            <div class="benefits-list0 my-3">
-                                <ul>
-                                    <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Coneccion a dos TVs</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>40 metros de cable para
-                                            distribuir</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>TV en vivo: deportes, series y
-                                            mas</span></li>
-                                    </li>
-                                </ul>
-                            </div>
-                            <button class="w-100 button-get-plan0 rounded-pill" onclick="sendMessageP('pcc-1')">
-                                ¡Quiero este Plan!
-                            </button>
-                            <p style="font-size: 10px;" class="mt-3 mb-0 text-center text-white">Promoción válida solo
-                                para Cayran, Aparicio Pomares, Puelles, La Esperanza, Jancao, Dos de Febrero y Moras
-                                Pampa.</p>
-                        </div>
-                    </div>
-                    <div id="pcc-2" class="mx-lg-1 mx-3 col-10 col-lg-3">
-                        <p id="paquete" class="tag0 py-1">Cable por Coaxial</p>
-                        <div class="plan-card0">
-                            <p class="text-center my-3 pack0 fs-6"><span class="fs-4"><i class="bi bi-tv"></i> +100
-                                    CANALES</span> Nacionales e Internacionales
-                            </p>
-                            <div class="etiquet-price0">
-                                <p id="precio">35.00</p>
-                                <div></div>
-                            </div>
-                            <div class="benefits-list0 my-3">
-                                <ul>
-                                    <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Coneccion a dos TVs</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>40 metros de cable para
-                                            distribuir</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>TV en vivo: deportes, series y
-                                            mas</span></li>
-                                    </li>
-                                </ul>
-                            </div>
-                            <button class="w-100 button-get-plan0 rounded-pill" onclick="sendMessageP('pcc-2')">
-                                ¡Quiero este Plan!
-                            </button>
-                            <p style="font-size: 10px;" class="mt-3 mb-0 text-center text-white">Promoción válida solo
-                                para Pucuchinche, Pitumama, Llicua Alta, Fonavi II, Canteras de Llicua.</p>
-                        </div>
-                    </div>
-                    <div id="pcc-3" class="mx-lg-1 mx-3 col-10 col-lg-3">
-                        <p id="paquete" class="tag0 py-1">Cable por Coaxial</p>
-                        <div class="plan-card0">
-                            <p class="text-center my-3 pack0 fs-6"><span class="fs-4"><i class="bi bi-tv"></i> +100
-                                    CANALES</span> Nacionales e Internacionales
-                            </p>
-                            <div class="etiquet-price0">
-                                <p id="precio">40.00</p>
-                                <div></div>
-                            </div>
-                            <div class="benefits-list0 my-3">
-                                <ul>
-                                    <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Coneccion a dos TVs</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>40 metros de cable para
-                                            distribuir</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>TV en vivo: deportes, series y
-                                            mas</span></li>
-                                    </li>
-                                </ul>
-                            </div>
-                            <button class="w-100 button-get-plan0 rounded-pill" onclick="sendMessageP('pcc-3')">
-                                ¡Quiero este Plan!
-                            </button>
-                            <p style="font-size: 10px;" class="mt-3 mb-0 text-center text-white">Promoción válida solo
-                                para Predio Tingo, Yucatoma,
-                                Cundibamba, Cabrito Pampa, Vilcar, Yanag Rosavero, Colpa Baja.</p>
-                        </div>
-                    </div>
-                    <div id="pcc-4" class="mx-lg-1 mx-3 col-10 col-lg-3">
-                        <p id="paquete" class="tag0 py-1">Cable por Coaxial</p>
-                        <div class="plan-card0">
-                            <p class="text-center my-3 pack0 fs-6"><span class="fs-4"><i class="bi bi-tv"></i> +100
-                                    CANALES</span> Nacionales e Internacionales
-                            </p>
-                            <div class="etiquet-price0">
-                                <p id="precio">50.00</p>
-                                <div></div>
-                            </div>
-                            <div class="benefits-list0 my-3">
-                                <ul>
-                                    <li><i class="bi bi-check-circle"></i><span>Instalación gratuita</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>Coneccion a dos TVs</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>40 metros de cable para
-                                            distribuir</span></li>
-                                    <li><i class="bi bi-check-circle"></i><span>TV en vivo: deportes, series y
-                                            mas</span></li>
-                                    </li>
-                                </ul>
-                            </div>
-                            <button class="w-100 button-get-plan0 rounded-pill" onclick="sendMessageP('pcc-4')">
-                                ¡Quiero este Plan!
-                            </button>
-                            <p style="font-size: 10px;" class="mt-3 mb-0 text-center text-white">Promoción válida solo
-                                para Centro, Las Moras, Aparicio Pomares, Pucarbamba, Pucarbambilla, Llicua Alta, Llicua
-                                Baja, Cayhuayna, Colpa Alta y Potracancha.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="my-5 p-5 d-flex flex-wrap" style="background-color: rgba(233, 233, 233, 0.651);">
-        <span id="pagos"></span>
-        <div class="d-flex flex-column align-items-center col-lg-5 col-12 py-3">
-            <img src="resources/Images/pagoatiempo0.png" style="filter: drop-shadow(0 0 7px rgb(158, 158, 158));"
-                width="300px">
-            <p class="fs-3 fw-bold text-center my-2" style="color: #2da85a;">Paga antes del</p>
-            <p class="text-white fs-3 rounded-pill px-5 py-2 m-0 text-center" style="background-color: #2da85a;">
-                <b>Ultimo dia de cada Mes</b>
-            </p>
-            <p class="fs-3 fw-bold text-center my-2" style="color: #2da85a;">y obten tu</p>
-            <div class="text-white fs-3 m-0 py-3 text-center w-50 mx-auto"
-                style="background-color: #2da85a; border-top-left-radius: 2em; border-bottom-right-radius: 2em; border-top-right-radius: .5em; border-bottom-left-radius: .5em;">
-                <p class="m-0"><b>Descuento</b></p>
-                <p class="m-0">del <b class="display-4 fw-bold">5%</b></p>
-            </div>
-        </div>
-        <div class="d-flex flex-column mt-lg-0 mt-5 justify-content-center text-center col-lg-7 col-12">
-            <p class="fw-bold fs-2">Paga tus Servicios sin Necesidad de Salir de Casa</p>
-            <p class="pb-4 fs-6">Selecciona el metodo de pago que prefieras y conoce los pasos para pagar tu recibo en
-                las diferentes Apps. Paga desde la tranquilidad de tu hogar y sin comisiones.</p>
-            <div class="d-flex justify-content-center gap-3 gap-lg-5 align-items-center">
-                <img id="plataformas" style="width: 90px; padding-top: 1.5em;" src="Resources/Images/yape.png"
-                    alt="Yape" class="img-fluid">
-                <img id="plataformas" style=" width: 130px;" src="Resources/Images/bbva.png" alt="BBVA"
-                    class="img-fluid">
-                <img id="plataformas" style=" width: 130px;" src="Resources/Images/bcplogo.png" alt="BCP"
-                    class="img-fluid">
-            </div>
-        </div>
-    </section>
-    <section class="my-5 d-flex flex-wrap justify-content-center">
-        <div class="col-lg-4 col-12 justify-content-center">
-            <h1 class="text-center display-6 fw-bold pb-5 pt-4">¿Ya Contrataste?</h1>
-            <div class="cookieCard mx-auto">
-                <p class="cookieHeading"><i class="bi bi-graph-up-arrow"></i> Mejora tu plan</p>
-                <p class="cookieDescription">Mejora tu experiencia con nosotros, haz clic aquí y descubre todos nuestros
-                    planes.</p>
-                <button class="acceptButton rounded-pill"><a class="text-white text-decoration-none"
-                        href="https://wa.me/51962624617?text=Hola! Estoy interesado en mejorar mi servicio."
-                        target="_blank">Ver mas <i class="bi bi-info-circle"></i></a></button>
-            </div>
-        </div>
-        <div class="col-lg-8 col-12">
-            <div style="position: relative; overflow: hidden; width: 97%;">
-                <h1 class="text-center display-6 fw-bold py-4">Nuestros Clientes</h1>
-                <div class="comments d-flex gap-3">
-                    <div class="card col-12 col-lg-6">
-                        <div class="comments">
-                            <div class="comment-react">
-                                <button>
-                                    <svg fill="none" viewBox="0 0 24 24" height="16" width="16"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill="#707277" stroke-linecap="round" stroke-width="2" stroke="#707277"
-                                            d="M19.4626 3.99415C16.7809 2.34923 14.4404 3.01211 13.0344 4.06801C12.4578 4.50096 12.1696 4.71743 12 4.71743C11.8304 4.71743 11.5422 4.50096 10.9656 4.06801C9.55962 3.01211 7.21909 2.34923 4.53744 3.99415C1.01807 6.15294 0.221721 13.2749 8.33953 19.2834C9.88572 20.4278 10.6588 21 12 21C13.3412 21 14.1143 20.4278 15.6605 19.2834C23.7783 13.2749 22.9819 6.15294 19.4626 3.99415Z">
-                                        </path>
-                                    </svg>
-                                </button>
-                                <hr>
-                                <span>23</span>
-                            </div>
-                            <div class="comment-container">
-                                <div class="user">
-                                    <div class="user-pic">
-                                        <i class="bi bi-person-fill fs-4 text-secondary"></i>
-                                    </div>
-                                    <div class="user-info">
-                                        <span>Juan Pérez</span>
-                                        <p>Lunes, 15 de enero a las 10:30am</p>
-                                    </div>
-                                </div>
-                                <p class="comment-content">
-                                    Estoy muy satisfecho con el servicio de internet. La conexión es estable y las
-                                    velocidades son excelentes,
-                                    incluso con varios dispositivos conectados.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card col-12 col-lg-6">
-                        <div class="comments">
-                            <div class="comment-react">
-                                <button>
-                                    <svg fill="none" viewBox="0 0 24 24" height="16" width="16"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill="#707277" stroke-linecap="round" stroke-width="2" stroke="#707277"
-                                            d="M19.4626 3.99415C16.7809 2.34923 14.4404 3.01211 13.0344 4.06801C12.4578 4.50096 12.1696 4.71743 12 4.71743C11.8304 4.71743 11.5422 4.50096 10.9656 4.06801C9.55962 3.01211 7.21909 2.34923 4.53744 3.99415C1.01807 6.15294 0.221721 13.2749 8.33953 19.2834C9.88572 20.4278 10.6588 21 12 21C13.3412 21 14.1143 20.4278 15.6605 19.2834C23.7783 13.2749 22.9819 6.15294 19.4626 3.99415Z">
-                                        </path>
-                                    </svg>
-                                </button>
-                                <hr>
-                                <span>35</span>
-                            </div>
-                            <div class="comment-container">
-                                <div class="user">
-                                    <div class="user-pic">
-                                        <i class="bi bi-person-fill fs-4 text-secondary"></i>
-                                    </div>
-                                    <div class="user-info">
-                                        <span>María González</span>
-                                        <p>Miércoles, 17 de enero a las 5:15pm</p>
-                                    </div>
-                                </div>
-                                <p class="comment-content">
-                                    Gracias al soporte técnico, pude solucionar un problema de conexión rápidamente.
-                                    Excelente atención y
-                                    servicio al cliente.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card col-12 col-lg-6">
-                        <div class="comments">
-                            <div class="comment-react">
-                                <button>
-                                    <svg fill="none" viewBox="0 0 24 24" height="16" width="16"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill="#707277" stroke-linecap="round" stroke-width="2" stroke="#707277"
-                                            d="M19.4626 3.99415C16.7809 2.34923 14.4404 3.01211 13.0344 4.06801C12.4578 4.50096 12.1696 4.71743 12 4.71743C11.8304 4.71743 11.5422 4.50096 10.9656 4.06801C9.55962 3.01211 7.21909 2.34923 4.53744 3.99415C1.01807 6.15294 0.221721 13.2749 8.33953 19.2834C9.88572 20.4278 10.6588 21 12 21C13.3412 21 14.1143 20.4278 15.6605 19.2834C23.7783 13.2749 22.9819 6.15294 19.4626 3.99415Z">
-                                        </path>
-                                    </svg>
-                                </button>
-                                <hr>
-                                <span>20</span>
-                            </div>
-                            <div class="comment-container">
-                                <div class="user">
-                                    <div class="user-pic">
-                                        <i class="bi bi-person-fill fs-4 text-secondary"></i>
-                                    </div>
-                                    <div class="user-info">
-                                        <span>María López</span>
-                                        <p>Sabado, 01 Miercoles a las 10:30am</p>
-                                    </div>
-                                </div>
-                                <p class="comment-content">
-                                    Excelente servicio. El internet es rápido y estable, incluso cuando todos en casa
-                                    están conectados. ¡Muy recomendados!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card col-12 col-lg-6">
-                        <div class="comments">
-                            <div class="comment-react">
-                                <button>
-                                    <svg fill="none" viewBox="0 0 24 24" height="16" width="16"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill="#707277" stroke-linecap="round" stroke-width="2" stroke="#707277"
-                                            d="M19.4626 3.99415C16.7809 2.34923 14.4404 3.01211 13.0344 4.06801C12.4578 4.50096 12.1696 4.71743 12 4.71743C11.8304 4.71743 11.5422 4.50096 10.9656 4.06801C9.55962 3.01211 7.21909 2.34923 4.53744 3.99415C1.01807 6.15294 0.221721 13.2749 8.33953 19.2834C9.88572 20.4278 10.6588 21 12 21C13.3412 21 14.1143 20.4278 15.6605 19.2834C23.7783 13.2749 22.9819 6.15294 19.4626 3.99415Z">
-                                        </path>
-                                    </svg>
-                                </button>
-                                <hr>
-                                <span>16</span>
-                            </div>
-                            <div class="comment-container">
-                                <div class="user">
-                                    <div class="user-pic">
-                                        <i class="bi bi-person-fill fs-4 text-secondary"></i>
-                                    </div>
-                                    <div class="user-info">
-                                        <span>Juan Pérez</span>
-                                        <p>Jueves, 9 de Enero a las 6:30pm</p>
-                                    </div>
-                                </div>
-                                <p class="comment-content">
-                                    Me encanta la atención al cliente. Tuve un problema con mi módem y lo solucionaron
-                                    el mismo día. ¡Gracias!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card col-12 col-lg-6">
-                        <div class="comments">
-                            <div class="comment-react">
-                                <button>
-                                    <svg fill="none" viewBox="0 0 24 24" height="16" width="16"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill="#707277" stroke-linecap="round" stroke-width="2" stroke="#707277"
-                                            d="M19.4626 3.99415C16.7809 2.34923 14.4404 3.01211 13.0344 4.06801C12.4578 4.50096 12.1696 4.71743 12 4.71743C11.8304 4.71743 11.5422 4.50096 10.9656 4.06801C9.55962 3.01211 7.21909 2.34923 4.53744 3.99415C1.01807 6.15294 0.221721 13.2749 8.33953 19.2834C9.88572 20.4278 10.6588 21 12 21C13.3412 21 14.1143 20.4278 15.6605 19.2834C23.7783 13.2749 22.9819 6.15294 19.4626 3.99415Z">
-                                        </path>
-                                    </svg>
-                                </button>
-                                <hr>
-                                <span>19</span>
-                            </div>
-                            <div class="comment-container">
-                                <div class="user">
-                                    <div class="user-pic">
-                                        <i class="bi bi-person-fill fs-4 text-secondary"></i>
-                                    </div>
-                                    <div class="user-info">
-                                        <span>Sofía Ramírez</span>
-                                        <p>Viernes, 27 de Diciembre a las 4:00pm</p>
-                                    </div>
-                                </div>
-                                <p class="comment-content">
-                                    El servicio de cable tiene una gran variedad de canales. Toda mi familia lo
-                                    disfruta. ¡Muy satisfechos!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pagination">
-                    <button class="dot active"></button>
-                    <button class="dot"></button>
-                    <button class="dot"></button>
-                    <button class="dot"></button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <h1 class="mt-5 mx-5 text-center display-6 fw-bold">¡Envianos tus datos y nosotros te llamamos!</h1>
-    <section class="my-5">
-        <div class="col-10 mx-auto justify-content-center d-flex">
-            <form class="form" action="">
-                <div class="input-field">
-                    <input required="" autocomplete="off" type="text" name="text" id="interesadoName" />
-                    <label for="username">Nombres y Apellidos</label>
-                </div>
-                <div class="input-field">
-                    <input required="" autocomplete="off" type="text" name="text" id="interesadoTelf" />
-                    <label for="text">Celular</label>
-                </div>
-                <button class="button" onclick="enviarCorreo(event)">
-                    <div class="svg-wrapper-1">
-                        <div class="svg-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                <path fill="none" d="M0 0h24v24H0z"></path>
-                                <path fill="currentColor"
-                                    d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z">
-                                </path>
-                            </svg>
-                        </div>
-                    </div>
-                    <span>Enviar</span>
-                </button>
+    </div> -->
 
+    <!-- Encabezado -->
+    <section class="bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800 text-white py-16 clip-path-slant relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-40 h-40 bg-secondary-400 rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-60 h-60 bg-secondary-300 rounded-full filter blur-3xl"></div>
+            <div class="absolute top-1/2 left-1/3 w-40 h-40 bg-primary-300 rounded-full filter blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-shadow">Descubre Nuestros Planes</h1>
+                <p class="text-lg md:text-xl mb-8 text-gray-100">Encuentra el plan perfecto para ti con la mejor tecnología y al mejor precio.</p>
+                
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <a href="#internet" class="bg-white text-primary-700 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                        <i class="fas fa-wifi mr-2"></i> Planes de Internet
+                    </a>
+                    <a href="#cable" class="bg-white text-primary-700 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                        <i class="fas fa-tv mr-2"></i> Planes de TV Cable
+                    </a>
+                    <a href="#duo" class="bg-white text-primary-700 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                        <i class="fas fa-box mr-2"></i> Paquetes Duo
+                    </a>
+                </div>
+                
+                <div class="text-sm text-gray-200">
+                    <p>Todos nuestros planes incluyen instalación gratuita y soporte técnico 24/7</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-0 left-0 w-full h-16 bg-gray-50"></div>
+    </section>
+
+    <!-- Filtrar -->
+    <section class="py-8 bg-white shadow-md sticky z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="flex flex-wrap items-center gap-4">
+                    <h2 class="text-xl font-bold text-gray-800">Filtrar por:</h2>
+                    
+                    <div class="flex flex-wrap gap-2">
+                        <button class="filter-btn active bg-primary-100 text-primary-800 hover:bg-primary-200 px-4 py-2 rounded-md text-sm font-medium transition-colors" data-filter="all">
+                            Todos
+                        </button>
+                        <button class="filter-btn bg-gray-100 text-gray-700 hover:bg-primary-100 hover:text-primary-800 px-4 py-2 rounded-md text-sm font-medium transition-colors" data-filter="internet">
+                            Internet
+                        </button>
+                        <button class="filter-btn bg-gray-100 text-gray-700 hover:bg-primary-100 hover:text-primary-800 px-4 py-2 rounded-md text-sm font-medium transition-colors" data-filter="cable">
+                            TV Cable
+                        </button>
+                        <button class="filter-btn bg-gray-100 text-gray-700 hover:bg-primary-100 hover:text-primary-800 px-4 py-2 rounded-md text-sm font-medium transition-colors" data-filter="duo">
+                            Paquetes Duo
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    <label for="sort" class="text-sm font-medium text-gray-700">Ordenar por:</label>
+                    <select id="sort" class="bg-gray-100 border border-gray-300 text-gray-700 text-sm rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                        <option value="price-asc">Precio: Menor a Mayor</option>
+                        <option value="price-desc">Precio: Mayor a Menor</option>
+                        <option value="speed-asc">Velocidad: Menor a Mayor</option>
+                        <option value="speed-desc">Velocidad: Mayor a Menor</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Duo Section -->
+    <section id="duo" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block bg-primary-100 text-primary-800 text-sm font-medium px-3 py-1 rounded-full mb-3">PAQUETES DUO</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Paquetes Duo: Internet + TV Cable</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Combina servicios y ahorra con nuestros paquetes especiales diseñados para ti.</p>
+            </div>
+            
+            <div id="duo-fibra" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 plan-container"></div>
+        </div>
+    </section>
+
+    <!-- Internet Section -->
+    <section id="internet" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block bg-primary-100 text-primary-800 text-sm font-medium px-3 py-1 rounded-full mb-3">INTERNET</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Planes de Internet de Alta Velocidad</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Navega, transmite y descarga a velocidades increíbles con nuestra conexión de fibra óptica de última generación.</p>
+            </div>
+            
+            <div id="planesInternet" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 plan-container"></div>
+
+        </div>
+    </section>
+
+    <!-- Internet Cable -->
+    <section id="cable" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block bg-primary-100 text-primary-800 text-sm font-medium px-3 py-1 rounded-full mb-3">TV CABLE</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Planes de TV Cable Premium</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Disfruta de cientos de canales en HD y contenido exclusivo para toda la familia.</p>
+            </div>
+            
+            <div id="planesCable" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 plan-container"></div>
+
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section class="bg-gray-100 py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap items-center">
+                <div class="w-full md:w-1/2 mb-8 md:mb-0">
+                    <img src="/resources/Images/pagoatiempo0.png" alt="Pago a tiempo" class="mx-auto w-64 md:w-80">
+                    <p class="text-3xl font-bold text-center text-green-500 mt-4">Paga antes del</p>
+                    <p class="text-2xl font-bold text-center bg-green-500 text-white py-2 px-4 rounded-full inline-block mx-auto mt-2">
+                        Ultimo dia de cada Mes
+                    </p>
+                    <p class="text-3xl font-bold text-center text-green-500 mt-4">y obten tu</p>
+                    <div class="bg-green-500 text-white text-center py-4 px-8 rounded-3xl mt-4 mx-auto max-w-sm">
+                        <p class="text-2xl font-bold">Descuento</p>
+                        <p class="text-4xl font-bold">del 5%</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 text-center">
+                    <h2 class="text-3xl font-bold mb-4">Paga tus Servicios sin Necesidad de Salir de Casa</h2>
+                    <p class="mb-8">Selecciona el metodo de pago que prefieras y conoce los pasos para pagar tu recibo en las diferentes Apps. Paga desde la tranquilidad de tu hogar y sin comisiones.</p>
+                    <div class="flex justify-center items-center gap-8">
+                        <img src="/Resources/Images/yape.png" alt="Yape" class="w-20 h-20 object-contain">
+                        <img src="/Resources/Images/bbva.png" alt="BBVA" class="w-32 h-20 object-contain">
+                        <img src="/Resources/Images/bcplogo.png" alt="BCP" class="w-32 h-20 object-contain">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soporte Section -->
+    <!-- <section class="py-16 bg-gradient-to-br from-primary-700 to-primary-900 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">¿Necesitas ayuda para elegir el plan perfecto?</h2>
+            <p class="text-lg mb-8 max-w-3xl mx-auto">Nuestros asesores están listos para ayudarte a encontrar la mejor solución para tus necesidades de conectividad.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#" class="bg-white text-primary-700 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                    <i class="fas fa-phone-alt mr-2"></i> Llámanos ahora
+                </a>
+                <a href="#" class="bg-secondary-500 hover:bg-secondary-600 text-primary-900 px-6 py-3 rounded-lg font-medium transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                    <i class="fas fa-calendar-alt mr-2"></i> Agenda una cita
+                </a>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Upgrade Plan Section -->
+    <!-- <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap">
+                <div class="w-full md:w-1/3 mb-8 md:mb-0">
+                    <h2 class="text-3xl font-bold text-center mb-8">¿Ya Contrataste?</h2>
+                    <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg p-6 max-w-sm mx-auto">
+                        <h3 class="text-2xl font-bold mb-4"><i class="bi bi-graph-up-arrow"></i> Mejora tu plan</h3>
+                        <p class="mb-6">Mejora tu experiencia con nosotros, haz clic aquí y descubre todos nuestros planes.</p>
+                        <a href="https://wa.me/51962624617?text=Hola! Estoy interesado en mejorar mi servicio." target="_blank" 
+                           class="bg-white text-blue-500 px-6 py-2 rounded-full inline-block hover:bg-blue-100 transition duration-300">
+                            Ver mas <i class="bi bi-info-circle"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3">
+                    <h2 class="text-3xl font-bold text-center mb-8">Nuestros Clientes</h2>
+                    <div class="flex overflow-x-auto gap-6 pb-6">
+                        <div class="flex-none w-80 bg-white rounded-lg shadow-lg p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mr-4">
+                                    <i class="bi bi-person-fill text-2xl text-gray-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Juan Pérez</h4>
+                                    <p class="text-sm text-gray-600">Lunes, 15 de enero a las 10:30am</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700">
+                                Estoy muy satisfecho con el servicio de internet. La conexión es estable y las
+                                velocidades son excelentes, incluso con varios dispositivos conectados.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Contact Form Section -->
+    <!-- <section class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">¡Envianos tus datos y nosotros te llamamos!</h2>
+            <form class="max-w-md mx-auto" onsubmit="enviarCorreo(event)">
+                <div class="mb-4">
+                    <label for="interesadoName" class="block text-gray-700 text-sm font-bold mb-2">Nombres y Apellidos</label>
+                    <input type="text" id="interesadoName" name="interesadoName" required
+                           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-6">
+                    <label for="interesadoTelf" class="block text-gray-700 text-sm font-bold mb-2">Celular</label>
+                    <input type="tel" id="interesadoTelf" name="interesadoTelf" required
+                           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="flex items-center justify-center">
+                    <button type="submit" 
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Enviar
+                    </button>
+                </div>
             </form>
         </div>
+    </section> -->
 
-    </section>
-    <div class="btn-emergente gap-2">
-        <a href="https://wa.me/51962624690?text=Hola, tengo una consulta." target="_blank">
-            <button class="btn-span rounded-pill" style="background-color: #25d366;">
-                <div class="sign"><i class="bi bi-whatsapp"></i></div>
-                <div class="text">Contactanos por WhatsApp</div>
-            </button>
+    <!-- Floating Contact Buttons -->
+    <div class="fixed bottom-5 right-5 flex flex-col gap-2">
+        <a href="https://wa.me/51962624690?text=Hola, tengo una consulta." target="_blank"
+           class="bg-green-500 text-white px-4 py-2 rounded-full flex items-center hover:bg-green-600 transition duration-300">
+            <i class="bi bi-whatsapp mr-2"></i> WhatsApp
         </a>
-        <a href="tel:062-514798">
-            <button class="btn-span rounded-pill" style="background-color: rgb(40, 160, 224);">
-                <div class="sign"><i class="bi bi-telephone-outbound"></i></div>
-                <div class="text">Llamanos al 062-514798</div>
-            </button>
+        <a href="tel:062-514798"
+           class="bg-blue-500 text-white px-4 py-2 rounded-full flex items-center hover:bg-blue-600 transition duration-300">
+            <i class="bi bi-telephone-outbound mr-2"></i> Llamanos
         </a>
     </div>
-</body>
-<script src="resources/js/dependencies.js"></script>
-<script src="resources/js/functions.js"></script>
-<script>
-    async function enviarCorreo(event) {
-        event.preventDefault();
-        const nombreInteresado = document.getElementById("interesadoName").value;
-        const telefonoInteresado = document.getElementById("interesadoTelf").value;
 
-        const datosEnvio = {
-            nombre: nombreInteresado,
-            telefono: telefonoInteresado
-        };
-        try {
-            const response = await fetch('http://191.97.50.142:11011/api/enviar-correoInteresado', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(datosEnvio)
-            });
+    <!-- Chatbot Button -->
+    <button id="chatbot-button" class="fixed bottom-6 right-6 bg-secondary-500 hover:bg-secondary-600 text-primary-900 w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all z-50 animate-bounce-slow">
+        <i class="fas fa-comments text-2xl"></i>
+    </button>
 
-            const data = await response.json();
-            console.log('Respuesta completa del servidor:', data);
+    <div id="chatbot-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 overflow-hidden animate-slide-up">
+            <div class="bg-primary-700 text-white p-4 flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary-700 mr-3">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold">Asistente Virtual</h3>
+                        <p class="text-xs text-primary-100">Conectado</p>
+                    </div>
+                </div>
+                <button id="close-chatbot" class="text-white hover:text-secondary-300 transition-colors">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="h-96 overflow-y-auto p-4 bg-gray-50" id="chat-messages">
+                <div class="flex mb-4">
+                    <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white mr-2 flex-shrink-0">
+                        <i class="fas fa-robot text-xs"></i>
+                    </div>
+                    <div class="bg-primary-100 text-primary-900 p-3 rounded-lg rounded-tl-none max-w-xs">
+                        <p>¡Hola! Soy el asistente virtual de ConnectPro. ¿En qué puedo ayudarte hoy?</p>
+                    </div>
+                </div>
+                
+                <div class="flex mb-4 justify-end">
+                    <div class="bg-gray-200 text-gray-800 p-3 rounded-lg rounded-tr-none max-w-xs">
+                        <p>Hola, me gustaría saber más sobre los planes de internet.</p>
+                    </div>
+                    <div class="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center text-white ml-2 flex-shrink-0">
+                        <i class="fas fa-user text-xs"></i>
+                    </div>
+                </div>
+                
+                <div class="flex mb-4">
+                    <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white mr-2 flex-shrink-0">
+                        <i class="fas fa-robot text-xs"></i>
+                    </div>
+                    <div class="bg-primary-100 text-primary-900 p-3 rounded-lg rounded-tl-none max-w-xs">
+                        <p>¡Claro! Tenemos varios planes de internet que se adaptan a tus necesidades. ¿Buscas algo para uso básico o necesitas alta velocidad para gaming o streaming?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4 border-t">
+                <form id="chat-form" class="flex">
+                    <input type="text" id="chat-input" placeholder="Escribe tu mensaje aquí..." class="flex-grow px-4 py-2 bg-gray-100 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <button type="submit" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-r-lg transition-colors">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+                <div class="mt-2 text-xs text-gray-500">
+                    <p>Puedes preguntar sobre planes, promociones, cobertura, etc.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            if (!data.success) {
-                console.error('Detalles del error del servidor:', data.error);
-                throw new Error(data.error?.message || data.message || 'Error desconocido');
-            }
-
-            return true;
-        } catch (error) {
-            console.error('Error completo:', error);
-            Swal.fire({
-                icon: 'error',
-                title: 'Error al enviar el correo',
-                text: error.message,
-                footer: 'Por favor, intente nuevamente o contacte al administrador'
-            });
-            return false;
+    <%- include('reusable/footer') %>
+    
+    <!-- Función Slyder -->
+    <!-- <script>
+        const slider = document.querySelector("#slider div");
+        const images = slider.querySelectorAll("img");
+        const dots = document.querySelectorAll(".dot");
+        const prev = document.querySelector("#prev");
+        const next = document.querySelector("#next");
+        let index = 0;
+        let interval;
+    
+        function updateSlider() {
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach((dot, i) => dot.classList.toggle("bg-white", i === index));
         }
-    }
-</script>
-<script>
-    const carousel = document.querySelector('.comments');
-    const dots = document.querySelectorAll('.dot');
-    const cardWidth = document.querySelector('.card').offsetWidth;
-    let currentIndex = 0;
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentIndex = index;
-            updateCarousel();
+    
+        function nextSlide() {
+            index = (index + 1) % images.length;
+            updateSlider();
+        }
+    
+        function prevSlide() {
+            index = (index - 1 + images.length) % images.length;
+            updateSlider();
+        }
+    
+        function resetInterval() {
+            clearInterval(interval);
+            interval = setInterval(nextSlide, 5000);
+        }
+    
+        next.addEventListener("click", () => {
+            nextSlide();
+            resetInterval();
         });
-    });
-
-    function updateCarousel() {
-        const isMobile = window.innerWidth < 768;
-        const multiplier = isMobile ? 93 : 50;
-
-        carousel.style.transform = `translateX(-${currentIndex * multiplier}%)`;
-
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
+    
+        prev.addEventListener("click", () => {
+            prevSlide();
+            resetInterval();
         });
-    }
+    
+        dots.forEach((dot, i) => dot.addEventListener("click", () => {
+            index = i;
+            updateSlider();
+            resetInterval();
+        }));
+    
+        interval = setInterval(nextSlide, 5000);
+    </script> -->
 
-</script>
-<script>
-    // window.botpressWebChat.init({
-    //     host: "https://cdn.botpress.cloud/webchat/v1",
-    //     botId: "cv-agent-okfl",
-    // });
-    // document.getElementById("chatbot-send").addEventListener("click", sendMessage);
+    <!-- Obtener Dúos -->
+    <script>
+        async function obtenerPlanesDuo() {
+            try {
+                const response = await fetch("/api/planes/duos");
+                const planes = await response.json();
 
-    async function sendMessage() {
-        const inputField = document.getElementById("chatbot-input");
-        const message = inputField.value.trim();
-        if (!message) return;
+                const contenedor = document.getElementById("duo-fibra");
+                contenedor.innerHTML = "";
 
-        addMessage("Tú", message);
+                planes.forEach(plan => {
+                    const card = document.createElement("div");
+                    const identificador = plan.popularidad == "Más popular";
 
-        const response = await fetch("http://localhost:4444/chatbot", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message, sessionId: "123" }),
+                    card.innerHTML = `
+                        <div class="plan-card cursor-default" data-category="${plan.plan}" data-price="${plan.precio}" data-speed="${plan.velocidadmbps}">
+                            <div class="bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col relative 
+                                ${identificador ? 'border-2 border-secondary-400' : 'border border-gray-300'}">
+                                
+                                ${identificador ? `
+                                <div class="absolute top-0 right-0 bg-secondary-400 text-primary-900 text-xs font-bold px-3 py-1 rounded-bl-lg">
+                                    MÁS POPULAR
+                                </div>` : ''}
+                                
+                                <div class="bg-gradient-to-r from-primary-600 to-primary-800 p-6 text-white text-center">
+                                    <h3 class="text-xl font-bold mb-1">${plan.nombreplan}</h3>
+                                    <div class="text-3xl font-bold mb-1"><span class="text-lg">S/.</span>${plan.precio}</div>
+                                    <p class="text-primary-100 text-sm">por mes</p>
+                                </div>
+                                
+                                <div class="p-6 flex-grow">
+                                    <div class="mb-6">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="font-medium text-gray-700">Internet:</span>
+                                            <span class="font-bold text-primary-700">${plan.velocidadmbps}</span>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="font-medium text-gray-700">TV Cable:</span>
+                                            <span class="font-bold text-primary-700">${plan.cantcanales} Canales</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <ul class="space-y-3 mb-6">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-primary-600 mt-1 mr-2"></i>
+                                            <span class="text-gray-700">Internet para gaming y streaming 4K</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-primary-600 mt-1 mr-2"></i>
+                                            <span class="text-gray-700">Canales deportivos y documentales</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-primary-600 mt-1 mr-2"></i>
+                                            <span class="text-gray-700">Router WiFi 6 de alto rendimiento</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-primary-600 mt-1 mr-2"></i>
+                                            <span class="text-gray-700">2 decodificadores HD incluidos</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-primary-600 mt-1 mr-2"></i>
+                                            <span class="text-gray-700">Mayor ahorro al mes</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="p-6 pt-0">
+                                    <button class="w-full ${identificador ? 'bg-secondary-500 hover:bg-secondary-600 text-primary-900' : 'bg-primary-600 hover:bg-primary-700 text-white'} font-medium py-3 px-4 rounded-lg transition-colors">
+                                        Contratar ahora
+                                    </button>
+                                    <button class="w-full mt-2 bg-transparent hover:bg-gray-100 text-primary-700 font-medium py-2 px-4 rounded-lg transition-colors border border-primary-600">
+                                        Ver detalles
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    contenedor.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error("Error obteniendo los planes:", error);
+            }
+        }
+
+        obtenerPlanesDuo();
+    </script>
+
+    <!-- Obtener Internet -->
+    <script>
+        async function obtenerPlanesInternet() {
+            try {
+                const response = await fetch("/api/planes/internet");
+                const planes = await response.json();
+
+                const contenedor = document.getElementById("planesInternet");
+                contenedor.innerHTML = "";
+
+                planes.forEach(plan => {
+                    const card = document.createElement("div");
+                    const identificador = plan.popularidad == "Más popular";
+
+                    card.innerHTML = `
+                        <div class="plan-card cursor-default" data-category="${plan.plan}" data-price="${plan.precio}" data-speed="${plan.velocidadmbps}">
+                            <div class="bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col relative 
+                                ${identificador ? 'border-2 border-secondary-400' : 'border border-gray-300'}">
+                                
+                                ${identificador ? `
+                                <div class="absolute top-0 right-0 bg-secondary-400 text-primary-900 text-xs font-bold px-3 py-1 rounded-bl-lg">
+                                    MÁS POPULAR
+                                </div>` : ''}
+                                
+                                <div class="bg-primary-600 p-6 text-white text-center">
+                                    <h3 class="text-xl font-bold mb-1">${plan.nombreplan}</h3>
+                                    <div class="text-3xl font-bold mb-1"><span class="text-lg">S/.</span>${plan.precio}</div>
+                                    <p class="text-primary-100 text-sm">por mes</p>
+                                </div>
+                                
+                                <div class="p-6 flex-grow">
+                                    <div class="mb-6">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="font-medium text-gray-700">Internet:</span>
+                                            <span class="font-bold text-primary-700">${plan.velocidadmbps}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <ul class="space-y-3 mb-6">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-primary-600 mt-1 mr-2"></i>
+                                            <span class="text-gray-700">Ideal para navegación y redes sociales</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-primary-600 mt-1 mr-2"></i>
+                                            <span class="text-gray-700">Hasta 5 dispositivos conectados</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-primary-600 mt-1 mr-2"></i>
+                                            <span class="text-gray-700">Router WiFi incluido</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-primary-600 mt-1 mr-2"></i>
+                                            <span class="text-gray-700">Soporte técnico en horario comercial</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-times text-gray-400 mt-1 mr-2"></i>
+                                            <span class="text-gray-400">Sin IP fija</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="p-6 pt-0">
+                                    <button class="w-full ${identificador ? 'bg-secondary-500 hover:bg-secondary-600 text-primary-900' : 'bg-primary-600 hover:bg-primary-700 text-white'} font-medium py-3 px-4 rounded-lg transition-colors">
+                                        Contratar ahora
+                                    </button>
+                                    <button class="w-full mt-2 bg-transparent hover:bg-gray-100 text-primary-700 font-medium py-2 px-4 rounded-lg transition-colors border border-primary-600">
+                                        Ver detalles
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    contenedor.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error("Error obteniendo los planes:", error);
+            }
+        }
+
+        obtenerPlanesInternet();
+    </script>
+
+    <!-- Obtener Tv Cable -->
+    <script>
+        async function obtenerPlanesCable() {
+            try {
+                const response = await fetch("/api/planes/cable");
+                const planes = await response.json();
+
+                const contenedor = document.getElementById("planesCable");
+                contenedor.innerHTML = "";
+
+                planes.forEach(plan => {
+                    const card = document.createElement("div");
+                    const identificador = plan.popularidad == "Más popular";
+
+                    card.innerHTML = `
+                        <div class="plan-card cursor-default" data-category="${plan.plan}" data-price="${plan.precio}" data-speed="${plan.velocidadmbps}">
+                            <div class="bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full flex flex-col relative 
+                                ${identificador ? 'border-2 border-secondary-400' : 'border border-gray-300'}">
+                                
+                                ${identificador ? `
+                                <div class="absolute top-0 right-0 bg-secondary-400 text-primary-900 text-xs font-bold px-3 py-1 rounded-bl-lg">
+                                    MÁS POPULAR
+                                </div>` : ''}
+                                
+                                <div class="bg-primary-600 p-6 text-white text-center">
+                                    <h3 class="text-xl font-bold mb-1">${plan.nombreplan}</h3>
+                                    <div class="text-3xl font-bold mb-1"><span class="text-lg">S/.</span>${plan.precio}</div>
+                                    <p class="text-primary-100 text-sm">por mes</p>
+                                </div>
+                                
+                                <div class="p-6 flex-grow">
+                                    <div class="mb-6">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="font-medium text-gray-700">Internet:</span>
+                                            <span class="font-bold text-primary-700">${plan.velocidadmbps}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <ul class="space-y-3 mb-6">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-primary-600 mt-1 mr-2"></i>
+                                            <span class="text-gray-700">Todos los canales del plan básico</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-primary-600 mt-1 mr-2"></i>
+                                            <span class="text-gray-700">Canales de películas y series</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-primary-600 mt-1 mr-2"></i>
+                                            <span class="text-gray-700">Canales infantiles</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check text-primary-600 mt-1 mr-2"></i>
+                                            <span class="text-gray-700">1 decodificador HD incluido</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-times text-gray-400 mt-1 mr-2"></i>
+                                            <span class="text-gray-400">Sin grabación</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="p-6 pt-0">
+                                    <button class="w-full ${identificador ? 'bg-secondary-500 hover:bg-secondary-600 text-primary-900' : 'bg-primary-600 hover:bg-primary-700 text-white'} font-medium py-3 px-4 rounded-lg transition-colors">
+                                        Contratar ahora
+                                    </button>
+                                    <button class="w-full mt-2 bg-transparent hover:bg-gray-100 text-primary-700 font-medium py-2 px-4 rounded-lg transition-colors border border-primary-600">
+                                        Ver detalles
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    contenedor.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error("Error obteniendo los planes:", error);
+            }
+        }
+
+        obtenerPlanesCable();
+    </script>
+
+    <script>
+        // Mobile Menu Toggle
+        // document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        //     document.getElementById('mobile-menu').classList.toggle('hidden');
+        // });
+        
+        // Filter Functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const planCards = document.querySelectorAll('.plan-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-primary-100', 'text-primary-800');
+                    btn.classList.add('bg-gray-100', 'text-gray-700');
+                });
+                
+                // Add active class to clicked button
+                button.classList.add('active', 'bg-primary-100', 'text-primary-800');
+                button.classList.remove('bg-gray-100', 'text-gray-700');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                // Show/hide cards based on filter
+                planCards.forEach(card => {
+                    // Add animation classes
+                    card.classList.remove('animate-fade-in');
+                    
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        setTimeout(() => {
+                            card.style.display = 'block';
+                            card.classList.add('animate-fade-in');
+                        }, 50);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
         });
-
-        const data = await response.json();
-        addMessage("Bot", data.reply);
-
-        inputField.value = "";
-    }
-
-    function addMessage(sender, message) {
-        const chatBox = document.getElementById("chatbot-messages");
-        const messageElement = document.createElement("p");
-        messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
-        chatBox.appendChild(messageElement);
-        chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    function toggleChat() {
-        const chat = document.getElementById("chatbot-container");
-        chat.style.display = chat.style.display === "none" ? "flex" : "none";
-    }
-
-</script>
-<%- include('reusable/footer') %>
+        
+        // Sorting Functionality
+        const sortSelect = document.getElementById('sort');
+        const planContainer = document.querySelectorAll('.plan-container');
+        
+        sortSelect.addEventListener('change', () => {
+            const sortValue = sortSelect.value;
+            const sortDirection = sortValue.split('-')[1];
+            const sortBy = sortValue.split('-')[0];
+            
+            planContainer.forEach(container => {
+                const cards = Array.from(container.querySelectorAll('.plan-card'));
+                
+                cards.sort((a, b) => {
+                    let valueA, valueB;
+                    
+                    if (sortBy === 'price') {
+                        valueA = parseFloat(a.getAttribute('data-price'));
+                        valueB = parseFloat(b.getAttribute('data-price'));
+                    } else if (sortBy === 'speed') {
+                        valueA = parseFloat(a.getAttribute('data-speed'));
+                        valueB = parseFloat(b.getAttribute('data-speed'));
+                    }
+                    
+                    if (sortDirection === 'asc') {
+                        return valueA - valueB;
+                    } else {
+                        return valueB - valueA;
+                    }
+                });
+                
+                // Remove all cards
+                cards.forEach(card => {
+                    card.remove();
+                });
+                
+                // Append sorted cards
+                cards.forEach(card => {
+                    card.classList.add('animate-fade-in');
+                    container.appendChild(card);
+                });
+            });
+        });
+        
+        // Chatbot Functionality
+        const chatbotButton = document.getElementById('chatbot-button');
+        const chatbotModal = document.getElementById('chatbot-modal');
+        const closeChatbot = document.getElementById('close-chatbot');
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const chatMessages = document.getElementById('chat-messages');
+        
+        chatbotButton.addEventListener('click', () => {
+            chatbotModal.classList.remove('hidden');
+            setTimeout(() => {
+                chatInput.focus();
+            }, 300);
+        });
+        
+        closeChatbot.addEventListener('click', () => {
+            chatbotModal.classList.add('hidden');
+        });
+        
+        // Close modal when clicking outside
+        chatbotModal.addEventListener('click', (e) => {
+            if (e.target === chatbotModal) {
+                chatbotModal.classList.add('hidden');
+            }
+        });
+        
+        // Handle chat form submission
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const message = chatInput.value.trim();
+            if (message === '') return;
+            
+            // Add user message
+            addMessage(message, 'user');
+            
+            // Clear input
+            chatInput.value = '';
+            
+            // Simulate bot response after a short delay
+            setTimeout(() => {
+                let botResponse;
+                
+                // Simple keyword matching for demo purposes
+                if (message.toLowerCase().includes('internet')) {
+                    botResponse = "Tenemos planes de internet desde 100 Mbps hasta 1 Gbps. ¿Qué velocidad estás buscando?";
+                } else if (message.toLowerCase().includes('cable') || message.toLowerCase().includes('tv')) {
+                    botResponse = "Nuestros planes de TV Cable incluyen desde 50 hasta 250+ canales. ¿Buscas algún contenido específico como deportes o películas?";
+                } else if (message.toLowerCase().includes('duo') || message.toLowerCase().includes('paquete')) {
+                    botResponse = "Los paquetes Duo combinan internet y TV Cable con descuentos especiales. ¿Te gustaría conocer nuestro paquete más popular?";
+                } else if (message.toLowerCase().includes('precio') || message.toLowerCase().includes('costo')) {
+                    botResponse = "Los precios varían según el plan. Nuestros planes de internet comienzan en $29.99, los de TV Cable en $24.99 y los paquetes Duo en $49.99. ¿Necesitas más detalles sobre algún plan específico?";
+                } else if (message.toLowerCase().includes('promocion') || message.toLowerCase().includes('descuento')) {
+                    botResponse = "¡Tenemos varias promociones activas! Por tiempo limitado, ofrecemos instalación gratuita y el primer mes con 50% de descuento en todos nuestros planes. ¿Te interesa algún plan en particular?";
+                } else {
+                    botResponse = "Gracias por tu mensaje. ¿En qué más puedo ayudarte con nuestros servicios de internet, TV Cable o paquetes Duo?";
+                }
+                
+                addMessage(botResponse, 'bot');
+            }, 1000);
+        });
+        
+        function addMessage(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `flex mb-4 ${sender === 'user' ? 'justify-end' : ''}`;
+            
+            if (sender === 'user') {
+                messageDiv.innerHTML = `
+                    <div class="bg-gray-200 text-gray-800 p-3 rounded-lg rounded-tr-none max-w-xs">
+                        <p>${message}</p>
+                    </div>
+                    <div class="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center text-white ml-2 flex-shrink-0">
+                        <i class="fas fa-user text-xs"></i>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white mr-2 flex-shrink-0">
+                        <i class="fas fa-robot text-xs"></i>
+                    </div>
+                    <div class="bg-primary-100 text-primary-900 p-3 rounded-lg rounded-tl-none max-w-xs">
+                        <p>${message}</p>
+                    </div>
+                `;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Animate cards on scroll
+        function animateOnScroll() {
+            const cards = document.querySelectorAll('.plan-card');
+            
+            cards.forEach((card, index) => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (cardPosition < screenPosition) {
+                    setTimeout(() => {
+                        card.classList.add('animate-fade-in');
+                    }, index * 100);
+                }
+            });
+        }
+        
+        // Initial animation
+        window.addEventListener('load', () => {
+            animateOnScroll();
+        });
+        
+        // Animate on scroll
+        window.addEventListener('scroll', () => {
+            animateOnScroll();
+        });
+    </script>
+</body>
 </html>

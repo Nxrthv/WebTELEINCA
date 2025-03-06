@@ -12,7 +12,7 @@ export const login = async (req, res) => {
         if (result.rows.length > 0) {
             const tipoUsuario = result.rows[0].tipo_usuario;
             if (tipoUsuario === 'admin') {
-                res.redirect('/a/url');
+                res.redirect('/admin');
             } else {
                 res.redirect('/u/url');
             }

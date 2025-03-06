@@ -12,7 +12,7 @@ router.post('/login', async (req, res) => {
     const { dni, codigo } = req.body;
 
     if (dni === ADMIN_CREDENTIALS.dni && codigo === ADMIN_CREDENTIALS.codigo) {
-        return res.json({ message: 'Acceso concedido', redirect: '/a/url' });
+        return res.json({ message: 'Acceso concedido', redirect: '/admin' });
     }
 
     return res.status(401).json({ message: 'Credenciales incorrectas' });

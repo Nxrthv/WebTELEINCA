@@ -1,360 +1,118 @@
-<!DOCTYPE html>
-<html lang="es">
+<footer class="bg-color5 text-white py-8">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-wrap -mx-4">
+            <div class="w-full md:w-1/4 px-4 mb-8">
+                <img src="/resources/Images/logo.png" alt="Logo de la Empresa" class="w-48 mb-4">
+                <p class="text-sm font-light mt-20">
+                    TELEINCA S.A.C. <br>
+                    RUC 20601340675
+                </p>
+            </div>
+            <div class="w-full md:w-1/4 px-4 mb-8">
+                <h3 class="font-bold mb-4">Información Legal</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#" class="text-white hover:underline" data-bs-toggle="modal" data-bs-target="#termsModal">
+                            Términos y Condiciones
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/reclamos-y-solicitudes" class="text-white hover:underline">
+                            Reclamos y Solicitudes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.osiptel.gob.pe/portal-de-operadoras/" target="_blank" class="text-white hover:underline">
+                            Osiptel
+                        </a>
+                    </li>
+                    <li class="mt-4">
+                        <span class="font-bold">Contacto:</span><br>
+                        <a href="mailto:info@teleinca.com" class="text-white hover:underline">
+                            info@teleinca.com
+                        </a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="tel:062-514798" class="bg-white text-color4 px-4 py-2 rounded-full font-bold hover:bg-opacity-90 transition duration-300">
+                            <i class="bi bi-telephone"></i> Ventas: 062-514798
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="w-full md:w-1/4 px-4 mb-8 md:border-l border-white">
+                <h3 class="font-bold mb-4">Navega</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#promociones" class="text-white hover:underline cursor-pointer">Duos</a>
+                    </li>
+                    <li>
+                        <a href="#internet-cable" class="text-white hover:underline cursor-pointer">Cable/Internet</a>
+                    </li>
+                    <li>
+                        <a href="#pagos" class="text-white hover:underline cursor-pointer">Pagos</a>
+                    </li>
+                    <li class="mt-4">
+                        <span class="font-bold">Teléfono:</span><br>
+                        Atención al Cliente:<br>
+                        +51 962 624 690
+                    </li>
+                </ul>
+            </div>
+            <div class="w-full md:w-1/4 px-4 mb-8 md:border-l border-white">
+                <h3 class="font-bold mb-4">Dirección</h3>
+                <p class="mb-4">
+                    Centro de Experiencia Huánuco: Jr. Abtao N° 1719
+                    Urb. Paucarbambilla Huánuco - Huánuco - Huánuco
+                </p>
+                <p>
+                    Horario: De lunes a sábado de 8:30 a. m. a 6:30 p. m.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
 
-<head>
-    <base href="/TeleIncaWebp/">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-        .footer>ul>li {
-            cursor: pointer;
-            font-weight: 300;
-            font-size: 13px;
-        }
-
-        .footLink {
-            position: relative;
-            transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-            transition-duration: 400ms;
-        }
-
-        .footLink:hover {
-            color: #fff;
-        }
-
-        .footLink:hover:after {
-            width: 100%;
-            left: 0%;
-        }
-
-        .footLink:after {
-            content: "";
-            pointer-events: none;
-            bottom: -2px;
-            left: 50%;
-            position: absolute;
-            width: 0%;
-            height: 1px;
-            background-color: #fff;
-            transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-            transition-duration: 400ms;
-        }
-
-        .modal-animated {
-            animation: slideIn 0.4s ease-out;
-        }
-
-        .modal-backdrop.show {
-            opacity: 1 !important;
-            background-color: rgba(0, 0, 0, 0.473) !important;
-        }
-
-        .modal-closing {
-            animation: slideOut 0.4s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideOut {
-            from {
-                transform: translateY(0);
-                opacity: 1;
-            }
-
-            to {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-        }
-    </style>
-</head>
-
-<div class="modal fade modal-backdrop" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel"
-    aria-hidden="true" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" style="max-width: 600px" role="document">
-        <div class="modal-content modal-animated">
-            <div class="modal-header">
-                <h5 class="modal-title fs-3 fw-bold px-3 px-lg-4" style="color: var(--color1)" id="termsModalLabel">
-                    <i class="bi bi-file-earmark-lock"></i> Términos y
-                    condiciones
+<!-- Terms and Conditions Modal -->
+<!-- <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-lg shadow-lg">
+            <div class="modal-header border-b border-gray-200 p-4">
+                <h5 class="modal-title text-2xl font-bold text-color1" id="termsModalLabel">
+                    <i class="bi bi-file-earmark-lock"></i> Términos y condiciones
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                <button type="button" class="text-gray-400 hover:text-gray-500" data-bs-dismiss="modal" aria-label="Cerrar">
+                    <span class="sr-only">Cerrar</span>
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
-            <div class="modal-body px-lg-5 px-4" style="max-height: 400px; overflow-y: auto">
-                <strong class="fw-bold" style="color: var(--color1)">Última
-                    actualización: [28/12/2024]</strong><br />
-                <small>Al acceder y utilizar este sitio web y aplicación (en
-                    adelante, el
-                    Servicio), usted acepta los siguientes Términos y
-                    Condiciones de
-                    Uso. Si no está de acuerdo con estos términos, debe
-                    abandonar el
-                    sitio y no utilizar nuestros servicios. Estos términos
-                    pueden ser
-                    actualizados o modificados en cualquier momento, por lo
-                    que le
-                    recomendamos revisarlos
-                    periódicamente.</small><br /><br />
-                <strong class="fw-bold" style="color: var(--color1)">1.
-                    Aceptación de los Términos</strong><br />
-                <small>El uso de Login.html, panelPagos.html y
-                    panelUser.html (en
-                    adelante, "la Aplicación") está sujeto a los términos y
-                    condiciones
-                    establecidos en este acuerdo. Al utilizar la Aplicación,
-                    usted
-                    acepta estos términos y se compromete a cumplir con
-                    ellos. Si no
-                    acepta estos términos, no debe utilizar los servicios
-                    proporcionados
-                    por la Aplicación.</small><br /><br />
-                <strong class="fw-bold" style="color: var(--color1)">2.
-                    Descripción del Servicio</strong><br />
-                <small>La Aplicación permite a los usuarios realizar pagos
-                    de servicios de
-                    cable e internet de manera segura y eficiente. Los pagos
-                    se procesan
-                    a través de plataformas de pago seguras, y la Aplicación
-                    no almacena
-                    los datos de las tarjetas de crédito de los usuarios,
-                    garantizando
-                    la privacidad de la información.</small><br /><br />
-                <strong class="fw-bold" style="color: var(--color1)">3.
-                    Registro y Cuenta de Usuario</strong><br />
-                <small>Para utilizar la Aplicación, usted debe contar con un
-                    servicio
-                    contratado con nuestra empresa, ya que su usuario es su
-                    número de
-                    DNI y su contraseña es su código de abonado, de usted es
-                    la
-                    responsabilidad de mantener la confidencialidad de su
-                    usuario y
-                    contraseña. En caso de sospecha de uso no autorizado,
-                    debe notificar
-                    inmediatamente a la administración de la
-                    Aplicación.</small><br /><br />
-                <strong class="fw-bold" style="color: var(--color1)">4. Uso
-                    de la Aplicación</strong><br />
-                <small>La Aplicación está destinada a usuarios mayores de 18
-                    años. Al
-                    utilizar la Aplicación, usted se compromete a: <br />
-                    • Utilizar el Servicio únicamente para realizar pagos de
-                    servicios
-                    de cable e internet de manera legítima. <br />
-                    • No realizar actividades ilegales o fraudulentas a
-                    través de la
-                    Aplicación. <br />
-                    • No infringir los derechos de propiedad intelectual de
-                    la
-                    Aplicación o de terceros.</small><br /><br />
-                <strong class="fw-bold" style="color: var(--color1)">5. Pago
-                    y Facturación</strong><br />
-                <small>La Aplicación ofrece la posibilidad de realizar pagos
-                    a través de
-                    distintos métodos de pago, como tarjetas de crédito,
-                    débito o
-                    plataformas de pago en línea. Los pagos son procesados
-                    de manera
-                    segura por terceros proveedores de servicios de pago.
-                    <br />
-                    • Todos los pagos realizados son finales, y no se
-                    reembolsarán,
-                    salvo en situaciones excepcionales o según lo estipulado
-                    por la
-                    política del proveedor del servicio. <br />
-                    • Usted es responsable de la precisión de los datos
-                    ingresados para
-                    el pago, como el número de transacción a
-                    procesar.</small><br /><br />
-                <strong class="fw-bold" style="color: var(--color1)">6.
-                    Política de Privacidad</strong><br />
-                <small>Nos tomamos muy en serio su privacidad. Para obtener
-                    información
-                    sobre cómo recopilamos, usamos y protegemos su
-                    información personal,
-                    consulte nuestra [Política de Privacidad]. Al utilizar
-                    la
-                    Aplicación, usted consiente el uso de sus datos conforme
-                    a dicha
-                    política.</small><br /><br />
-                <strong class="fw-bold" style="color: var(--color1)">7.
-                    Propiedad Intelectual</strong><br />
-                <small>Todos los derechos de propiedad intelectual sobre la
-                    Aplicación y
-                    su contenido, incluidos textos, gráficos, logos,
-                    imágenes, software
-                    y cualquier otro material, son propiedad de Telecom
-                    S.A.C. o de sus
-                    licenciantes. Está prohibido reproducir, distribuir o
-                    utilizar
-                    cualquiera de estos contenidos sin la autorización
-                    expresa de la
-                    empresa.</small><br /><br />
-                <strong class="fw-bold" style="color: var(--color1)">8.
-                    Limitación de Responsabilidad</strong><br />
-                <small>• Telecom S.A.C. no se hace responsable de cualquier
-                    daño directo,
-                    indirecto, incidental o consecuente que pueda surgir del
-                    uso de la
-                    Aplicación, incluidos los daños a su dispositivo,
-                    pérdida de datos o
-                    problemas con el procesamiento de pagos. <br />
-                    • La Aplicación utiliza plataformas de pago de terceros,
-                    por lo que
-                    no se responsabiliza de fallos o errores que puedan
-                    ocurrir durante
-                    las transacciones.</small><br /><br />
-                <strong class="fw-bold" style="color: var(--color1)">9.
-                    Suspensión o Terminación del
-                    Servicio</strong><br />
-                <small>Telecom S.A.C. se reserva el derecho de suspender o
-                    cancelar el
-                    acceso de cualquier usuario a la Aplicación en caso de
-                    incumplimiento de estos términos o por razones de
-                    seguridad. En caso
-                    de terminación de la cuenta, el usuario perderá el
-                    acceso a los
-                    servicios y no podrá realizar nuevos
-                    pagos.</small><br /><br />
-                <strong class="fw-bold" style="color: var(--color1)">10.
-                    Modificaciones a los Términos y
-                    Condiciones</strong><br />
-                <small>Telecom S.A.C. se reserva el derecho de modificar
-                    estos términos y
-                    condiciones en cualquier momento. Cualquier cambio será
-                    publicado en
-                    esta misma página. Al continuar utilizando la Aplicación
-                    después de
-                    la publicación de los cambios, usted acepta los nuevos
-                    términos.</small><br /><br />
-                <strong class="fw-bold" style="color: var(--color1)">11. Ley
-                    Aplicable y Jurisdicción</strong><br />
-                <small>Estos términos y condiciones se regirán por las leyes
-                    de la
-                    Republica del Perú, cualquier disputa que surja en
-                    relación con el
-                    uso de la Aplicación será resuelta por los tribunales de
-                    la
-                    Republica del Perú a los cuales usted se somete
-                    expresamente.</small><br /><br />
-                <strong class="fw-bold" style="color: var(--color1)">12.
-                    Contacto</strong><br />
-                <small>Si tiene preguntas sobre estos Términos y
-                    Condiciones, puede
-                    ponerse en contacto con nosotros a través de: <br />
-                    • Correo electrónico: contacto@telecom.pe <br />
-                    • Dirección: Huánuco: Jr. Abtao N° 1719 <br />
-                    • Teléfono: +51 962 624 690</small><br /><br />
+            <div class="modal-body p-6 max-h-96 overflow-y-auto">
             </div>
-            <div class="modal-footer">
-                <a class="px-3" style="font-size: 14px" href="../../frontend/Resources/Images/t&c.pdf"
-                    download>Descargar
-                    PDF</a>
-                <button type="button" class="btn text-white w-25" style="background-color: var(--color1)"
-                    data-bs-dismiss="modal">
+            <div class="modal-footer border-t border-gray-200 p-4">
+                <a href="/terms-and-conditions.pdf" download class="text-sm text-blue-600 hover:text-blue-800">Descargar PDF</a>
+                <button type="button" class="bg-color1 text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition duration-300" data-bs-dismiss="modal">
                     Aceptar
                 </button>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<body>
-    <footer class="text-white py-4 bg">
-        <div class="container">
-            <div class="row align-items-center text-left">
-                <div class="col-lg-3">
-                    <img src="/resources/Images/logo.png" alt="Logo de la Empresa" class="img img-fluid"
-                        style="width: 200px" />
-                    <p style="margin-top: 5em; font-size: 12px" class="fw-light">
-                        TELEINCA S.A.C. <br />
-                        RUC 20601340675
-                    </p>
-                </div>
-                <div class="col-lg-3 footer">
-                    <strong>Informacion Legal</strong>
-                    <ul class="list-unstyled">
-                        <li style="margin-bottom: -1em; margin-top: 0.3em">
-                            <span class="footLink">
-                                <a class="text-white text-decoration-none" data-bs-toggle="modal"
-                                    data-bs-target="#termsModal" href>Términos y Condiciones</a>
-                            </span>
-                        </li>
-                        <br />
-                        <li style="margin-bottom: -1em; margin-top: 0.3em">
-                            <span class="footLink"><a href="../../frontend/Views/CentrosDeExperiencia.html"
-                                    class="text-white text-decoration-none">Reclamos
-                                    y Solicitudes</a></span>
-                        </li>
-                        <br />
-                        <li style="margin-top: 0.3em">
-                            <span class="footLink"><a href="https://www.osiptel.gob.pe/portal-de-operadoras/"
-                                    target="_blank" class="text-white text-decoration-none">Osiptel</a></span>
-                        </li>
-                        <br />
-                        <li class="me-3 fw-light">
-                            <span class="fw-bold">Contacto:</span><br />
-                            <a href class="text-decoration-none text-white">
-                                <p>contacto@teleincasac.pe</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a style="text-decoration: none; color: var(--color4); background: white;padding: 0.3em 1em;border-radius: 1em;font-weight: bold;" href="tel:062-514798"><i class="bi bi-telephone"></i> Ventas: 062-514798</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 footer" style="padding-left: 1em; border-left: 1px solid white">
-                    <strong>Navega</strong>
-                    <ul class="list-unstyled">
-                        <li style="margin-bottom: -1em; margin-top: 0.3em">
-                            <span class="footLink"><a onclick="smoothScrollTo('promociones')">Duos</a></span>
-                        </li>
-                        <br />
-                        <li style="margin-bottom: -1em; margin-top: 0.3em">
-                            <span class="footLink"><a
-                                    onclick="smoothScrollTo('internet-cable')">Cable/Internet</a></span>
-                        </li>
-                        <br />
-                        <li style="margin-top: 0.3em">
-                            <span class="footLink"><a onclick="smoothScrollTo('pagos')">Pagos</a></span>
-                        </li>
-                        <li class="me-3 fw-bold pt-3"><strong>Teléfono:</strong></li>
-                        <li class="me-3 fw-light">
-                            Atención al Cliente:<br />
-                            +51 962 624 690
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 mb-4 footer" style="padding-left: 1em; border-left: 1px solid white">
-                    <strong>Dirección</strong>
-                    <ul class="list-unstyled">
-                        <li class="me-3 fw-light">
-                            Centro de Experiencia Huánuco: Jr. Abtao N° 1719
-                            Urb.
-                            Paucarbambilla Huánuco - Huánuco - Huánuco
-                        </li>
-                        <br />
-                        <li class="me-3 fw-light">
-                            Horario: De lunes a sábado de 8:30 a. m. a 6:30
-                            p. m.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+<script>
+    // Common JavaScript for all admin pages
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle if it exists
+      const menuToggle = document.getElementById('menu-toggle');
+      if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+          const sidebar = document.querySelector('.md\\:flex.flex-col.w-64');
+          sidebar.classList.toggle('hidden');
+          sidebar.classList.toggle('flex');
+        });
+      }
+    });
+  </script>
 </body>
-<script src="../../frontend/Resources/Js/Dependencias.js"></script>
-
 </html>
+

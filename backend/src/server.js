@@ -2,81 +2,113 @@ import express from "express";
 import cors from "cors";
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
-import pool from './config/database.js';
-import authRoutes from './routes/auth.js';
+// import pool from './config/database.js';
+import pool from './config/db.js';
+import authRoutes from './routes/authRoute.js';
+import promoRoute from './routes/admin/promoRoute.js';
+import { obtenerPromociones } from "./controllers/admin/promoController.js";
 
 const app = express();
+const __dirname = path.resolve();
+// const VIEWS_PATH = path.join(process.cwd(), 'backend/src/views');
+const PUBLIC_PATH = path.join(process.cwd(), 'frontend', 'public');
+
+//Middlewares
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+// Conf EJS
 app.set('view engine', 'ejs');
-app.set('views', path.join(process.cwd(), 'backend/src/views'));
+app.set("views", path.join(__dirname, "backend", "src", "views"));
+app.use(express.static("public"));
+app.use(express.json());
 
+//Static
+app.use(express.static(PUBLIC_PATH));
+
+//Rutas api
 app.use('/api/users', authRoutes);
-
-//Recursos Frontend
-app.use(express.static(path.join(process.cwd(), 'frontend', 'public')));
-app.use('/c', express.static(path.join(process.cwd(), 'frontend', 'public')));
-app.use('/ce', express.static(path.join(process.cwd(), 'frontend', 'public')));
-app.use('/co', express.static(path.join(process.cwd(), 'frontend', 'public')));
-app.use('/log', express.static(path.join(process.cwd(), 'frontend', 'public')));
+app.use('/admin/promociones', promoRoute);
 
 //Administrador
-app.get('/a/url', (req, res) => {  
-    const id = uuidv4();
-    res.redirect(`/a/${id}`);
-});
-app.get('/a/:id', (req, res) => {
-    res.render('admin', { title: "Administrador | TELEINCA S.A.C." });
+app.get("/admin", async (req, res) => {
+    try {
+        const promotions = await obtenerPromociones();
+        res.render("admin", { title: "Panel de Administración", promotions });  
+    } catch (error) {
+        console.error("Error al obtener promociones:", error);
+        res.status(500).render("admin", { promotions: [] });
+    }
 });
 
 //Ruta Principal
-app.get('/', async (req, res) => {
+app.get('/', (req, res) => {
     res.render('index', { title: "TELEINCA S.A.C." });
 });
 
-//Login
-app.get('/log/url', (req, res) => {
-    const id = uuidv4();
-    res.redirect(`/log/${id}`);
-});
-app.get('/log/:id', (req, res) => {
-    const { id } = req.params;
-    res.render('login', { title: "Iniciar Sesión | TELEINCA S.A.C.", id });
+app.get("/api/planes/duos", async (req, res) => {
+    try {
+        const result = await pool.query("SELECT * FROM planes WHERE plan = 'Dúo'");
+        
+            if (!Array.isArray(result.rows)) {
+            console.error("⚠️ Error: El resultado no es un array:", result);
+            return res.status(500).json({ error: "La consulta no devolvió un array" });
+        }
+
+        res.json(result.rows);
+    } catch (error) {
+        console.error("❌ Error obteniendo los planes Duo:", error);
+        res.status(500).json({ error: "Error obteniendo los planes Duo" });
+    }
 });
 
-//Guia de Canales
-app.get('/c/url', (req, res) => {
-    const id = uuidv4();
-    res.redirect(`/c/${id}`);
-});
-app.get('/c/:id', (req, res) => {
-    const { id } = req.params;
-    res.render('canales', { title: "Tv Digital | TELEINCA S.A.C.", id });
+app.get("/api/planes/internet", async (req, res) => {
+    try {
+        const result = await pool.query("SELECT * FROM planes WHERE plan = 'Internet'");
+        
+            if (!Array.isArray(result.rows)) {
+            console.error("⚠️ Error: El resultado no es un array:", result);
+            return res.status(500).json({ error: "La consulta no devolvió un array" });
+        }
+
+        res.json(result.rows);
+    } catch (error) {
+        console.error("❌ Error obteniendo los planes Internet:", error);
+        res.status(500).json({ error: "Error obteniendo los planes Internet" });
+    }
 });
 
-//Centros de Experiencia
-app.get('/ce/url', (req, res) => {
-    const id = uuidv4();
-    res.redirect(`/ce/${id}`);
-});
-app.get('/ce/:id', (req, res) => {
-    const { id } = req.params;
-    res.render('centrosDeExperiencia', { title: "Centros de Experiencia | TELEINCA S.A.C.", id });
+app.get("/api/planes/cable", async (req, res) => {
+    try {
+        const result = await pool.query("SELECT * FROM planes WHERE plan = 'Tv Digital'");
+        
+            if (!Array.isArray(result.rows)) {
+            console.error("⚠️ Error: El resultado no es un array:", result);
+            return res.status(500).json({ error: "La consulta no devolvió un array" });
+        }
+
+        res.json(result.rows);
+    } catch (error) {
+        console.error("❌ Error obteniendo los planes Tv Cable:", error);
+        res.status(500).json({ error: "Error obteniendo los planes Tv Cable" });
+    }
 });
 
-//Conocenos
-app.get('/co/url', (req, res) => {
-    const id = uuidv4();
-    res.redirect(`/co/${id}`);
-});
-app.get('/co/:id', (req, res) => {
-    const { id } = req.params;
-    res.render('conocenos', { title: "Conocenos | TELEINCA S.A.C.", id });
+// Rutas con generación de UUID
+const dynamicRoutes = [
+    { path: "log", view: "login", title: "Iniciar Sesión | TELEINCA S.A.C." },
+    { path: "c", view: "canales", title: "Tv Digital | TELEINCA S.A.C." },
+    { path: "ce", view: "centrosDeExperiencia", title: "Centros de Experiencia | TELEINCA S.A.C." },
+    { path: "co", view: "conocenos", title: "Conócenos | TELEINCA S.A.C." },
+];
+
+// Genera automáticamente las rutas con UUID
+dynamicRoutes.forEach(({ path, view, title }) => {
+    app.get(`/${path}/url`, (req, res) => res.redirect(`/${path}/${uuidv4()}`));
+    app.get(`/${path}/:id`, (req, res) => res.render(view, { title, id: req.params.id }));
 });
 
-//Ruta Localhost
+//Server Localhost
 const PORT = process.env.PORT || 4444;
-app.listen(PORT, () => {
-    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`));

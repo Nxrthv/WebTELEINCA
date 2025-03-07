@@ -306,31 +306,6 @@
       </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <!-- <section class="py-12 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">¡Envianos tus datos y nosotros te llamamos!</h2>
-            <form class="max-w-md mx-auto" onsubmit="enviarCorreo(event)">
-                <div class="mb-4">
-                    <label for="interesadoName" class="block text-gray-700 text-sm font-bold mb-2">Nombres y Apellidos</label>
-                    <input type="text" id="interesadoName" name="interesadoName" required
-                           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                </div>
-                <div class="mb-6">
-                    <label for="interesadoTelf" class="block text-gray-700 text-sm font-bold mb-2">Celular</label>
-                    <input type="tel" id="interesadoTelf" name="interesadoTelf" required
-                           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                </div>
-                <div class="flex items-center justify-center">
-                    <button type="submit" 
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                        Enviar
-                    </button>
-                </div>
-            </form>
-        </div>
-    </section> -->
-
     <!-- Floating Contact Buttons -->
     <!-- <div class="fixed bottom-5 right-5 flex flex-col gap-2">
         <a href="https://wa.me/51962624690?text=Hola, tengo una consulta." target="_blank"
@@ -346,20 +321,25 @@
     <!-- Chatbot Button -->
     <button
       id="chatbot-button"
-      class="fixed bottom-6 right-6 bg-secondary-500 hover:bg-secondary-600 text-primary-900 w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all z-50 animate-bounce-slow">
+      class="fixed bottom-6 right-6 bg-secondary-500 hover:bg-secondary-600 text-primary-900 w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all z-50 animate-bounce-slow"
+    >
       <i class="fas fa-comments text-2xl"></i>
     </button>
 
     <div
       id="chatbot-modal"
-      class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+      class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden"
+    >
       <div
-        class="bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 overflow-hidden animate-slide-up">
+        class="bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 overflow-hidden animate-slide-up"
+      >
         <div
-          class="bg-primary-700 text-white p-4 flex justify-between items-center">
+          class="bg-primary-700 text-white p-4 flex justify-between items-center"
+        >
           <div class="flex items-center">
             <div
-              class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary-700 mr-3">
+              class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary-700 mr-3"
+            >
               <i class="fas fa-robot"></i>
             </div>
             <div>
@@ -369,7 +349,8 @@
           </div>
           <button
             id="close-chatbot"
-            class="text-white hover:text-secondary-300 transition-colors">
+            class="text-white hover:text-secondary-300 transition-colors"
+          >
             <i class="fas fa-times"></i>
           </button>
         </div>
@@ -377,13 +358,46 @@
         <div class="h-96 overflow-y-auto p-4 bg-gray-50" id="chat-messages">
           <div class="flex mb-4">
             <div
-              class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white mr-2 flex-shrink-0">
+              class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white mr-2 flex-shrink-0"
+            >
               <i class="fas fa-robot text-xs"></i>
             </div>
             <div
-              class="bg-primary-100 text-primary-900 p-3 rounded-lg rounded-tl-none max-w-xs">
+              class="bg-primary-100 text-primary-900 p-3 rounded-lg rounded-tl-none max-w-xs"
+            >
               <p>
-                ¡Hola! 👋 Soy GaIA, la asistente virtual de TELEINCA S.A.C.. Estoy aquí para ayudarte con cualquier consulta sobre tu servicio, resolver dudas o asesorarte en la contratación de un plan. ¿En qué puedo ayudarte hoy? 😊
+                ¡Hola! So GaIA la asistente virtual de TELEINCA S.A.C. ¿En qué
+                puedo ayudarte hoy?
+              </p>
+            </div>
+          </div>
+
+          <div class="flex mb-4 justify-end">
+            <div
+              class="bg-gray-200 text-gray-800 p-3 rounded-lg rounded-tr-none max-w-xs"
+            >
+              <p>Hola, me gustaría saber más sobre los planes de internet.</p>
+            </div>
+            <div
+              class="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center text-white ml-2 flex-shrink-0"
+            >
+              <i class="fas fa-user text-xs"></i>
+            </div>
+          </div>
+
+          <div class="flex mb-4">
+            <div
+              class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white mr-2 flex-shrink-0"
+            >
+              <i class="fas fa-robot text-xs"></i>
+            </div>
+            <div
+              class="bg-primary-100 text-primary-900 p-3 rounded-lg rounded-tl-none max-w-xs"
+            >
+              <p>
+                ¡Claro! Contamos con varios planes de Internet y Tv Cable que
+                seguro se adaptan a tus necesidades. ¿Buscas algo para uso
+                básico o necesitas alta velocidad para gaming o streaming?
               </p>
             </div>
           </div>
@@ -805,27 +819,30 @@
     const chatForm = document.getElementById("chat-form");
     const chatInput = document.getElementById("chat-input");
     const chatMessages = document.getElementById("chat-messages");
-    // if (!chatMessages) {
-    //   console.error(
-    //     "Error: No se encontró el contenedor de mensajes (#chat-messages) en el DOM."
-    //   );
-    // }
+    if (!chatMessages) {
+      console.error(
+        "Error: No se encontró el contenedor de mensajes (#chat-messages) en el DOM."
+      );
+    }
 
     // Mostrar el chatbot
     chatbotButton.addEventListener("click", () => {
       chatbotModal.classList.remove("hidden");
       setTimeout(() => chatInput.focus(), 300);
     });
+
     // Cerrar el chatbot
     closeChatbot.addEventListener("click", () => {
       chatbotModal.classList.add("hidden");
     });
+
     // Cerrar modal al hacer clic fuera del chatbot
     chatbotModal.addEventListener("click", (e) => {
       if (e.target === chatbotModal) {
         chatbotModal.classList.add("hidden");
       }
     });
+    
     // Respuestas predefinidas
     const respuestasPredefinidas = {
       internet:
@@ -844,6 +861,8 @@
         "¡Tenemos varias promociones activas! Por tiempo limitado, ofrecemos instalación gratuita y los 6 primeros meses con el doble de megas de velocidad en nuestros paquetes Dúo. ¿Te interesa algún plan en particular?",
       descuento:
         "¡Tenemos varias promociones activas! Por tiempo limitado, ofrecemos instalación gratuita y los 6 primeros meses con el doble de megas de velocidad en nuestros paquetes Dúo. ¿Te interesa algún plan en particular?",
+      quierocontratar:
+        "¡Genial!, para eso solo debes seleccionar el paquete que mas te interese y hacer clic en el botón 'Contratar ahora'. Esto te redirigirá al whatsapp de uno de nuestros asesores para que puedas coordinar la contratación de tu plan.",
     };
 
     // Manejar el envío del formulario del chat
@@ -902,35 +921,39 @@
 
     // Agregar mensajes al chat
     function addMessage(message, sender) {
-    //   if (!chatMessages) {
-    //     console.error(
-    //       "Error: No se encontró el contenedor de mensajes en el DOM."
-    //     );
-    //     return null;
-    //   }
+      if (!chatMessages) {
+        console.error(
+          "Error: No se encontró el contenedor de mensajes en el DOM."
+        );
+        return null;
+      }
       
-    const messageDiv = document.createElement("div");
-    messageDiv.classList.add("flex", "items-end", "mb-2", "w-full");
+        const messageDiv = document.createElement("div");
+        messageDiv.classList.add("flex", "items-end", "mb-2", "w-full");
 
         if (sender === "user") {
-            messageDiv.classList.add("justify-end"); // Alinea a la derecha para el usuario
+            messageDiv.classList.add("justify-end"); // Mensaje del usuario
             messageDiv.innerHTML = `
+            <div class="flex mb-4">
                 <div class="bg-gray-200 text-gray-800 p-3 rounded-lg rounded-tr-none max-w-xs">
                     <p>${message}</p>
                 </div>
-                <div class="w-8 h-8 bg-gray-500 rounded-full flex items-top justify-center text-white ml-2 flex-shrink-0">
+                <div class="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center text-white ml-2 flex-shrink-0">
                     <i class="fas fa-user text-xs"></i>
                 </div>
+            </div>
             `;
         } else {
-            messageDiv.classList.add("justify-start"); // Alinea a la izquierda para el bot
+            messageDiv.classList.add("justify-start"); // Respuesta del bot
             messageDiv.innerHTML = `
-                <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white mr-2 flex-shrink-0">
-                    <i class="fas fa-robot text-xs"></i>
-                </div>
-                <div class="bg-primary-100 text-primary-900 p-3 rounded-lg rounded-tl-none max-w-xs">
-                    <p>${message}</p>
-                </div>
+            <div class="flex mb-4">
+            <div class="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white mr-2 flex-shrink-0">
+              <i class="fas fa-robot text-xs"></i>
+            </div>
+            <div class="bg-primary-100 text-primary-900 p-3 rounded-lg rounded-tl-none max-w-xs">
+              <p>${message}</p>
+            </div>
+          </div>
             `;
         }
 

@@ -2,15 +2,14 @@ import express from "express";
 import cors from "cors";
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
-// import pool from './config/database.js';
 import pool from './config/db.js';
 import authRoutes from './routes/authRoute.js';
-import promoRoute from './routes/admin/promoRoute.js';
+import userRoutes from './routes/users/userRoute.js';
+import adminRoute from './routes/admin/adminRoute.js';
 import { obtenerPromociones } from "./controllers/admin/promoController.js";
 
 const app = express();
 const __dirname = path.resolve();
-// const VIEWS_PATH = path.join(process.cwd(), 'backend/src/views');
 const PUBLIC_PATH = path.join(process.cwd(), 'frontend', 'public');
 
 //Middlewares
@@ -28,8 +27,9 @@ app.use(express.json());
 app.use(express.static(PUBLIC_PATH));
 
 //Rutas api
-app.use('/api/users', authRoutes);
-app.use('/admin/promociones', promoRoute);
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/admin', adminRoute);
 
 //Administrador
 app.get("/admin", async (req, res) => {
@@ -95,19 +95,24 @@ app.get("/api/planes/cable", async (req, res) => {
     }
 });
 
-// Rutas con generación de UUID
-const dynamicRoutes = [
-    { path: "log", view: "login", title: "Iniciar Sesión | TELEINCA S.A.C." },
-    { path: "c", view: "canales", title: "Tv Digital | TELEINCA S.A.C." },
-    { path: "ce", view: "centrosDeExperiencia", title: "Centros de Experiencia | TELEINCA S.A.C." },
-    { path: "co", view: "conocenos", title: "Conócenos | TELEINCA S.A.C." },
-];
-
-// Genera automáticamente las rutas con UUID
-dynamicRoutes.forEach(({ path, view, title }) => {
-    app.get(`/${path}/url`, (req, res) => res.redirect(`/${path}/${uuidv4()}`));
-    app.get(`/${path}/:id`, (req, res) => res.render(view, { title, id: req.params.id }));
+app.get("/u", (req, res) => {
+    res.render("panelUser", { title: "Bienvenid@ a tu cuenta | TELEINCA S.A.C." });
 });
+
+    // Rutas con generación de UUID
+    const dynamicRoutes = [
+        { path: "log", view: "login", title: "Iniciar Sesión | TELEINCA S.A.C." },
+        { path: "c", view: "canales", title: "Tv Digital | TELEINCA S.A.C." },
+        { path: "ce", view: "centrosDeExperiencia", title: "Centros de Experiencia | TELEINCA S.A.C." },
+        { path: "co", view: "conocenos", title: "Conócenos | TELEINCA S.A.C." },
+        // { path: "u", view: "panelUser", title: "Bienvenid@ a tu cuenta | TELEINCA S.A.C." }
+    ];
+
+    // Genera automáticamente las rutas con UUID
+    dynamicRoutes.forEach(({ path, view, title }) => {
+        app.get(`/${path}/url`, (req, res) => res.redirect(`/${path}/${uuidv4()}`));
+        app.get(`/${path}/:id`, (req, res) => res.render(view, { title, id: req.params.id }));
+    });
 
 //Server Localhost
 const PORT = process.env.PORT || 4444;

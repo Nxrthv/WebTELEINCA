@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-gray-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body class="h-full">
+    <%- include('reusable/navigationUser') %>
+        <div class="min-h-full">
+            <header class="bg-white shadow">
+                <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+                    <h1 class="text-2xl tracking-tight text-gray-900">Bienvenid@ <span
+                            id="nombreUsuario">Cargando...</span> - <span id="codigoAbonado">Código...</span></h1>
+                </div>
+            </header>
+            <main>
+                <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+                    <!-- Resumen de cuenta -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg mb-6">
+                        <div class="px-4 py-5 sm:p-6">
+                            <h2 class="text-lg font-medium text-gray-900 mb-4">Resumen de Deudas</h2>
+                            <div class="grid grid-cols-1 gap-5 sm:grid-cols-3" id="resumenDeudas">
+                                <div class="bg-primary-50 overflow-hidden shadow rounded-lg">
+                                    <div class="px-4 py-5 sm:p-6">
+                                        <dt class="text-sm font-medium text-gray-500 truncate">Deuda Total Actual</dt>
+                                        <dd id="deuda-actual" class="mt-1 text-3xl font-semibold">S/ 0.00</dd>
+                                    </div>
+                                </div>                                
+                                <div class="bg-secondary-50 overflow-hidden shadow rounded-lg">
+                                    <div class="px-4 py-5 sm:p-6">
+                                        <dt class="text-sm font-medium text-gray-500 truncate">Próximo Vencimiento</dt>
+                                        <dd id="proximo-vencimiento" class="mt-1 text-3xl font-semibold text-secondary-600">--/--/--</dd>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 overflow-hidden shadow rounded-lg">
+                                    <div class="px-4 py-5 sm:p-6">
+                                        <dt class="text-sm font-medium text-gray-500 truncate">Concepto de Deuda</dt>
+                                        <dd id="plan-actual" class="mt-1 text-3xl font-semibold text-gray-900">Sin Deudas 🥳    </dd>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deudas -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <h2 class="text-lg font-medium text-gray-900 mb-4">Recibos Pendientes</h2>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200" id="tablaDeudas">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Vencimiento</th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Servicio</th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Monto</th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Estado</th>
+                                            <!-- <th scope="col"
+                                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Código de pago</th> -->
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <!-- Los recibos se insertarán aquí -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recibos y Pagos -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg mt-6">
+                        <div class="px-4 py-5 sm:p-6">
+                            <h2 class="text-lg font-medium text-gray-900 mb-4">Recibos Pagados</h2>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200" id="tablaRecibos">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <!-- <th scope="col"
+                                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                #</th> -->
+                                            <th scope="col"
+                                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Fecha</th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Descripción</th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Monto</th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Estado</th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Cod. de recibo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <!-- Los recibos se insertarán aquí -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Modal para detalles del recibo -->
+        <div id="receiptModal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title"
+            role="dialog" aria-modal="true">
+            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                <div
+                    class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <div class="sm:flex sm:items-start">
+                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                                    Detalles del Recibo
+                                </h3>
+                                <div class="mt-2">
+                                    <p class="text-sm text-gray-500" id="receiptDetails">
+                                        <!-- Los detalles del recibo se insertarán aquí -->
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button type="button"
+                            class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                            onclick="closeModal('receiptModal')">
+                            Cerrar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para opciones de pago -->
+        <div id="paymentModal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title"
+            role="dialog" aria-modal="true">
+            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                <div
+                    class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <div class="sm:flex sm:items-start">
+                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                                    Opciones de Pago
+                                </h3>
+                                <div class="mt-2">
+                                    <form id="paymentForm">
+                                        <div class="mb-4">
+                                            <label for="paymentMethod"
+                                                class="block text-sm font-medium text-gray-700">Método de Pago</label>
+                                            <select id="paymentMethod" name="paymentMethod"
+                                                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md">
+                                                <option value="yape">Yape</option>
+                                                <option value="bcp">BCP</option>
+                                                <option value="bbva">BBVA</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="receiptCode"
+                                                class="block text-sm font-medium text-gray-700">Código de Recibo</label>
+                                            <input type="text" name="receiptCode" id="receiptCode"
+                                                class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="transferProof"
+                                                class="block text-sm font-medium text-gray-700">Comprobante de
+                                                Transferencia</label>
+                                            <input type="file" name="transferProof" id="transferProof" accept="image/*"
+                                                class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button type="button"
+                            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-600 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:ml-3 sm:w-auto sm:text-sm"
+                            onclick="submitPayment()">
+                            Enviar Pago
+                        </button>
+                        <button type="button"
+                            class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                            onclick="closeModal('paymentModal')">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const usuario = localStorage.getItem('usuario');
+
+        if (!usuario) {
+            window.location.href = "/log/url";
+            return;
+        }
+
+        const datosUsuario = JSON.parse(usuario);
+        document.getElementById('nombreUsuario').textContent = datosUsuario.nombres;
+        document.getElementById('codigoAbonado').textContent = datosUsuario.codigo;
+
+        try {
+            const pagos = await fetch(`/api/users/pagos/${encodeURIComponent(datosUsuario.codigo)}`);
+            const deudas = await fetch(`/api/users/deudas/${encodeURIComponent(datosUsuario.codigo)}`);
+
+            const datosPagos = await pagos.json();
+            const datosDeudas = await deudas.json();
+
+            if (pagos.ok || deudas.ok) {
+                mostrarPagos(datosPagos);
+                mostrarDeudas(datosDeudas);
+            } else {
+                console.error('❌ Error al obtener datos:', datosPagos.message, datosDeudas.message);
+            }
+        } catch (error) {
+            console.error('❌ Error en la solicitud:', error);
+        }
+    });
+
+    function mostrarPagos(datos) {
+        const tbody = document.getElementById('tablaRecibos').querySelector('tbody');
+        tbody.innerHTML = '';
+
+        datos.forEach((item) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">${item.fecha_ultimo_pago}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">${item.concepto || 'N/A'}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">S/ ${item.deuda}</td>
+                <td  class="px-6 py-4 whitespace-nowrap text-center">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Pagado</span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">${item.codigo_pago}</td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+
+    function mostrarDeudas(datos) {
+        const deudaElemento = document.getElementById("deuda-actual");
+        const divDeuda = deudaElemento.closest("div.bg-primary-50");
+
+        if (datos.length === 0) {
+            console.warn("⚠ No se encontraron deudas para el usuario.");
+            deudaElemento.textContent = "S/ 0.00";
+            divDeuda.classList.remove("bg-red-100", "text-red-600");
+            divDeuda.classList.add("bg-green-100", "text-green-600");
+            return;
+        }
+
+        const totalDeuda = datos.reduce((acumulador, item) => acumulador + parseFloat(item.deuda || 0), 0);
+
+        const fechasVencimiento = datos.map(item => item.fecha_vencimiento).filter(fecha => fecha);
+        const proximoVencimiento = datos[0].fecha_vencimiento || "No disponible";
+
+        const planActual = datos[0].concepto || "Sin plan";
+
+        deudaElemento.textContent = `S/ ${totalDeuda.toFixed(2)}`;
+        document.getElementById("proximo-vencimiento").textContent = proximoVencimiento;
+        document.getElementById("plan-actual").textContent = planActual;
+
+        if (totalDeuda > 0) {
+            divDeuda.classList.remove("bg-green-100", "text-green-600");
+            divDeuda.classList.add("bg-red-100", "text-red-600");
+        } else {
+            divDeuda.classList.remove("bg-red-100", "text-red-600");
+            divDeuda.classList.add("bg-green-100", "text-green-600");
+        }
+
+        const tbody = document.getElementById('tablaDeudas').querySelector('tbody');
+        tbody.innerHTML = '';
+
+        datos.forEach((item) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">${item.fecha_vencimiento}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">${item.concepto || 'N/A'}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">S/ ${item.deuda}</td>
+                <td  class="px-6 py-4 whitespace-nowrap text-center">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Pendiente</span>
+                </td>
+            `;
+            // <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-900">${item.codigo_pago}</td>
+            tbody.appendChild(row);
+        });
+    }
+
+    window.addEventListener("pageshow", (event) => {
+        if (event.persisted) {
+            validarSesion();
+        }
+    });
+    function validarSesion() {
+        const usuario = localStorage.getItem("usuario");
+
+        if (!usuario) {
+            console.warn("⚠ Sesión no válida. Redirigiendo a login...");
+            window.location.href = "/log/url";
+        }
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+        validarSesion();
+    });
+</script>
+<script>
+    function showReceiptDetails(receiptId) {
+
+        const receiptDetails = `
+                <p><strong>Número de Recibo:</strong> ${receiptId}</p>
+                <p><strong>Fecha de Emisión:</strong> 01/05/2023</p>
+                <p><strong>Monto:</strong> $89.99</p>
+                <p><strong>Servicios:</strong></p>
+                <ul class="list-disc list-inside">
+                    <li>Internet 400 Mbps: $49.99</li>
+                    <li>TV Cable 150+ Canales: $40.00</li>
+                </ul>
+                <p><strong>Estado:</strong> Pagado</p>
+                <p><strong>Fecha de Pago:</strong> 05/05/2023</p>
+            `;
+        document.getElementById('receiptDetails').innerHTML = receiptDetails;
+        document.getElementById('receiptModal').classList.remove('hidden');
+    }
+
+    function showPaymentOptions(receiptId) {
+        document.getElementById('receiptCode').value = receiptId;
+        document.getElementById('paymentModal').classList.remove('hidden');
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).classList.add('hidden');
+    }
+
+    function submitPayment() {
+        alert('Pago enviado con éxito. Nuestro equipo verificará la información y actualizará su cuenta.');
+        closeModal('paymentModal');
+    }
+
+    // Cerrar modales al hacer clic fuera de ellos
+    window.onclick = function (event) {
+        if (event.target.classList.contains('fixed')) {
+            event.target.classList.add('hidden');
+        }
+    }
+</script>
+</body>
+
+</html>

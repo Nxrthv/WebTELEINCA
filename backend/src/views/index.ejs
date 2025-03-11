@@ -830,16 +830,14 @@
         "¡Genial!, para eso solo debes seleccionar el paquete que mas te interese y hacer clic en el botón 'Contratar ahora'. Esto te redirigirá al whatsapp de uno de nuestros asesores para que puedas coordinar la contratación de tu plan.",
     };
 
-    // Manejar el envío del formulario del chat
+    // Manejo del envío del formulario del chat
     chatForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const message = chatInput.value.trim();
       if (message === "") return;
-      // Agregar mensaje del usuario al chat
       addMessage(message, "user");
-      // Limpiar el input
       chatInput.value = "";
-      // Mostrar mensaje de "escribiendo..."
+
       const botMessageElement = addMessage("Escribiendo... ⏳", "bot");
       if (!botMessageElement) {
         console.error("Error: No se pudo agregar el mensaje del bot.");
@@ -848,7 +846,7 @@
       // Obtener respuesta predefinida
       let respuesta = obtenerRespuestaPredefinida(message);
       if (!respuesta) {
-        // Si no, se consulta a MagicLoops
+        // Si no, se consulta a la API
         respuesta = await consultarMagicLoops(message);
       }
       // Devolver Respuesta
